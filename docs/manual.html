@@ -1,12 +1,11 @@
 <!doctype html>
-<html lang="fa" dir="rtl" data-theme="light">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <meta name="description" content="راهنمای کامل فارسی Daftar V2؛ دفترچه‌ای خصوصی برای نوشتن فارسی و انگلیسی با هوش مصنوعی اختیاری Ollama.">
-  <meta name="theme-color" content="#f4efe7">
-  <title>Daftar — راهنمای کاربر فارسی</title>
+  <meta name="description" content="The complete user manual for Daftar V2, a private English and Persian browser notebook with optional Ollama AI.">
+  <title>Daftar — User Manual</title>
   <style>
     :root {
       --bg: #f4efe7;
@@ -1186,160 +1185,51 @@
       .closing { color: #111; background: white; border: 1px solid #bbb; box-shadow: none; }
       .closing p { color: #444; }
     }
-
-    /* Persian edition: true RTL layout with isolated LTR technical content. */
-    @counter-style persian-leading-zero {
-      system: numeric;
-      symbols: "۰" "۱" "۲" "۳" "۴" "۵" "۶" "۷" "۸" "۹";
-      pad: 2 "۰";
-      suffix: "";
-    }
-    body {
-      direction: rtl;
-      text-align: right;
-      font-family: Tahoma, "Segoe UI", Arial, sans-serif;
-      line-height: 1.9;
-    }
-    .skip-link { left: auto; right: 16px; }
-    .blessing {
-      font-family: Tahoma, "Segoe UI", Arial, sans-serif;
-      letter-spacing: 0;
-      text-transform: none;
-    }
-    .topbar, .shell, .hero, .tour, .split, .feature-grid, .shortcut-grid, .checklist, .ai-flow { direction: rtl; }
-    .top-context { margin-left: 0; margin-right: auto; }
-    .brand-copy strong,
-    h1, .section h2, .section h3, .feature-card h3, .info-card h3,
-    .card-icon, .quote, .closing h2 {
-      font-family: Tahoma, "Segoe UI", Arial, sans-serif;
-      letter-spacing: 0;
-    }
-    h1 {
-      font-size: clamp(46px, 6.2vw, 76px);
-      font-weight: 750;
-      line-height: 1.18;
-    }
-    .hero-deck { line-height: 1.95; }
-    .section h2 {
-      font-size: clamp(34px, 4.6vw, 55px);
-      font-weight: 750;
-      line-height: 1.3;
-    }
-    .section h3 { font-weight: 750; line-height: 1.48; }
-    .section-intro { line-height: 2; }
-    .feature-card h3, .info-card h3 { line-height: 1.55; }
-    .closing h2 { font-weight: 750; line-height: 1.38; }
-    .brand-copy small, .sidebar-kicker, .eyebrow, .hero-meta, .section-label, th, .quote small {
-      letter-spacing: 0;
-      text-transform: none;
-    }
-    .shell { direction: rtl; }
-    .sidebar {
-      border-right: 0;
-      border-left: 1px solid var(--line);
-    }
-    .manual-nav a { grid-template-columns: 28px minmax(0, 1fr); }
-    .manual-nav a::after {
-      inset: auto 40px 5px 10px;
-      background: linear-gradient(270deg, var(--accent), transparent);
-      transform-origin: right;
-    }
-    .manual-nav a:hover { transform: translateX(-3px); }
-    .made-by { left: auto; right: 22px; }
-    .top-button { right: auto; left: 22px; }
-    .section ul, .section ol { padding-left: 0; padding-right: 22px; }
-    .feature-card::before, .info-card::before { right: auto; left: -80px; }
-    .callout { padding: 22px 58px 22px 24px; }
-    .callout::before { left: auto; right: 20px; }
-    .step:not(:last-child)::after { left: auto; right: 23px; }
-    .step::before { content: counter(manual-step, persian-leading-zero); }
-    .tour-board, .notebook-visual, .command, .keys { direction: ltr; }
-    .floating-card { direction: rtl; text-align: right; }
-    .mock-note small { direction: rtl; text-align: right; }
-    .tour-item:hover { transform: translateX(-4px); }
-    th, td { text-align: right; }
-    summary { padding: 14px 19px 14px 54px; }
-    summary::after { right: auto; left: 18px; }
-    .detail-tools { justify-content: flex-start; }
-    .command { text-align: left; }
-    .command code { direction: ltr; text-align: left; unicode-bidi: isolate; }
-    code, .key, .nav-index, .keys, .ltr {
-      direction: ltr;
-      unicode-bidi: isolate;
-    }
-    .ai-flow-card:not(:last-child)::after {
-      content: "←";
-      right: auto;
-      left: -17px;
-    }
-    .checklist li { padding: 15px 45px 15px 16px; }
-    .checklist li::before { left: auto; right: 15px; }
-    .quote { padding: 30px 78px 30px 34px; }
-    .quote::before { left: auto; right: 27px; content: "«"; }
-    .closing::before { right: auto; left: -110px; }
-
-    @media (max-width: 820px) {
-      .sidebar {
-        inset: 0 0 0 auto;
-        transform: translateX(105%);
-        border-left: 1px solid var(--line);
-      }
-      body.nav-open .sidebar { transform: translateX(0); }
-      .made-by { left: auto; right: 18px; }
-    }
-
-    @media (max-width: 590px) {
-      h1 { font-size: clamp(42px, 13vw, 58px); }
-      .step:not(:last-child)::after { left: auto; right: 20px; }
-      .quote { padding: 28px 58px 28px 24px; }
-      .quote::before { left: auto; right: 18px; }
-      .top-button { right: auto; left: 16px; }
-    }
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main-content">رفتن به متن راهنما</a>
+  <a class="skip-link" href="#main-content">Skip to manual</a>
   <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
-  <div class="blessing">بسم الله الرحمن الرحیم</div>
+  <div class="blessing">In the name of God</div>
 
   <header class="topbar">
-    <button class="menu-button" id="menuButton" type="button" aria-label="باز کردن فهرست راهنما" aria-controls="manualSidebar" aria-expanded="false">
+    <button class="menu-button" id="menuButton" type="button" aria-label="Open manual navigation" aria-controls="manualSidebar" aria-expanded="false">
       <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
-    <a class="top-brand" href="#welcome" aria-label="صفحهٔ نخست راهنمای Daftar">
+    <a class="top-brand" href="#welcome" aria-label="Daftar manual home">
       <span class="brand-mark" aria-hidden="true"></span>
-      <span class="brand-copy"><strong>Daftar</strong><small>راهنمای کاربر V2</small></span>
+      <span class="brand-copy"><strong>Daftar</strong><small>V2 user manual</small></span>
     </a>
     <div class="top-context">
-      <span class="reading-label"><span id="readPercent">0</span>٪ خوانده‌شده</span>
-      <button class="theme-button" id="themeButton" type="button" aria-label="تغییر به حالت تاریک">
+      <span class="reading-label"><span id="readPercent">0</span>% read</span>
+      <button class="theme-button" id="themeButton" type="button" aria-label="Switch to dark mode">
         <svg class="button-icon sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg>
         <svg class="button-icon moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15.4A8.5 8.5 0 0 1 8.6 4a8.5 8.5 0 1 0 11.4 11.4Z"/></svg>
-        <span id="themeLabel">حالت تاریک</span>
+        <span id="themeLabel">Dark mode</span>
       </button>
     </div>
   </header>
 
   <div class="shell">
-    <aside class="sidebar" id="manualSidebar" aria-label="بخش‌های راهنما">
-      <p class="sidebar-kicker">در این راهنما</p>
+    <aside class="sidebar" id="manualSidebar" aria-label="Manual sections">
+      <p class="sidebar-kicker">On this page</p>
       <nav class="manual-nav" id="manualNav">
-        <a href="#welcome" class="active"><span class="nav-index">۰۰</span><span>خوش‌آمدید</span></a>
-        <a href="#quick-start"><span class="nav-index">۰۱</span><span>شروع سریع</span></a>
-        <a href="#tour"><span class="nav-index">۰۲</span><span>آشنایی با Daftar</span></a>
-        <a href="#writing"><span class="nav-index">۰۳</span><span>نوشتن و قالب‌بندی</span></a>
-        <a href="#organize"><span class="nav-index">۰۴</span><span>دسته‌بندی و یافتن</span></a>
-        <a href="#local-ai"><span class="nav-index">۰۵</span><span>راه‌اندازی AI و Ollama</span></a>
-        <a href="#versions"><span class="nav-index">۰۶</span><span>نسخه‌ها و بازیابی</span></a>
-        <a href="#data"><span class="nav-index">۰۷</span><span>پشتیبان، خروجی و ورود</span></a>
-        <a href="#appearance"><span class="nav-index">۰۸</span><span>تنظیمات و ظاهر</span></a>
-        <a href="#shortcuts"><span class="nav-index">۰۹</span><span>میانبرهای صفحه‌کلید</span></a>
-        <a href="#privacy"><span class="nav-index">۱۰</span><span>حریم خصوصی و ذخیره‌سازی</span></a>
-        <a href="#troubleshooting"><span class="nav-index">۱۱</span><span>رفع اشکال</span></a>
+        <a href="#welcome" class="active"><span class="nav-index">00</span><span>Welcome</span></a>
+        <a href="#quick-start"><span class="nav-index">01</span><span>Quick start</span></a>
+        <a href="#tour"><span class="nav-index">02</span><span>Tour of Daftar</span></a>
+        <a href="#writing"><span class="nav-index">03</span><span>Writing &amp; formatting</span></a>
+        <a href="#organize"><span class="nav-index">04</span><span>Organize &amp; find</span></a>
+        <a href="#local-ai"><span class="nav-index">05</span><span>AI &amp; Ollama setup</span></a>
+        <a href="#versions"><span class="nav-index">06</span><span>Versions &amp; recovery</span></a>
+        <a href="#data"><span class="nav-index">07</span><span>Backup, export &amp; import</span></a>
+        <a href="#appearance"><span class="nav-index">08</span><span>Settings &amp; appearance</span></a>
+        <a href="#shortcuts"><span class="nav-index">09</span><span>Keyboard shortcuts</span></a>
+        <a href="#privacy"><span class="nav-index">10</span><span>Privacy &amp; storage</span></a>
+        <a href="#troubleshooting"><span class="nav-index">11</span><span>Troubleshooting</span></a>
       </nav>
       <div class="sidebar-note">
-        <strong>راهنمایی که همیشه همراه شماست</strong>
-        این صفحه از هیچ فونت، اسکریپت، ردیاب یا منبع اینترنتی بیرونی استفاده نمی‌کند. آن را هرجا خواستید نگه دارید و با یک مرورگر مبتنی بر Chromium باز کنید.
+        <strong>A manual that travels with you</strong>
+        This page uses no external fonts, scripts, trackers, or required network resources. Save it anywhere and open it in a Chromium-based browser.
       </div>
     </aside>
     <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
@@ -1348,21 +1238,21 @@
       <article class="article">
         <section class="hero" id="welcome" data-nav-section>
           <div>
-            <div class="eyebrow">راهنمای کامل همراه شما</div>
-            <h1>افکارتان، <span class="hero-title-accent">زیبا و ماندگار.</span></h1>
-            <p class="hero-deck">Daftar V2 دفترچه‌ای خصوصی و خودبسنده برای نوشتن به فارسی و انگلیسی است؛ ساخته‌شده برای ثبت سریع، دسته‌بندی سنجیده، ویرایش قابل‌بازیابی و استفادهٔ اختیاری از هوش مصنوعی محلی با Ollama.</p>
+            <div class="eyebrow">The complete companion guide</div>
+            <h1>Your thoughts, kept <span class="hero-title-accent">beautifully.</span></h1>
+            <p class="hero-deck">Daftar V2 is a private, self-contained notebook for English and Persian writing—built for quick capture, thoughtful organization, recoverable editing, and optional local AI through Ollama.</p>
             <div class="hero-actions">
-              <a class="primary-link" href="#quick-start">در ۶۰ ثانیه شروع کنید <span aria-hidden="true">↓</span></a>
-              <a class="secondary-link" href="#local-ai">راه‌اندازی AI محلی <span aria-hidden="true">✦</span></a>
+              <a class="primary-link" href="#quick-start">Start in 60 seconds <span aria-hidden="true">↓</span></a>
+              <a class="secondary-link" href="#local-ai">Set up local AI <span aria-hidden="true">✦</span></a>
             </div>
-            <div class="hero-meta" aria-label="ویژگی‌های راهنما">
-              <span>یک فایل HTML</span>
-              <span>قابل‌استفاده آفلاین</span>
-              <span>فارسی + English</span>
+            <div class="hero-meta" aria-label="Manual qualities">
+              <span>Single HTML file</span>
+              <span>Works offline</span>
+              <span>English + فارسی</span>
             </div>
           </div>
 
-          <div class="notebook-visual" aria-label="نمای تزئینی رابط Daftar">
+          <div class="notebook-visual" aria-label="Stylized illustration of the Daftar notebook interface">
             <div class="visual-glow"></div>
             <div class="notebook-window">
               <div class="mock-top">
@@ -1378,7 +1268,7 @@
                   <div class="mock-navline"></div>
                 </div>
                 <div class="mock-note">
-                  <small>دفترچهٔ خصوصی</small>
+                  <small>PRIVATE NOTEBOOK</small>
                   <div class="mock-heading"></div>
                   <div class="mock-line"></div>
                   <div class="mock-line"></div>
@@ -1389,107 +1279,107 @@
               </div>
             </div>
             <div class="floating-card">
-              <strong>ذخیره‌شده روی دستگاه</strong>
-              <small>نوشته‌های تازهٔ شما با خیال آسوده در همین مرورگر نگه‌داری می‌شوند.</small>
+              <strong>Saved locally</strong>
+              <small>Your newest words are safely stored in this browser.</small>
             </div>
           </div>
         </section>
 
         <section class="section" aria-labelledby="what-is-title">
-          <p class="section-label">ایدهٔ اصلی</p>
-          <h2 id="what-is-title">یک دفترچهٔ جدی، بی‌آنکه تشریفاتی باشد.</h2>
-          <p class="section-intro">فقط یک فایل را باز کنید و بنویسید. Daftar سادگی و سرعت یک چرک‌نویس را حفظ می‌کند و در کنارش دسته‌بندی، ایمنی، کنترل‌های دوزبانه و گردش‌کار AI یک دفترچهٔ پخته را در اختیارتان می‌گذارد.</p>
+          <p class="section-label">The idea</p>
+          <h2 id="what-is-title">A serious notebook without the ceremony.</h2>
+          <p class="section-intro">Open one file and begin writing. Daftar keeps the immediacy of a scratchpad, then adds the organization, safety, bilingual controls, and AI workflow expected from a mature notebook.</p>
 
           <div class="feature-grid">
             <article class="feature-card">
               <span class="card-icon" aria-hidden="true">Aa</span>
-              <h3>فارسی و انگلیسی</h3>
-              <p>زبان رابط را جدا از جهت نوشتار هر یادداشت تغییر دهید؛ جهت هر یادداشت می‌تواند LTR، RTL یا خودکار باشد.</p>
+              <h3>English &amp; Persian</h3>
+              <p>Change the interface language independently from each note’s left-to-right, right-to-left, or automatic writing direction.</p>
             </article>
             <article class="feature-card">
               <span class="card-icon" aria-hidden="true">⌁</span>
-              <h3>خصوصی به‌صورت پیش‌فرض</h3>
-              <p>یادداشت‌های عادی در پروفایل مرورگر شما می‌مانند. این دفترچه حساب کاربری، تحلیل‌گر، تبلیغ یا سرویس ابری اجباری ندارد.</p>
+              <h3>Private by default</h3>
+              <p>Ordinary notes live in your browser profile. The notebook has no account, analytics, advertisements, or required cloud service.</p>
             </article>
             <article class="feature-card">
               <span class="card-icon" aria-hidden="true">✦</span>
-              <h3>هوش مصنوعی محلی و اختیاری</h3>
-              <p>به Ollama متصل شوید تا خلاصه‌سازی، دسته‌بندی، ویرایش، ترجمه، استخراج نکات یا دستور دلخواهتان را انجام دهد.</p>
+              <h3>Optional local AI</h3>
+              <p>Connect to Ollama to summarize, organize, polish, translate, extract key points, or follow your own instruction.</p>
             </article>
             <article class="feature-card">
               <span class="card-icon" aria-hidden="true">↶</span>
-              <h3>کار قابل‌بازیابی</h3>
-              <p>ذخیرهٔ خودکار، بازیابی پیش‌نویس اضطراری، snapshot، بایگانی و سطل زبالهٔ قابل‌بازیابی، هزینهٔ یک کلیک اشتباه را کم می‌کنند.</p>
+              <h3>Recoverable work</h3>
+              <p>Autosave, emergency-draft recovery, snapshots, archive, and a recoverable trash reduce the cost of a wrong click.</p>
             </article>
             <article class="feature-card">
               <span class="card-icon" aria-hidden="true">#</span>
-              <h3>ساختار کاربردی</h3>
-              <p>عنوان، موضوع، برچسب، ستاره، سنجاق، جست‌وجوی کامل متن، فیلتر و مرتب‌سازی کمک می‌کنند یادداشت‌های فوری بعداً هم پیدا شوند.</p>
+              <h3>Useful structure</h3>
+              <p>Titles, topics, tags, stars, pins, full-text search, filters, and sorting help a quick note remain findable later.</p>
             </article>
             <article class="feature-card">
               <span class="card-icon" aria-hidden="true">⇩</span>
-              <h3>داده‌های قابل‌انتقال</h3>
-              <p>یک پشتیبان کامل JSON، همهٔ یادداشت‌های فعال به‌صورت Markdown یا یادداشت جاری به‌صورت متن ساده خروجی بگیرید و هر زمان لازم شد بازیابی کنید.</p>
+              <h3>Portable data</h3>
+              <p>Export a full JSON backup, all live notes as Markdown, or the current note as plain text—and restore when needed.</p>
             </article>
           </div>
 
           <div class="callout">
-            <strong>برای یادداشت‌برداری معمولی چیزی نصب نمی‌شود.</strong>
-            <p>فایل <code>Daftar-Local-Notebook-v2.html</code> را در محلی ثابت نگه دارید و با Chrome، Edge، Brave، Vivaldi یا مرورگر دیگری مبتنی بر Chromium باز کنید. هیچ web server لازم نیست. Ollama فقط برای ابزارهای اختیاری AI نیاز است.</p>
+            <strong>Nothing to install for normal note-taking.</strong>
+            <p>Keep <code>Daftar-Local-Notebook-v2.html</code> somewhere stable and open it with Chrome, Edge, Brave, Vivaldi, or another Chromium-based browser. No web server is required. Ollama is only needed for the optional AI tools.</p>
           </div>
         </section>
 
         <section class="section" id="quick-start" data-nav-section aria-labelledby="quick-start-title">
-          <p class="section-label">۰۱ · شروع سریع</p>
-          <h2 id="quick-start-title"><a class="anchor-link" href="#quick-start">اولین یادداشت شما، با ذخیره‌ای مطمئن.</a></h2>
-          <p class="section-intro">همین پنج مرحله برای شروع کافی است. Daftar تغییرات را خودکار ذخیره می‌کند؛ دکمهٔ Save معمولی‌ای وجود ندارد که لازم باشد به یادش بسپارید.</p>
+          <p class="section-label">01 · Quick start</p>
+          <h2 id="quick-start-title"><a class="anchor-link" href="#quick-start">Your first note, safely stored.</a></h2>
+          <p class="section-intro">These five steps are enough to begin. Daftar saves edits automatically; there is no ordinary Save button to remember.</p>
 
           <div class="steps">
             <div class="step">
               <div class="step-copy">
-                <h3>فایل دفترچه را باز کنید</h3>
-                <p>روی <code>Daftar-Local-Notebook-v2.html</code> دوبار کلیک کنید، یا با راست‌کلیک یک مرورگر مبتنی بر Chromium را برگزینید. Daftar برای اجرا به‌صورت مستقیم از صفحهٔ <code>file://</code> ساخته شده است؛ پورت استاندارد Ollama را تغییر ندهید و برای Daftar هیچ web server راه نیندازید.</p>
+                <h3>Open the notebook file</h3>
+                <p>Double-click <code>Daftar-Local-Notebook-v2.html</code>, or right-click it and choose a Chromium-based browser. It is designed to run directly as a <code>file://</code> page; do not change Ollama’s standard port or start a web server for Daftar.</p>
               </div>
             </div>
             <div class="step">
               <div class="step-copy">
-                <h3>بی‌درنگ بنویسید</h3>
-                <p>یادداشت را در ویرایشگر بزرگ بنویسید. عنوان اختیاری است؛ اگر آن را خالی بگذارید، Daftar نخستین خط غیرخالی را به‌عنوان نام نمایشی یادداشت استفاده می‌کند.</p>
+                <h3>Write immediately</h3>
+                <p>Use the large editor for the note. The title is optional: if you leave it blank, Daftar uses the first non-empty line as the note’s display name.</p>
               </div>
             </div>
             <div class="step">
               <div class="step-copy">
-                <h3>جهت نوشتار را انتخاب کنید</h3>
-                <p>برای بیشتر یادداشت‌ها جهت را روی <strong>خودکار</strong> بگذارید. هرگاه کنترل صریح خواستید، برای انگلیسی <strong>LTR</strong> و برای فارسی <strong>RTL</strong> را برگزینید.</p>
+                <h3>Choose the writing direction</h3>
+                <p>Leave direction on <strong>Auto</strong> for most notes. Choose <strong>LTR</strong> for English or <strong>RTL</strong> for Persian when you want explicit control.</p>
               </div>
             </div>
             <div class="step">
               <div class="step-copy">
-                <h3>فقط وقتی مفید است ساختار بدهید</h3>
-                <p>برای یادداشت یک موضوع و چند برچسب بگذارید؛ موارد مهم را ستاره‌دار کنید و یادداشت‌هایی را که باید بالای فهرست بمانند سنجاق کنید.</p>
+                <h3>Add structure only when useful</h3>
+                <p>Give the note a topic and a few tags, then star important items or pin notes that should remain above the rest of the current list.</p>
               </div>
             </div>
             <div class="step">
               <div class="step-copy">
-                <h3>نخستین پشتیبان را بگیرید</h3>
-                <p>به <strong>تنظیمات ← پشتیبان و داده‌ها ← پشتیبان کامل JSON</strong> بروید. فایل حاصل را جایی جدا از فایل دفترچه نگه دارید و این کار را دوره‌ای تکرار کنید.</p>
+                <h3>Make your first backup</h3>
+                <p>Open <strong>Settings → Backup &amp; data → Full JSON backup</strong>. Keep that file somewhere separate from the notebook. Repeat this habit periodically.</p>
               </div>
             </div>
           </div>
 
           <div class="callout warning">
-            <strong>ذخیرهٔ خودکار با snapshot فرق دارد.</strong>
-            <p>ذخیرهٔ خودکار، یادداشت جاری را پیوسته به‌روز می‌کند. snapshot نقطه‌ای نام‌گذاری‌شده در تاریخچه است که بعداً می‌توانید به آن برگردید. <span class="key">Ctrl</span> / <span class="key">⌘</span> + <span class="key">S</span> یک snapshot می‌سازد و برای ذخیرهٔ عادی لازم نیست.</p>
+            <strong>Autosave and snapshots are different.</strong>
+            <p>Autosave continuously updates the current note. A snapshot is a named point in its history that you can restore later. <span class="key">Ctrl</span> / <span class="key">⌘</span> + <span class="key">S</span> creates a snapshot; it is not required for ordinary saving.</p>
           </div>
         </section>
 
         <section class="section" id="tour" data-nav-section aria-labelledby="tour-title">
-          <p class="section-label">۰۲ · آشنایی</p>
-          <h2 id="tour-title"><a class="anchor-link" href="#tour">با محیط کار آشنا شوید.</a></h2>
-          <p class="section-intro">Daftar کارهای پرتکرار را دم دست و گزینه‌های پیشرفته را یک لایه پایین‌تر نگه می‌دارد. این نمای کلی رابط است.</p>
+          <p class="section-label">02 · Tour</p>
+          <h2 id="tour-title"><a class="anchor-link" href="#tour">Know the room.</a></h2>
+          <p class="section-intro">Daftar keeps frequent actions close and advanced actions one layer deeper. Here is the interface at a glance.</p>
 
           <div class="tour">
-            <div class="tour-board" aria-label="نمودار رابط اصلی Daftar">
+            <div class="tour-board" aria-label="Diagram of Daftar's main interface">
               <div class="tour-top"><div class="tour-logo"></div><div class="tour-action"></div><div class="tour-action accent"></div></div>
               <div class="tour-body">
                 <div class="tour-side">
@@ -1506,701 +1396,701 @@
                   <div class="tour-text"></div><div class="tour-text"></div><div class="tour-text short"></div>
                 </div>
               </div>
-              <span class="hotspot one">۱</span>
-              <span class="hotspot two">۲</span>
-              <span class="hotspot three">۳</span>
-              <span class="hotspot four">۴</span>
-              <span class="hotspot five">۵</span>
+              <span class="hotspot one">1</span>
+              <span class="hotspot two">2</span>
+              <span class="hotspot three">3</span>
+              <span class="hotspot four">4</span>
+              <span class="hotspot five">5</span>
             </div>
             <div class="tour-legend">
-              <div class="tour-item"><span class="tour-number">۱</span><span><strong>جست‌وجو و فیلترها</strong><small>جست‌وجو در متن همهٔ یادداشت‌ها و جابه‌جایی میان همه، ستاره‌دار، بایگانی، زباله و موضوع‌ها.</small></span></div>
-              <div class="tour-item"><span class="tour-number">۲</span><span><strong>فهرست یادداشت‌ها</strong><small>باز کردن یادداشت، دیدن چکیده و تشخیص سریع وضعیت ستاره یا سنجاق.</small></span></div>
-              <div class="tour-item"><span class="tour-number">۳</span><span><strong>شناسنامه</strong><small>عنوان، موضوع و برچسب‌ها یادداشت جاری را توصیف می‌کنند.</small></span></div>
-              <div class="tour-item"><span class="tour-number">۴</span><span><strong>ابزارهای نوشتن</strong><small>قالب‌بندی، جهت، فونت، نمای خواندن و حالت تمرکز.</small></span></div>
-              <div class="tour-item"><span class="tour-number">۵</span><span><strong>کارهای عمومی</strong><small>AI، زبان، پوسته، تنظیمات و یادداشت جدید.</small></span></div>
+              <div class="tour-item"><span class="tour-number">1</span><span><strong>Search &amp; filters</strong><small>Search all note text; switch between All, Starred, Archive, Trash, and topics.</small></span></div>
+              <div class="tour-item"><span class="tour-number">2</span><span><strong>Note list</strong><small>Open notes, see excerpts, and notice star or pin status at a glance.</small></span></div>
+              <div class="tour-item"><span class="tour-number">3</span><span><strong>Identity</strong><small>Title, topic, and tags describe the current note.</small></span></div>
+              <div class="tour-item"><span class="tour-number">4</span><span><strong>Writing tools</strong><small>Formatting, direction, font, reading view, and focus mode.</small></span></div>
+              <div class="tour-item"><span class="tour-number">5</span><span><strong>Global actions</strong><small>AI, language, theme, settings, and New note.</small></span></div>
             </div>
           </div>
 
-          <h3>کارهای مربوط به یادداشت جاری</h3>
+          <h3>The current-note actions</h3>
           <div class="table-wrap">
             <table>
-              <thead><tr><th>کار</th><th>چه می‌کند</th><th>نکتهٔ مفید</th></tr></thead>
+              <thead><tr><th>Action</th><th>What it does</th><th>Good to know</th></tr></thead>
               <tbody>
-                <tr><td><strong>ستاره</strong></td><td>یادداشت را مهم علامت می‌زند و به فیلتر ستاره‌دارها می‌افزاید.</td><td>ستاره جای یادداشت را در ترتیب فهرست عوض نمی‌کند.</td></tr>
-                <tr><td><strong>سنجاق</strong></td><td>یادداشت را در فهرست عادی و بایگانی بالاتر از یادداشت‌های سنجاق‌نشده نگه می‌دارد.</td><td>با رفتن یادداشت به زباله، سنجاق آن برداشته می‌شود.</td></tr>
-                <tr><td><strong>کپی</strong></td><td>متن ساده و خوانای یادداشت جاری را کپی می‌کند.</td><td>برای حفظ نشانه‌های اصلی Markdown از «بیشتر ← کپی به‌صورت Markdown» استفاده کنید.</td></tr>
-                <tr><td><strong>بیشتر</strong></td><td>snapshotها، تاریخچهٔ نسخه‌ها، خروجی، تکثیر، بایگانی و زباله را باز می‌کند.</td><td>حذف همیشگی فقط در زباله دیده می‌شود و تأیید می‌خواهد.</td></tr>
+                <tr><td><strong>Star</strong></td><td>Marks a note as important and includes it in the Starred filter.</td><td>Star does not change the note’s sort position.</td></tr>
+                <tr><td><strong>Pin</strong></td><td>Keeps a note above unpinned notes in ordinary and archived lists.</td><td>Pins are removed when a note goes to Trash.</td></tr>
+                <tr><td><strong>Copy</strong></td><td>Copies readable plain text from the current note.</td><td>Use More → Copy as Markdown when you need the original Markdown marks.</td></tr>
+                <tr><td><strong>More</strong></td><td>Opens snapshots, version history, export, duplicate, archive, and trash actions.</td><td>Permanent deletion appears only inside Trash and asks for confirmation.</td></tr>
               </tbody>
             </table>
           </div>
         </section>
 
         <section class="section" id="writing" data-nav-section aria-labelledby="writing-title">
-          <p class="section-label">۰۳ · نوشتن</p>
-          <h2 id="writing-title"><a class="anchor-link" href="#writing">فارسی، انگلیسی و هرچه میان این دو است.</a></h2>
-          <p class="section-intro">هر یادداشت جهت خودش را دارد، درحالی‌که زبان رابط می‌تواند چیز دیگری باشد. یک یادداشت فارسی می‌تواند در رابط انگلیسی باشد و برعکس.</p>
+          <p class="section-label">03 · Writing</p>
+          <h2 id="writing-title"><a class="anchor-link" href="#writing">English, Persian, and everything between.</a></h2>
+          <p class="section-intro">Each note controls its own direction while the interface can use a different language. A Persian note can live inside an English interface, and vice versa.</p>
 
           <div class="split">
             <article class="info-card">
               <span class="card-icon" aria-hidden="true">→</span>
-              <h3>جهت یادداشت</h3>
-              <p><strong>خودکار</strong> از متن پیروی می‌کند، <strong>LTR</strong> برای انگلیسی و <strong>RTL</strong> برای فارسی مناسب‌تر است. جهت برای هر یادداشت جداگانه ذخیره می‌شود.</p>
+              <h3>Note direction</h3>
+              <p><strong>Auto</strong> follows the text, <strong>LTR</strong> is best for English, and <strong>RTL</strong> is best for Persian. Direction belongs to each note.</p>
             </article>
             <article class="info-card">
               <span class="card-icon" aria-hidden="true">فا</span>
-              <h3>زبان رابط</h3>
-              <p>دکمه‌ها و برچسب‌ها را در تنظیمات میان فارسی و انگلیسی عوض کنید. این کار هرگز متن یادداشت را بازنویسی یا وارونه نمی‌کند.</p>
+              <h3>Interface language</h3>
+              <p>Switch the buttons and labels between English and Persian in Settings. This never rewrites or reverses a note.</p>
             </article>
           </div>
 
-          <h3>نوار ابزار قالب‌بندی</h3>
-          <p>نوار ابزار، نشانه‌های سبک Markdown را در متن می‌گذارد. Daftar به‌جای قالب‌بندی پنهان rich text، یادداشت را به‌صورت متن ساده و قابل‌انتقال نگه می‌دارد.</p>
+          <h3>Formatting toolbar</h3>
+          <p>The toolbar inserts lightweight Markdown-style marks into your text. Daftar keeps the note as portable plain text rather than hidden rich-text formatting.</p>
           <div class="table-wrap">
             <table>
-              <thead><tr><th>ابزار</th><th>متن افزوده‌شده</th><th>کاربرد</th></tr></thead>
+              <thead><tr><th>Tool</th><th>Inserted text</th><th>Example</th></tr></thead>
               <tbody>
-                <tr><td><strong>پررنگ</strong></td><td><code>**text**</code></td><td>تأکید روی یک عبارت کلیدی.</td></tr>
-                <tr><td><strong>مورب</strong></td><td><code>*text*</code></td><td>تأکید ملایم یا نوشتن عنوان یک اثر.</td></tr>
-                <tr><td><strong>سرعنوان</strong></td><td><code># Heading</code></td><td>تقسیم یادداشت بلند به بخش‌های روشن.</td></tr>
-                <tr><td><strong>فهرست گلوله‌ای</strong></td><td><code>- item</code></td><td>تبدیل چند خط به یک فهرست.</td></tr>
-                <tr><td><strong>نقل‌قول</strong></td><td><code>&gt; quote</code></td><td>مشخص کردن نقل‌قول یا بریده‌متن.</td></tr>
+                <tr><td><strong>Bold</strong></td><td><code>**text**</code></td><td>Emphasize a key phrase.</td></tr>
+                <tr><td><strong>Italic</strong></td><td><code>*text*</code></td><td>Add gentle emphasis or a title.</td></tr>
+                <tr><td><strong>Heading</strong></td><td><code># Heading</code></td><td>Divide a long note into sections.</td></tr>
+                <tr><td><strong>Bullet list</strong></td><td><code>- item</code></td><td>Turn several lines into a list.</td></tr>
+                <tr><td><strong>Quote</strong></td><td><code>&gt; quote</code></td><td>Mark a quotation or excerpt.</td></tr>
               </tbody>
             </table>
           </div>
 
           <div class="callout">
-            <strong>پیش از زدن دکمهٔ قالب‌بندی، متن را انتخاب کنید.</strong>
-            <p>Daftar در جای مناسب نشانه‌ها را دور متن انتخاب‌شده می‌گذارد. اگر چیزی انتخاب نشده باشد، نشانه‌ها در محل نشانگر درج می‌شوند تا میانشان بنویسید.</p>
+            <strong>Select text before using a formatting button.</strong>
+            <p>Daftar wraps the selection where appropriate. With no selection, it inserts the marks at the cursor so you can type inside them.</p>
           </div>
 
-          <h3>خواندن، تمرکز و آمار زنده</h3>
+          <h3>Reading, focus, and live statistics</h3>
           <div class="feature-grid">
-            <article class="feature-card"><span class="card-icon" aria-hidden="true">◉</span><h3>پیش‌نمایش Markdown</h3><p>سرعنوان‌ها، تأکیدها، فهرست‌ها، نقل‌قول‌ها، لینک‌ها، کد و دیگر عناصر پشتیبانی‌شدهٔ Markdown را به یک صفحهٔ خواندنی طبیعی تبدیل می‌کند.</p></article>
-            <article class="feature-card"><span class="card-icon" aria-hidden="true">⛶</span><h3>حالت تمرکز</h3><p>اجزای پیرامون رابط را پنهان می‌کند تا تمام توجه شما به ویرایشگر باشد. برای خروج Escape را بزنید.</p></article>
-            <article class="feature-card"><span class="card-icon" aria-hidden="true">۱۲۳</span><h3>آمار زنده</h3><p>تعداد واژه‌ها، نویسه‌ها، خط‌ها، زمان تقریبی خواندن، زبان تشخیص‌داده‌شده و وضعیت فعلی ذخیره را ببینید.</p></article>
+            <article class="feature-card"><span class="card-icon" aria-hidden="true">◉</span><h3>Markdown preview</h3><p>Renders headings, emphasis, lists, quotes, links, code, and other supported Markdown as a natural reading page.</p></article>
+            <article class="feature-card"><span class="card-icon" aria-hidden="true">⛶</span><h3>Focus mode</h3><p>Hides surrounding interface elements so the editor receives your full attention. Press Escape to leave.</p></article>
+            <article class="feature-card"><span class="card-icon" aria-hidden="true">123</span><h3>Live statistics</h3><p>See words, characters, lines, estimated reading time, detected language, and the current save state.</p></article>
           </div>
 
-          <h3>فونت، اندازهٔ متن و فاصله‌گذاری</h3>
-          <p>فونت را از نوار ابزار ویرایشگر برگزینید و سپس اندازهٔ عمومی متن و فاصلهٔ خط‌ها را در تنظیمات تعیین کنید. Daftar فونت پیش‌فرض سازگار با فارسی خودش را دارد. دیگر گزینه‌ها از فونت هم‌نام نصب‌شده روی رایانه استفاده می‌کنند و اگر موجود نباشند به فونت جایگزین برمی‌گردند.</p>
+          <h3>Fonts, text size, and spacing</h3>
+          <p>Choose a typeface from the editor toolbar, then set the global text size and line spacing in Settings. Daftar includes its own Persian-friendly default face. Other listed fonts use the matching font installed on your computer and fall back gracefully when unavailable.</p>
 
           <div class="callout">
-            <strong>Markdown قابل‌انتقال می‌ماند و پیش‌نمایش آن را دیداری می‌کند.</strong>
-            <p>ویرایشگر عمداً نشانه‌های Markdown مانند <code>**bold**</code> را در متن نگه می‌دارد. برای دیدن خروجی پردازش‌شده <strong>پیش‌نمایش</strong> را بزنید؛ یا بسته به مقصد، یادداشت را به‌صورت متن خوانا یا Markdown اصلی کپی کنید. Undo و Redo عادی پس از قالب‌بندی با نوار ابزار هم کار می‌کنند.</p>
+            <strong>Markdown stays portable, while Preview makes it visual.</strong>
+            <p>The editor intentionally stores visible Markdown marks such as <code>**bold**</code>. Choose <strong>Preview</strong> to see the rendered result, or copy the note as readable text or original Markdown depending on where it is going. Normal Undo and Redo continue to work after toolbar formatting.</p>
           </div>
         </section>
 
         <section class="section" id="organize" data-nav-section aria-labelledby="organize-title">
-          <p class="section-label">۰۴ · دسته‌بندی</p>
-          <h2 id="organize-title"><a class="anchor-link" href="#organize">اول ثبت کنید؛ بعداً پیدایش کنید.</a></h2>
-          <p class="section-intro">Daftar می‌گذارد یادداشت بی‌ساختار آغاز شود و بعد به‌اندازه‌ای شناسنامه بگیرد که ماه‌ها بعد هم به کار بیاید.</p>
+          <p class="section-label">04 · Organize</p>
+          <h2 id="organize-title"><a class="anchor-link" href="#organize">Capture first. Find it later.</a></h2>
+          <p class="section-intro">Daftar lets a note begin unstructured, then gain just enough identity to remain useful months later.</p>
 
-          <h3>عنوان، موضوع و برچسب</h3>
+          <h3>Titles, topics, and tags</h3>
           <div class="split">
             <article class="mini-card">
-              <h4>عنوان</h4>
-              <p>اختیاری است. اگر خالی باشد، نخستین خط غیرخالی عنوان نمایشی می‌شود؛ و اگر متن هم خالی باشد Daftar «یادداشت بی‌عنوان» را نشان می‌دهد.</p>
+              <h4>Title</h4>
+              <p>Optional. If blank, the first non-empty line becomes the display title; otherwise Daftar shows “Untitled note.”</p>
             </article>
             <article class="mini-card">
-              <h4>موضوع</h4>
-              <p>یک دستهٔ کلی و تکرارپذیر مانند پژوهش، روزنوشت، کار، ایده‌ها یا مطالعات.</p>
+              <h4>Topic</h4>
+              <p>One broad, reusable category such as Research, Journal, Work, Ideas, or مطالعات.</p>
             </article>
             <article class="mini-card">
-              <h4>برچسب‌ها</h4>
-              <p>چند نشانهٔ دقیق‌تر. برچسب را بنویسید و Enter یا ویرگول بزنید؛ برای حذف هر برچسب از کنترل حذف خودش استفاده کنید.</p>
+              <h4>Tags</h4>
+              <p>Several specific labels. Type a tag and press Enter or comma; click a tag’s remove control to delete it.</p>
             </article>
             <article class="mini-card">
-              <h4>دسته‌بندی با AI</h4>
-              <p><strong>عنوان و دسته‌بندی</strong> بدون بازنویسی متن، یک عنوان کوتاه، یک موضوع و سه تا شش برچسب پیشنهاد می‌کند. مگر آنکه اعمال خودکار را روشن کرده باشید، پیشنهاد پیش از اجرا برای بررسی شما می‌ماند.</p>
+              <h4>AI organization</h4>
+              <p><strong>Title &amp; organize</strong> suggests a concise title, one topic, and three to six tags without rewriting the note. You review the suggestion before applying it unless automatic application is enabled.</p>
             </article>
           </div>
 
-          <h3>جست‌وجو، فیلتر و مرتب‌سازی</h3>
+          <h3>Search, filters, and sorting</h3>
           <ul class="checklist">
-            <li><strong>جست‌وجو</strong> عنوان، متن یادداشت، موضوع و برچسب‌ها را بررسی می‌کند.</li>
-            <li><strong>همه</strong> یادداشت‌های عادی را نشان می‌دهد که نه بایگانی شده‌اند و نه در زباله‌دان هستند.</li>
-            <li><strong>نشان‌شده‌ها</strong> یادداشت‌های فعال و مهم را در یک نما گرد می‌آورد.</li>
-            <li><strong>موضوع‌ها</strong> وقتی دست‌کم یک یادداشت از آن‌ها استفاده کند به‌صورت فیلتر ظاهر می‌شوند؛ اگر فهرست بلند شد، بخش موضوع‌ها را جمع کنید.</li>
-            <li><strong>بایگانی</strong> یادداشت‌های تمام‌شده را بدون حذف از فضای فعال کنار می‌گذارد.</li>
-            <li><strong>زباله‌دان</strong> یادداشت‌های برداشته‌شده را تا حذف همیشگی قابل‌بازیابی نگه می‌دارد.</li>
+            <li><strong>Search</strong> looks across titles, note content, topics, and tags.</li>
+            <li><strong>All</strong> shows normal notes that are neither archived nor trashed.</li>
+            <li><strong>Starred</strong> gathers important live notes in one view.</li>
+            <li><strong>Topics</strong> appear as filters when at least one note uses them; collapse the Topics heading whenever the list grows long.</li>
+            <li><strong>Archive</strong> removes finished notes from the active workspace without deleting them.</li>
+            <li><strong>Trash</strong> keeps removed notes recoverable until you delete them permanently.</li>
           </ul>
-          <p>یادداشت‌ها را بر پایهٔ <strong>آخرین ویرایش</strong>، <strong>تازه‌ترین</strong> یا <strong>عنوان الفبا</strong> مرتب کنید. جز در زباله‌دان، یادداشت‌های سنجاق‌شده بالاتر از بقیه می‌مانند.</p>
+          <p>Sort notes by <strong>Recently updated</strong>, <strong>Recently created</strong>, or <strong>Title A–Z</strong>. Pinned notes stay above unpinned notes except in Trash.</p>
 
-          <h3>گروه‌های زمانی و پاک‌سازی سنجیده</h3>
-          <p>فهرست یادداشت‌ها فقط گروه‌های زمانی‌ای را می‌سازد که در آن لحظه یادداشت دارند: امروز، ۷ روز گذشته، ۱ تا ۲ هفته، ۲ هفته تا ۱ ماه، ۱ تا ۲، ۲ تا ۳، ۳ تا ۴، ۴ تا ۶، ۶ تا ۹ و ۹ تا ۱۲ ماه، ۱ تا ۲ سال و بیش از ۲ سال. همهٔ گروه‌ها جمع‌شدنی هستند.</p>
+          <h3>Age groups and deliberate cleanup</h3>
+          <p>The note list automatically forms only the age groups that currently contain notes: Today, the previous 7 days, 1–2 weeks, 2 weeks–1 month, 1–2, 2–3, 3–4, 4–6, 6–9, and 9–12 months, 1–2 years, and more than 2 years. Each group is collapsible.</p>
           <div class="split">
             <article class="info-card">
               <span class="card-icon" aria-hidden="true">↻</span>
-              <h3>بر پایهٔ آخرین فعالیت</h3>
-              <p>گروه‌ها از <strong>تاریخ آخرین ویرایش</strong> استفاده می‌کنند. اگر خودتان به یادداشت قدیمی برگردید و آن را ویرایش کنید، دوباره تازه محسوب می‌شود؛ چون این کار نشان می‌دهد هنوز برایتان اهمیت دارد.</p>
+              <h3>Based on last activity</h3>
+              <p>Groups use the note’s <strong>last-edited date</strong>. Manually revisiting an old note makes it current again because that activity signals continuing relevance.</p>
             </article>
             <article class="info-card">
               <span class="card-icon" aria-hidden="true">⌫</span>
-              <h3>پاک‌سازی «این گروه و قدیمی‌ترها»</h3>
-              <p>در نمای عادی همه، آیکون زبالهٔ یک گروه پس از تأیید، همان گروه <em>و تمام گروه‌های قدیمی‌تر</em> را به زباله‌دان می‌فرستد. در این مرحله چیزی برای همیشه پاک نمی‌شود.</p>
+              <h3>Group-and-older cleanup</h3>
+              <p>In the normal All view, a group’s trash icon moves that group <em>and every older group</em> to Trash after confirmation. Nothing is permanently erased at this stage.</p>
             </article>
           </div>
-          <p>در زباله‌دان، <strong>تخلیهٔ زباله‌دان</strong> پس از یک تأیید روشن و دوباره، همهٔ یادداشت‌های آنجا را همیشگی حذف می‌کند. پیش از پاک‌سازی بزرگ، یک پشتیبان JSON بگیرید.</p>
+          <p>Inside Trash, <strong>Empty Trash</strong> permanently deletes every trashed note after a second, explicit confirmation. Export a JSON backup before a large cleanup.</p>
 
-          <h3>دسته‌بندی یک‌دکمه‌ای با AI</h3>
+          <h3>One-button AI Organize</h3>
           <div class="callout">
-            <strong>دسته‌بندی سراسری عمداً محتاط است.</strong>
-            <p>دکمهٔ <strong>دسته‌بندی با هوش مصنوعی</strong> بالای فهرست تا اتصال Ollama و انتخاب مدل غیرفعال می‌ماند. پس از فعال‌شدن، یادداشت‌های بیرون از زباله‌دان—از جمله بایگانی‌شده‌ها—را یکی‌یکی بررسی می‌کند و فقط سراغ یادداشتی می‌رود که متن داشته باشد و دست‌کم یکی از خانه‌های دسته‌بندی‌اش ناتمام باشد.</p>
+            <strong>The list-wide organizer is intentionally conservative.</strong>
+            <p>The <strong>AI Organize</strong> button above the note list remains disabled until Ollama is connected and a model is selected. Once active, it checks non-trashed notes one at a time—including archived notes—and only processes notes that contain text and have at least one unfinished organization field.</p>
           </div>
           <ul class="checklist">
-            <li>عنوان خالی، <strong>یادداشت بی‌عنوان</strong>، <strong>Untitled note</strong> یا عنوان پیش‌فرض نسخهٔ قدیمی یعنی <strong>New Text</strong> عنوان ناتمام به‌شمار می‌آید.</li>
-            <li>موضوع خالی یا فهرست برچسب خالی نیز یادداشت را واجد شرایط می‌کند، حتی اگر خانه‌های دیگر کامل باشند.</li>
-            <li>عنوان، موضوع و برچسب‌هایی که دستی نوشته‌اید حفظ می‌شوند؛ فقط خانه‌های خالی یا پیش‌فرض‌های شناخته‌شده پر می‌شوند.</li>
-            <li>دسته‌بندی گروهی زمان آخرین ویرایش را دست‌نخورده نگه می‌دارد؛ پس یادداشت قدیمی به بالای فهرست نمی‌پرد و وارد گروه زمانی تازه‌تر نمی‌شود.</li>
-            <li>دکمهٔ متحرک پیشرفت را نشان می‌دهد. هنگام کار روی آن کلیک کنید تا امن متوقف شود؛ بعداً دوباره آغاز کنید تا باقی یادداشت‌های واجد شرایط ادامه یابند.</li>
+            <li>An empty title, <strong>Untitled note</strong>, or the legacy default <strong>New Text</strong> counts as an unfinished title.</li>
+            <li>An empty topic or an empty tag list also makes the note eligible, even when the other fields are already complete.</li>
+            <li>Existing manual titles, topics, and tags are preserved; only empty or recognized default fields are filled.</li>
+            <li>Batch organization preserves the note’s last-edited time, so old notes do not jump to the top or move into newer age groups.</li>
+            <li>The animated button shows progress. Click it while running to stop safely; start it again later to continue with the remaining eligible notes.</li>
           </ul>
 
-          <h3>راحتی‌های نوار کناری</h3>
-          <p>نشانگر را روی کارت یادداشت ببرید تا کنترل‌های سریع کپی و انتقال به زباله‌دان ظاهر شوند. جداکنندهٔ افقی باریک میان فیلترها/موضوع‌ها و شمار یادداشت‌ها را بکشید تا به هر بخش فضای بیشتری بدهید؛ با دوبار کلیک اندازهٔ پیش‌فرض برمی‌گردد. عنوان موضوع‌ها و هر گروه زمانی به خاطر می‌سپارند که آن‌ها را باز یا بسته گذاشته‌اید.</p>
+          <h3>Sidebar conveniences</h3>
+          <p>Hover over a note card for quick Copy and Move to Trash controls. Drag the thin horizontal divider between filters/topics and the note count to give either region more room; double-click it to restore the default. The Topics heading and every age group remember whether you left them open or collapsed.</p>
 
           <div class="callout warning">
-            <strong>یادداشت خالی خودش را تکثیر نمی‌کند.</strong>
-            <p>اگر یادداشت جاری کاملاً خالی باشد، انتخاب «یادداشت تازه» همان را دوباره استفاده می‌کند و انبوهی صفحهٔ خالی نمی‌سازد.</p>
+            <strong>A new blank note does not multiply itself.</strong>
+            <p>If the current note is completely empty, choosing New note reuses it instead of producing a pile of blank notes.</p>
           </div>
 
-          <h3>چرخهٔ روشن زندگی یادداشت‌ها</h3>
+          <h3>A clean lifecycle for notes</h3>
           <div class="ai-flow">
-            <div class="ai-flow-card"><b>۰۱</b><strong>فعال</strong><small>بنویسید، بجویید، ستاره و سنجاق بزنید و دسته‌بندی کنید.</small></div>
-            <div class="ai-flow-card"><b>۰۲</b><strong>بایگانی</strong><small>مطالب تمام‌شده را بی‌کم‌وکاست از فضای فعال کنار بگذارید.</small></div>
-            <div class="ai-flow-card"><b>۰۳</b><strong>زباله‌دان</strong><small>تا زمان بازیابی، یادداشت را فقط‌خواندنی و قابل‌بازگشت نگه دارید.</small></div>
-            <div class="ai-flow-card"><b>۰۴</b><strong>حذف همیشگی</strong><small>فقط از زباله‌دان و پس از درخواست تأیید.</small></div>
+            <div class="ai-flow-card"><b>01</b><strong>Active</strong><small>Write, search, star, pin, and organize.</small></div>
+            <div class="ai-flow-card"><b>02</b><strong>Archive</strong><small>Hide finished material while keeping it intact.</small></div>
+            <div class="ai-flow-card"><b>03</b><strong>Trash</strong><small>Keep it recoverable and read-only until you restore it.</small></div>
+            <div class="ai-flow-card"><b>04</b><strong>Delete forever</strong><small>Only from Trash, with a confirmation prompt.</small></div>
           </div>
         </section>
 
         <section class="section" id="local-ai" data-nav-section aria-labelledby="ai-title">
-          <p class="section-label">۰۵ · هوش مصنوعی محلی</p>
-          <h2 id="ai-title"><a class="anchor-link" href="#local-ai">مدل‌های Ollama را به دفترچه بیاورید.</a></h2>
-          <p class="section-intro">Daftar از درون مرورگر مستقیماً با Ollama گفتگو می‌کند. پس از اتصال می‌توانید مدلی محلی مانند Gemma 4 را بدون کپی‌کردن یادداشت‌ها در یک پنجرهٔ گفت‌وگوی جداگانه به کار بگیرید.</p>
+          <p class="section-label">05 · Local AI</p>
+          <h2 id="ai-title"><a class="anchor-link" href="#local-ai">Bring your Ollama models into the notebook.</a></h2>
+          <p class="section-intro">Daftar talks directly to Ollama from your browser. Once connected, you can run a local model such as Gemma 4 without copying notes into a separate chat window.</p>
 
           <div class="callout">
-            <strong>یادداشت‌برداری معمولی هرگز به Ollama نیاز ندارد.</strong>
-            <p>پنل هوش مصنوعی اختیاری است. حتی اگر هیچ‌وقت آن را متصل نکنید، همهٔ بخش‌های دیگر Daftar عادی کار می‌کنند.</p>
+            <strong>Normal note-taking never requires Ollama.</strong>
+            <p>The AI panel is optional. If you never connect it, every other part of Daftar still works normally.</p>
           </div>
 
-          <h3>راه‌اندازی Ollama؛ مسیر روشن</h3>
+          <h3>Set up Ollama: the clear path</h3>
           <div class="callout warning">
-            <strong>پیش‌نیاز مستند Ollama برای Daftar: مبدأهای مرورگر را یک‌بار مجاز کنید.</strong>
-            <p>Daftar مستقیماً به‌صورت صفحهٔ <code>file://</code> باز می‌شود. پیش از تکیه‌کردن بر AI، مقدار <code>OLLAMA_ORIGINS</code> را صریحاً روی <code>*</code> بگذارید و سپس Ollama را کاملاً ببندید و دوباره اجرا کنید. بعضی نسخه‌های جدید Ollama مبدأ فایل محلی را از قبل می‌شناسند، اما این تنظیم روشن، ابهام نسخه و پروفایل را برطرف می‌کند و روش پشتیبانی‌شدهٔ Daftar است.</p>
+            <strong>Daftar’s documented Ollama prerequisite: allow browser origins once.</strong>
+            <p>Daftar opens directly as a <code>file://</code> page. Before relying on AI, explicitly set <code>OLLAMA_ORIGINS</code> to <code>*</code>, then quit and restart Ollama completely. Some current Ollama releases already recognize local-file origins, but this explicit setting removes version and profile ambiguity and is the supported Daftar setup.</p>
           </div>
           <div class="steps">
             <div class="step">
               <div class="step-copy">
-                <h3>Ollama را نصب یا به‌روز کنید</h3>
-                <p>یک نسخهٔ تازهٔ Ollama مناسب سیستم‌عاملتان نصب کنید. Daftar از API محلی و عادی Ollama در <code>http://127.0.0.1:11434</code> استفاده می‌کند؛ نه جای Ollama را می‌گیرد، نه آن را برای شما اجرا می‌کند و نه پورت دیگری می‌خواهد.</p>
+                <h3>Install or update Ollama</h3>
+                <p>Install a current Ollama release for your operating system. Daftar uses Ollama’s normal local API at <code>http://127.0.0.1:11434</code>; it does not replace Ollama, start it for you, or require a different port.</p>
               </div>
             </div>
             <div class="step">
               <div class="step-copy">
-                <h3>مبدأهای مرورگر را مجاز کنید</h3>
-                <p><strong>Windows، روش تصویری پیشنهادی:</strong> کلید Win را بزنید، عبارت <em>Edit the system environment variables</em> را جست‌وجو کنید، <strong>Environment Variables…</strong> را باز کنید و زیر <strong>User variables</strong> متغیری با نام <code>OLLAMA_ORIGINS</code> و مقدار <code>*</code> بسازید.</p>
-                <p><strong>روش جایگزین خط فرمان در Windows:</strong> برنامهٔ Command Prompt را باز کنید—اگر سیاست Windows شما لازم می‌داند در حالت Administrator—و این دستور را اجرا کنید:</p>
-                <div class="command"><code>setx OLLAMA_ORIGINS "*"</code><button class="copy-button" type="button" data-copy='setx OLLAMA_ORIGINS "*"'>کپی</button></div>
+                <h3>Allow browser origins</h3>
+                <p><strong>Windows, recommended visual method:</strong> press Win, search for <em>Edit the system environment variables</em>, choose <strong>Environment Variables…</strong>, then under <strong>User variables</strong> create a variable named <code>OLLAMA_ORIGINS</code> with the value <code>*</code>.</p>
+                <p><strong>Windows command-line alternative:</strong> open Command Prompt—use Administrator mode if required by your Windows policy—and run:</p>
+                <div class="command"><code>setx OLLAMA_ORIGINS "*"</code><button class="copy-button" type="button" data-copy='setx OLLAMA_ORIGINS "*"'>Copy</button></div>
                 <p><strong>macOS:</strong></p>
-                <div class="command"><code>launchctl setenv OLLAMA_ORIGINS "*"</code><button class="copy-button" type="button" data-copy='launchctl setenv OLLAMA_ORIGINS "*"'>کپی</button></div>
-                <p><strong>Linux، وقتی Ollama را خودتان اجرا می‌کنید:</strong></p>
-                <div class="command"><code>OLLAMA_ORIGINS="*" ollama serve</code><button class="copy-button" type="button" data-copy='OLLAMA_ORIGINS="*" ollama serve'>کپی</button></div>
+                <div class="command"><code>launchctl setenv OLLAMA_ORIGINS "*"</code><button class="copy-button" type="button" data-copy='launchctl setenv OLLAMA_ORIGINS "*"'>Copy</button></div>
+                <p><strong>Linux, when starting Ollama yourself:</strong></p>
+                <div class="command"><code>OLLAMA_ORIGINS="*" ollama serve</code><button class="copy-button" type="button" data-copy='OLLAMA_ORIGINS="*" ollama serve'>Copy</button></div>
               </div>
             </div>
             <div class="step">
               <div class="step-copy">
-                <h3>Ollama را کاملاً دوباره اجرا کنید</h3>
-                <p>تغییر متغیر محیطی فقط به پردازش‌هایی می‌رسد که پس از آن آغاز شوند. در Windows یا macOS، Ollama را از آیکون tray/menu ببندید—نه فقط پنجره‌اش—مطمئن شوید server قدیمی Ollama باقی نمانده و سپس دوباره بازش کنید. اگر Ollama را دستی اجرا می‌کنید، پردازش قدیمی <code>ollama serve</code> را پیش از اجرای نمونهٔ تازه متوقف کنید.</p>
-                <p>در Windows، مقدار را از یک Command Prompt <em>تازه</em> بررسی کنید:</p>
-                <div class="command"><code>echo %OLLAMA_ORIGINS%</code><button class="copy-button" type="button" data-copy="echo %OLLAMA_ORIGINS%">کپی</button></div>
+                <h3>Restart Ollama completely</h3>
+                <p>Environment-variable changes only reach newly started processes. On Windows or macOS, quit Ollama from its tray/menu icon—not merely its window—check that no old Ollama server remains, then reopen it. If you launch Ollama manually, stop the old <code>ollama serve</code> process before starting the new one.</p>
+                <p>On Windows, confirm the value from a <em>new</em> Command Prompt:</p>
+                <div class="command"><code>echo %OLLAMA_ORIGINS%</code><button class="copy-button" type="button" data-copy="echo %OLLAMA_ORIGINS%">Copy</button></div>
               </div>
             </div>
             <div class="step">
               <div class="step-copy">
-                <h3>دست‌کم یک مدل نصب و Ollama را بررسی کنید</h3>
-                <p>هر مدل سازگاری را که می‌خواهید pull کنید و بعد مطمئن شوید در Terminal دیده می‌شود. دستور نخست فقط نمونه است؛ نام دقیق مدل مناسب نصب خودتان را به کار ببرید.</p>
-                <div class="command"><code>ollama pull gemma4</code><button class="copy-button" type="button" data-copy="ollama pull gemma4">کپی</button></div>
-                <div class="command"><code>ollama list</code><button class="copy-button" type="button" data-copy="ollama list">کپی</button></div>
+                <h3>Install at least one model and verify Ollama</h3>
+                <p>Pull any compatible model you want, then make sure it appears in the terminal. The first command below is only an example; use the exact model name appropriate to your installation.</p>
+                <div class="command"><code>ollama pull gemma4</code><button class="copy-button" type="button" data-copy="ollama pull gemma4">Copy</button></div>
+                <div class="command"><code>ollama list</code><button class="copy-button" type="button" data-copy="ollama list">Copy</button></div>
               </div>
             </div>
             <div class="step">
               <div class="step-copy">
-                <h3>پنل هوش مصنوعی Daftar را باز کنید</h3>
-                <p>مثل همیشه روی Daftar دوبار کلیک کنید، در نوار بالا <strong>هوش مصنوعی</strong> را بزنید و endpoint را روی <code>http://127.0.0.1:11434</code> نگه دارید. اگر در پایان نشانی <code>/api</code> بنویسید، Daftar آن را خودکار برمی‌دارد.</p>
+                <h3>Open Daftar’s AI panel</h3>
+                <p>Double-click Daftar as usual, click <strong>AI</strong> in the top bar, and leave the endpoint at <code>http://127.0.0.1:11434</code>. Daftar automatically removes a trailing <code>/api</code> if one is entered.</p>
               </div>
             </div>
             <div class="step">
               <div class="step-copy">
-                <h3>متصل شوید، مدل برگزینید و آزمایش کنید</h3>
-                <p><strong>اتصال</strong> را بزنید. Daftar مسیر <code>/api/tags</code> را می‌خواند، فهرست مدل‌ها را پر می‌کند و پس از انتخاب مدل، دسته‌بندی با هوش مصنوعی را فعال می‌سازد. دو یا سه جمله بنویسید، <strong>خلاصه‌سازی</strong> را انتخاب کنید و پیش از اعمال هر چیز، پیش‌نمایش خوانا را بررسی کنید.</p>
+                <h3>Connect, choose a model, and test</h3>
+                <p>Click <strong>Connect</strong>. Daftar reads <code>/api/tags</code>, fills the model selector, and enables AI Organize after a model is selected. Write two or three sentences, choose <strong>Summarize</strong>, and inspect the rendered preview before applying anything.</p>
               </div>
             </div>
           </div>
 
           <div class="callout danger">
-            <strong><code>OLLAMA_ORIGINS=*</code> اجازهٔ مرورگر را عوض می‌کند، نه نشانی شبکهٔ Ollama را.</strong>
-            <p>علامت ستاره به صفحه‌های مرورگر همین رایانه اجازه می‌دهد هنگام اجرای Ollama درخواست بفرستند. Ollama را روی loopback یعنی <code>127.0.0.1</code> نگه دارید؛ <code>OLLAMA_HOST</code> عمومی تعیین نکنید، پورت 11434 را در شبکه در دسترس نگذارید و صرفاً برای حل CORS نشانی Daftar را تغییر ندهید.</p>
+            <strong><code>OLLAMA_ORIGINS=*</code> changes browser permission, not Ollama’s network address.</strong>
+            <p>The wildcard lets browser pages on this computer request Ollama while it is running. Keep Ollama bound to loopback at <code>127.0.0.1</code>; do not set a public <code>OLLAMA_HOST</code>, expose port 11434 to the network, or change Daftar’s address merely to solve CORS.</p>
           </div>
 
-          <h3>کارهای هوش مصنوعی چه می‌کنند</h3>
+          <h3>What the AI actions do</h3>
           <div class="table-wrap">
             <table>
-              <thead><tr><th>کار</th><th>نتیجه</th><th>بهترین کاربرد</th></tr></thead>
+              <thead><tr><th>Action</th><th>Result</th><th>Best use</th></tr></thead>
               <tbody>
-                <tr><td><strong>خلاصه‌سازی</strong></td><td>خلاصه‌ای کوتاه به زبان متن اصلی.</td><td>یادداشت‌های بلند، مقاله‌های چسبانده‌شده و صورت‌جلسه.</td></tr>
-                <tr><td><strong>عنوان و دسته‌بندی</strong></td><td>یک عنوان، یک موضوع تکرارپذیر و سه تا شش برچسب.</td><td>تبدیل یک ثبت بی‌نام‌ونشان به یادداشتی یافتنی.</td></tr>
-                <tr><td><strong>ویرایش نوشتار</strong></td><td>دستور زبان و روانی بهتر، با حفظ معنا و لحن.</td><td>پیش‌نویسی که پالایش می‌خواهد، نه بازآفرینی.</td></tr>
-                <tr><td><strong>نکات کلیدی</strong></td><td>فهرست گلوله‌ای فشرده از ایده‌های اصلی.</td><td>مطالب آموزشی و یادداشت‌های متراکم.</td></tr>
-                <tr><td><strong>ترجمه به فارسی</strong></td><td>ترجمه‌ای فارسی.</td><td>کار دوزبانه و ترجمهٔ سریع.</td></tr>
-                <tr><td><strong>ترجمه به انگلیسی</strong></td><td>ترجمه‌ای انگلیسی.</td><td>کار دوزبانه و ترجمهٔ سریع.</td></tr>
-                <tr><td><strong>دستور دلخواه</strong></td><td>نتیجه‌ای مطابق درخواست خودتان.</td><td>قالب‌بندی دوباره، استخراج موارد، تغییر لحن یا کار تخصصی.</td></tr>
+                <tr><td><strong>Summarize</strong></td><td>A concise summary in the source language.</td><td>Long notes, pasted articles, meeting notes.</td></tr>
+                <tr><td><strong>Title &amp; organize</strong></td><td>A title, one reusable topic, and three to six tags.</td><td>Turning an unlabelled capture into a findable note.</td></tr>
+                <tr><td><strong>Polish writing</strong></td><td>Clearer grammar and flow while preserving meaning and tone.</td><td>Drafts that need refinement, not reinvention.</td></tr>
+                <tr><td><strong>Key points</strong></td><td>A compact bullet list of essential ideas.</td><td>Study material and dense notes.</td></tr>
+                <tr><td><strong>To Persian</strong></td><td>A Persian translation.</td><td>Bilingual work and quick translation.</td></tr>
+                <tr><td><strong>To English</strong></td><td>An English translation.</td><td>Bilingual work and quick translation.</td></tr>
+                <tr><td><strong>Custom instruction</strong></td><td>A result guided by your own request.</td><td>Reformatting, extracting items, changing tone, or specialized tasks.</td></tr>
               </tbody>
             </table>
           </div>
 
-          <h3>پنل هوش مصنوعی را مال خودتان کنید</h3>
+          <h3>Make the AI panel yours</h3>
           <div class="feature-grid">
             <article class="feature-card">
               <span class="card-icon" aria-hidden="true">≡</span>
-              <h3>کارهای سریع قابل‌ویرایش</h3>
-              <p>در «تنظیمات ← تنظیمات هوش مصنوعی» دستور پشت هر کار داخلی دیده می‌شود. آن را ویرایش، غیرفعال یا جابه‌جا کنید یا prompt اصلی‌اش را برگردانید.</p>
+              <h3>Editable quick actions</h3>
+              <p>Settings → AI Settings exposes the instruction behind every built-in action. Edit it, disable it, move it, or restore its original prompt.</p>
             </article>
             <article class="feature-card">
               <span class="card-icon" aria-hidden="true">＋</span>
-              <h3>کارهای دلخواه</h3>
-              <p>کارهای تکرارپذیر را با نام، توضیح کوتاه و دستور خودتان بسازید. کارت بعلاوه در پنل هوش مصنوعی همین مسیر را باز می‌کند.</p>
+              <h3>Custom actions</h3>
+              <p>Add reusable actions with your own name, short description, and instruction. The plus card in the AI panel offers the same route.</p>
             </article>
             <article class="feature-card">
               <span class="card-icon" aria-hidden="true">S</span>
-              <h3>دستور سیستمی</h3>
-              <p>در تنظیمات یا کشوی هوش مصنوعی، شخصیت یا سبک نوشتاری دلخواهی به دستیار بدهید. محافظ دقت Daftar همچنان پیش از این ترجیح برای مدل فرستاده می‌شود.</p>
+              <h3>System prompt</h3>
+              <p>Give the assistant a preferred personality or writing style from Settings or the AI drawer. Daftar’s reliability guard is still sent before that preference.</p>
             </article>
             <article class="feature-card">
               <span class="card-icon" aria-hidden="true">✓</span>
-              <h3>دسته‌بندی خودکار</h3>
-              <p>در صورت تمایل نتیجهٔ «عنوان و دسته‌بندی» را بی‌درنگ اعمال کنید. تعیین کنید فقط خانه‌های خالی پر شوند یا دسته‌بندی موجود نیز قابل‌جایگزینی باشد.</p>
+              <h3>Automatic organization</h3>
+              <p>Optionally apply Title &amp; organize immediately. Choose whether it fills only empty fields or may replace existing organization.</p>
             </article>
           </div>
 
-          <h3>نتیجهٔ طبیعی AI، با دسترسی همیشگی به متن اصلی</h3>
-          <p>پاسخ‌های معمولی AI به‌صورت Markdown پردازش می‌شوند؛ بنابراین متن پررنگ، فهرست، سرعنوان، نقل‌قول، لینک و کد به‌جای نمایش علائم خام، طبیعی دیده می‌شوند. هرگاه متن منبع را خواستید <strong>نمایش Markdown</strong> را بزنید. می‌توانید متن خوانا یا Markdown را کپی کنید، متن اصلی را جایگزین کنید، نتیجه را بیفزایید یا از آن یادداشت تازه‌ای بسازید.</p>
-          <p>لبهٔ پایین نتیجهٔ هوش مصنوعی را بکشید تا ارتفاعش عوض شود، یا برای یک پوشش بزرگ از «بزرگ‌کردن نتیجه» استفاده کنید. Daftar ارتفاع عادی نتیجه را به خاطر می‌سپارد. در رایانه، اندازهٔ کل پنل هوش مصنوعی نیز از لبهٔ بیرونی قابل‌تغییر است.</p>
+          <h3>Natural AI results, with the source still available</h3>
+          <p>Ordinary AI responses are rendered as Markdown, so bold text, lists, headings, quotes, links, and code look natural instead of showing raw punctuation. Use <strong>View Markdown</strong> whenever you need the source. You can copy readable text, copy Markdown, replace the source, append the result, or create a new note.</p>
+          <p>Drag the lower edge of the AI result to change its height, or use Expand for a large overlay. Daftar remembers the normal result height. You may also resize the entire AI panel from its outer edge on desktop.</p>
 
-          <h3>گردش‌کار امن هوش مصنوعی</h3>
+          <h3>The safe AI workflow</h3>
           <div class="ai-flow">
-            <div class="ai-flow-card"><b>۰۱</b><strong>ورودی را برگزینید</strong><small>از کل یادداشت استفاده کنید یا پس از انتخاب بخشی از متن، «فقط متن انتخاب‌شده» را روشن کنید.</small></div>
-            <div class="ai-flow-card"><b>۰۲</b><strong>تولید کنید</strong><small>نتیجهٔ جاری را ببینید و هر زمان لازم شد تولید را متوقف کنید.</small></div>
-            <div class="ai-flow-card"><b>۰۳</b><strong>بررسی کنید</strong><small>پاسخ مدل تا زمانی که کاری برنگزینید در پیش‌نمایش می‌ماند.</small></div>
-            <div class="ai-flow-card"><b>۰۴</b><strong>آگاهانه اعمال کنید</strong><small>جایگزین یا اضافه کنید، یادداشت تازه بسازید، کپی کنید یا دسته‌بندی پیشنهادی را اعمال کنید.</small></div>
+            <div class="ai-flow-card"><b>01</b><strong>Choose input</strong><small>Use the whole note or enable Use selected text after highlighting a passage.</small></div>
+            <div class="ai-flow-card"><b>02</b><strong>Generate</strong><small>Watch the streamed result and stop generation whenever needed.</small></div>
+            <div class="ai-flow-card"><b>03</b><strong>Review</strong><small>The model’s response stays in preview until you choose an action.</small></div>
+            <div class="ai-flow-card"><b>04</b><strong>Apply deliberately</strong><small>Replace, append, create a new note, copy, or apply suggested organization.</small></div>
           </div>
 
           <div class="callout warning">
-            <strong>Daftar هنگام فکرکردن مدل از یادداشت محافظت می‌کند.</strong>
-            <p>اگر یادداشت منبع هنگام تولید تغییر کند، Daftar جایگزینی ناامن را نمی‌پذیرد. جایگزینی کل یادداشت تأیید می‌خواهد و ویرایش‌های AI پیش از تغییر متن یک snapshot ایمنی می‌سازند.</p>
+            <strong>Daftar protects the note while the model is thinking.</strong>
+            <p>If the source note changes during generation, Daftar refuses an unsafe replacement. Full-note replacement asks for confirmation, and AI edits create a safety snapshot before changing your note.</p>
           </div>
 
-          <h3>مدل محلی، مدل ابری و حریم خصوصی</h3>
+          <h3>Local models, cloud models, and privacy</h3>
           <div class="split">
             <article class="mini-card">
-              <h4><span class="status-dot"></span> loopback محلی + مدل محلی</h4>
-              <p>با نشانی پیش‌فرض <code>127.0.0.1</code> و مدلی واقعاً محلی، متن یادداشت به Ollama روی رایانهٔ خودتان فرستاده می‌شود.</p>
+              <h4><span class="status-dot"></span> Local loopback + local model</h4>
+              <p>With the default <code>127.0.0.1</code> address and a genuinely local model, note text is sent to Ollama on your own computer.</p>
             </article>
             <article class="mini-card">
-              <h4><span class="status-dot cloud"></span> endpoint ابری یا راه‌دور</h4>
-              <p>مدلی با نشان <code>:cloud</code> یا server Ollama روی رایانه‌ای دیگر ممکن است متن را بیرون از این دستگاه بفرستد یا پردازش کند. با آن متناسب با همین واقعیت رفتار کنید.</p>
+              <h4><span class="status-dot cloud"></span> Cloud or remote endpoint</h4>
+              <p>A model marked <code>:cloud</code>, or an Ollama server on another computer, may send or process note text beyond this device. Treat it accordingly.</p>
             </article>
           </div>
-          <p>اگر Gemma 4 نصب‌شده‌ای در دسترس باشد، گزینشگر مدل آن را ترجیح می‌دهد؛ وگرنه نخستین مدل مناسب انتخاب می‌شود. همیشه می‌توانید انتخاب را عوض کنید.</p>
+          <p>The model selector favors an installed Gemma 4 model when one is available; otherwise it uses the first suitable model. You can always change the selection.</p>
 
-          <h3>کنترل آماده‌ماندن مدل</h3>
-          <p>در تنظیمات می‌توانید از Ollama بخواهید مدل را ۵، ۱۵ یا ۳۰ دقیقه در حافظه نگه دارد، پس از درخواست خارج کند یا تا بسته‌شدن Ollama بارگذاری‌شده نگه دارد. زمان keep-alive طولانی، کارهای پیاپی را سریع‌تر می‌کند اما مصرف حافظه ادامه می‌یابد.</p>
+          <h3>Keep-alive controls</h3>
+          <p>Settings can ask Ollama to keep the model loaded for 5, 15, or 30 minutes, unload after the request, or remain loaded until Ollama stops. Longer keep-alive makes repeated tasks faster but continues using memory.</p>
 
-          <div class="detail-tools"><button class="quiet-button" type="button" data-toggle-details="#aiLongGuides">باز کردن همهٔ راهنمای AI</button></div>
+          <div class="detail-tools"><button class="quiet-button" type="button" data-toggle-details="#aiLongGuides">Expand all AI help</button></div>
           <div class="detail-group" id="aiLongGuides">
             <details open>
-              <summary>اتصال پیام «Failed to fetch» می‌دهد یا Console خطای CORS نشان می‌دهد</summary>
+              <summary>Connection says “Failed to fetch” or the Console reports CORS</summary>
               <div class="detail-content">
                 <ol>
-                  <li>مطمئن شوید <code>ollama list</code> کار می‌کند. این فقط ثابت می‌کند سرویس در حال اجراست؛ <em>ثابت نمی‌کند</em> مبدأ مرورگر مجاز است.</li>
-                  <li>نشانی Daftar را روی <code>http://127.0.0.1:11434</code> نگه دارید. محل فایل Daftar، پورت موقت web server یا <code>8765</code> را جای آن نگذارید.</li>
-                  <li>با مراحل پیش‌نیاز بالا، <code>OLLAMA_ORIGINS=*</code> را تنظیم کنید.</li>
-                  <li>همهٔ پردازش‌های Ollama را کاملاً ببندید، Ollama را دوباره باز کنید، Daftar را reload کنید و بار دیگر «اتصال» را بزنید.</li>
-                  <li>اگر مشکل ماند، F12 ← Console را باز کنید و نخستین خط قرمز CORS را بخوانید.</li>
+                  <li>Confirm that <code>ollama list</code> works. This proves the service is running, but it does <em>not</em> prove that the browser origin is allowed.</li>
+                  <li>Keep Daftar’s address at <code>http://127.0.0.1:11434</code>. Do not substitute Daftar’s file location, a temporary web-server port, or <code>8765</code>.</li>
+                  <li>Set <code>OLLAMA_ORIGINS=*</code> using the prerequisite steps above.</li>
+                  <li>Quit every running Ollama process completely, reopen Ollama, then reload Daftar and press Connect again.</li>
+                  <li>Press F12 → Console and read the first red CORS line if the failure remains.</li>
                 </ol>
-                <p>اگر Console می‌گوید پاسخ فقط مبدأ دیگری را مجاز کرده، پردازش قدیمی Ollama هنوز محیط پیشین را به کار می‌برد. راه‌اندازی دوبارهٔ مرورگر به‌تنهایی کافی نیست؛ خود server Ollama باید دوباره اجرا شود.</p>
+                <p>If the Console says the response allows only a different origin, the old Ollama process is still using an earlier environment. Restarting the browser alone is not enough; the Ollama server itself must be restarted.</p>
               </div>
             </details>
             <details>
-              <summary>آزمایش پیشرفتهٔ preflight مربوط به CORS در Windows</summary>
+              <summary>Advanced CORS preflight test on Windows</summary>
               <div class="detail-content">
-                <p>صفحهٔ Daftar که از disk باز شده مبدأ مرورگر <code>null</code> را می‌فرستد. این دستور، preflight دقیق POST را در Command Prompt آزمایش می‌کند:</p>
-                <div class="command"><code>curl.exe -i -X OPTIONS -H "Origin: null" -H "Access-Control-Request-Method: POST" -H "Access-Control-Request-Headers: content-type" http://127.0.0.1:11434/api/chat</code><button class="copy-button" type="button" data-copy='curl.exe -i -X OPTIONS -H "Origin: null" -H "Access-Control-Request-Method: POST" -H "Access-Control-Request-Headers: content-type" http://127.0.0.1:11434/api/chat'>کپی</button></div>
-                <p>یک preflight سالم <code>204 No Content</code> برمی‌گرداند، <code>POST</code> و <code>OPTIONS</code> و نیز <code>content-type</code> را مجاز می‌کند و مقداری برای <code>Access-Control-Allow-Origin</code> می‌دهد که درخواست را بپذیرد. یک GET ساده با <code>curl</code> می‌تواند زنده‌بودن Ollama را ثابت کند، اما همچنان مشکل CORS ویژهٔ مرورگر را نبیند.</p>
+                <p>A Daftar page opened from disk sends the browser origin <code>null</code>. This command tests the exact POST preflight from Command Prompt:</p>
+                <div class="command"><code>curl.exe -i -X OPTIONS -H "Origin: null" -H "Access-Control-Request-Method: POST" -H "Access-Control-Request-Headers: content-type" http://127.0.0.1:11434/api/chat</code><button class="copy-button" type="button" data-copy='curl.exe -i -X OPTIONS -H "Origin: null" -H "Access-Control-Request-Method: POST" -H "Access-Control-Request-Headers: content-type" http://127.0.0.1:11434/api/chat'>Copy</button></div>
+                <p>A healthy preflight returns <code>204 No Content</code>, permits <code>POST</code> and <code>OPTIONS</code>, permits <code>content-type</code>, and returns an <code>Access-Control-Allow-Origin</code> value that accepts the request. A plain <code>curl</code> GET can prove Ollama is alive while still missing a browser-only CORS problem.</p>
               </div>
             </details>
             <details>
-              <summary>Console می‌گوید نشانی‌های file مبدأهای یکتا هستند</summary>
+              <summary>The Console says file URLs are unique origins</summary>
               <div class="detail-content">
-                <p>Chrome ممکن است هشداری مانند <code>file: URLs are treated as unique security origins</code> چاپ کند. اگر Daftar عادی متصل می‌شود، ذخیره و reload می‌کند و AI را اجرا می‌کند، این هشدار فقط اطلاع‌رسانی است و می‌توانید نادیده‌اش بگیرید. خطای عملی، مسدودشدن درخواست به <code>/api/tags</code> یا <code>/api/chat</code> است.</p>
-                <p>برای دفترچه هیچ web server لازم نیست. اگر <code>python -m http.server</code> را آزمایش کرده‌اید، پیام‌های بی‌ضرر <code>favicon.ico</code> یا <code>404</code> در DevTools اثری بر Daftar ندارند؛ کافی است به همان فایل عادی که با دوبار کلیک باز می‌شود برگردید.</p>
+                <p>Chrome may print a warning such as <code>file: URLs are treated as unique security origins</code>. If Daftar connects, saves, reloads, and runs AI normally, that warning is informational and can be left alone. The actionable failure is a blocked request to <code>/api/tags</code> or <code>/api/chat</code>.</p>
+                <p>No notebook web server is required. If you experimented with <code>python -m http.server</code>, harmless <code>favicon.ico</code> or DevTools <code>404</code> messages do not affect Daftar; simply return to the normal double-clicked file.</p>
               </div>
             </details>
             <details>
-              <summary>اتصال برقرار است، اما مدلی دیده نمی‌شود</summary>
+              <summary>Connected, but no models appear</summary>
               <div class="detail-content">
-                <p>Ollama در دسترس است اما مدل سازگار نصب‌شده‌ای ندارد. در Terminal با <code>ollama list</code> بررسی کنید، یک مدل pull کنید و دوباره متصل شوید. اگر مدل زیر نصب یا حساب کاربری دیگری از Ollama است، مطمئن شوید Daftar به همان server صاحب مدل وصل می‌شود.</p>
+                <p>Ollama is reachable but has no compatible installed model. Check the terminal with <code>ollama list</code>, pull a model, and reconnect. If the model exists under a different Ollama installation or user account, make sure Daftar is connecting to the server that owns it.</p>
               </div>
             </details>
             <details>
-              <summary>پاسخ نخست کند است</summary>
+              <summary>The first answer is slow</summary>
               <div class="detail-content">
-                <p>ممکن است مدل ابتدا از disk در حافظه بارگذاری شود. تا زمانی که بارگذاری‌شده بماند، درخواست‌های بعدی معمولاً سریع‌ترند. برای کار پیاپی keep-alive طولانی‌تری بگذارید؛ و اگر حافظه محدود است مدل کوچک‌تری برگزینید.</p>
+                <p>The model may need to load from disk into memory. Later requests are usually faster while it remains loaded. Choose a longer keep-alive value for repeated work, or a smaller model when memory is limited.</p>
               </div>
             </details>
             <details>
-              <summary>«فقط متن انتخاب‌شده» چگونه کار می‌کند</summary>
+              <summary>How “Use selected text” works</summary>
               <div class="detail-content">
-                <p>بخشی از ویرایشگر را انتخاب کنید و بعد <strong>فقط متن انتخاب‌شده</strong> را روشن کنید. هوش مصنوعی به‌جای کل یادداشت همان بخش را می‌گیرد. اگر انتخاب معتبری وجود نداشته باشد، Daftar به شما می‌گوید و پنهانی کل یادداشت را نمی‌فرستد.</p>
+                <p>Highlight part of the editor, then enable <strong>Use selected text</strong>. The AI receives that selection instead of the full note. If no valid selection exists, Daftar tells you rather than silently using the whole note.</p>
               </div>
             </details>
             <details>
-              <summary>چگونه تولید پاسخ را متوقف کنیم</summary>
+              <summary>How to stop a generation</summary>
               <div class="detail-content">
-                <p>در بخش خروجی هوش مصنوعی <strong>توقف</strong> را بزنید. پیش‌نمایش ناقص همچنان دیده می‌شود، اما تا وقتی خودتان کاری برای خروجی انتخاب نکنید Daftar یادداشت را تغییر نمی‌دهد.</p>
+                <p>Choose <strong>Stop</strong> in the AI output area. The partial preview remains visible, but Daftar will not modify your note until you explicitly choose an output action.</p>
               </div>
             </details>
           </div>
 
           <div class="callout danger">
-            <strong>Ollama را روی loopback نگه دارید، مگر آگاهانه به دسترسی شبکه نیاز داشته باشید.</strong>
-            <p>نشانی پیش‌فرض <code>127.0.0.1</code> سرویس را به دستگاه خودتان محدود می‌کند. فقط برای وصل‌کردن این دفترچه، Ollama را در شبکهٔ محلی یا اینترنت در دسترس نگذارید.</p>
+            <strong>Keep Ollama on loopback unless you intentionally need network access.</strong>
+            <p>The default <code>127.0.0.1</code> address limits the service to your own machine. Do not expose Ollama to a local network or the internet merely to make this notebook connect.</p>
           </div>
         </section>
 
         <section class="section" id="versions" data-nav-section aria-labelledby="versions-title">
-          <p class="section-label">۰۶ · بازیابی</p>
-          <h2 id="versions-title"><a class="anchor-link" href="#versions">زیر هر پیش‌نویس، یک تور ایمنی.</a></h2>
-          <p class="section-intro">Daftar در چند لایه از کارتان محافظت می‌کند؛ از ذخیرهٔ خودکار روزمره تا snapshot آگاهانه و حذف قابل‌بازیابی.</p>
+          <p class="section-label">06 · Recovery</p>
+          <h2 id="versions-title"><a class="anchor-link" href="#versions">A safety net beneath every draft.</a></h2>
+          <p class="section-intro">Daftar protects work at several levels, from routine autosave to deliberate snapshots and recoverable deletion.</p>
 
           <div class="table-wrap">
             <table>
-              <thead><tr><th>لایه</th><th>چه زمانی به کار می‌آید</th><th>روش استفاده</th></tr></thead>
+              <thead><tr><th>Layer</th><th>When it helps</th><th>How to use it</th></tr></thead>
               <tbody>
-                <tr><td><strong>ذخیرهٔ خودکار</strong></td><td>تایپ عادی و ویرایش اطلاعات یادداشت.</td><td>خودکار است؛ وضعیت ذخیره زیر ویرایشگر را ببینید.</td></tr>
-                <tr><td><strong>پیش‌نویس اضطراری</strong></td><td>بسته‌شدن یا refresh ناگهانی و نوشتن نیمه‌کاره.</td><td>Daftar نسخهٔ بازیابی کوچکی نگه می‌دارد و در موقعیت مناسب برمی‌گرداند.</td></tr>
-                <tr><td><strong>snapshotها</strong></td><td>بازگشت آگاهانه به نسخه‌ای پیشین.</td><td>«بیشتر ← ثبت نسخه»، یا <span class="key">Ctrl</span>/<span class="key">⌘</span> + <span class="key">S</span>.</td></tr>
-                <tr><td><strong>snapshot ایمنی</strong></td><td>جایگزینی، افزودن و دسته‌بندی با AI و بازیابی نسخه.</td><td>پیش از تغییرات بالقوه گسترده، خودکار ساخته می‌شود.</td></tr>
-                <tr><td><strong>بایگانی</strong></td><td>کنارگذاشتن یادداشت تمام‌شده از فهرست فعال.</td><td>«بیشتر ← انتقال به بایگانی»؛ بعداً از بایگانی برگردانید.</td></tr>
-                <tr><td><strong>زباله‌دان</strong></td><td>بازیابی یادداشتی که برداشته‌اید.</td><td>زباله‌دان را باز و «بازگردانی» را انتخاب کنید. حذف همیشگی جداست.</td></tr>
-                <tr><td><strong>پاک‌سازی گروه زمانی</strong></td><td>کنارگذاشتن یک دورهٔ قدیمی و همهٔ دوره‌های قدیمی‌تر از دفتر فعال.</td><td>آیکون زبالهٔ گروه، پس از تأیید موارد را به زباله‌دان قابل‌بازیابی می‌برد.</td></tr>
-                <tr><td><strong>تخلیهٔ زباله‌دان</strong></td><td>پاک‌سازی نهایی پس از بررسی زباله‌دان.</td><td>همهٔ یادداشت‌های زباله‌دان را دائمی حذف می‌کند و همیشه تأیید می‌خواهد.</td></tr>
-                <tr><td><strong>پشتیبان JSON</strong></td><td>از دست‌رفتن مرورگر، تعویض دستگاه یا ارتقای بزرگ.</td><td>مرتب خروجی بگیرید و نسخه‌ای بیرون از مرورگر نگه دارید.</td></tr>
+                <tr><td><strong>Autosave</strong></td><td>Routine typing and metadata edits.</td><td>Automatic. Watch the save status beneath the editor.</td></tr>
+                <tr><td><strong>Emergency draft</strong></td><td>A sudden close, refresh, or interrupted write.</td><td>Daftar keeps a small recovery copy and restores it when appropriate.</td></tr>
+                <tr><td><strong>Snapshots</strong></td><td>Returning to a deliberate earlier version.</td><td>More → Save snapshot, or <span class="key">Ctrl</span>/<span class="key">⌘</span> + <span class="key">S</span>.</td></tr>
+                <tr><td><strong>Safety snapshots</strong></td><td>AI replace, append, organization, and version restoration.</td><td>Automatic before potentially sweeping changes.</td></tr>
+                <tr><td><strong>Archive</strong></td><td>Removing finished notes from the active list.</td><td>More → Move to archive; restore from Archive later.</td></tr>
+                <tr><td><strong>Trash</strong></td><td>Recovering a note you removed.</td><td>Open Trash and choose Restore. Permanent deletion is separate.</td></tr>
+                <tr><td><strong>Age-group cleanup</strong></td><td>Moving a whole old period and every older period out of the live notebook.</td><td>The group trash icon moves candidates to recoverable Trash after confirmation.</td></tr>
+                <tr><td><strong>Empty Trash</strong></td><td>Final cleanup after you have reviewed Trash.</td><td>Permanently deletes every trashed note and always asks for confirmation.</td></tr>
+                <tr><td><strong>JSON backup</strong></td><td>Browser loss, device change, or major upgrade.</td><td>Export regularly and keep copies outside the browser.</td></tr>
               </tbody>
             </table>
           </div>
 
-          <h3>بازیابی یک snapshot</h3>
+          <h3>Restore a snapshot</h3>
           <div class="steps">
-            <div class="step"><div class="step-copy"><h3>یادداشت را باز کنید</h3><p>یادداشتی را که نسخهٔ پیشینش لازم است انتخاب کنید.</p></div></div>
-            <div class="step"><div class="step-copy"><h3>تاریخچهٔ نسخه‌ها را باز کنید</h3><p>از منوی «بیشتر» یادداشت، <strong>تاریخچهٔ نسخه‌ها</strong> را برگزینید.</p></div></div>
-            <div class="step"><div class="step-copy"><h3>زمان و پیش‌نمایش را بررسی کنید</h3><p>نسخه‌ای را برگزینید که با لحظهٔ موردنظرتان هماهنگ است.</p></div></div>
-            <div class="step"><div class="step-copy"><h3>بازیابی کنید</h3><p>Daftar ابتدا با snapshot دیگری از وضعیت فعلی محافظت می‌کند و سپس نسخهٔ انتخاب‌شده را برمی‌گرداند.</p></div></div>
+            <div class="step"><div class="step-copy"><h3>Open the note</h3><p>Choose the note whose earlier version you need.</p></div></div>
+            <div class="step"><div class="step-copy"><h3>Open Version history</h3><p>Use the note’s More menu and select <strong>Version history</strong>.</p></div></div>
+            <div class="step"><div class="step-copy"><h3>Review the timestamp and preview</h3><p>Choose the revision that matches the moment you want.</p></div></div>
+            <div class="step"><div class="step-copy"><h3>Restore</h3><p>Daftar first protects the current state with another snapshot, then restores the chosen revision.</p></div></div>
           </div>
-          <p>هر یادداشت تا ۳۰ snapshot نگه می‌دارد. پس از رسیدن به سقف، قدیمی‌ترین‌ها جا را برای نسخه‌های تازه باز می‌کنند.</p>
+          <p>Each note keeps up to 30 snapshots. When the limit is reached, the oldest snapshots make room for newer ones.</p>
         </section>
 
         <section class="section" id="data" data-nav-section aria-labelledby="data-title">
-          <p class="section-label">۰۷ · داده‌ها</p>
-          <h2 id="data-title"><a class="anchor-link" href="#data">پشتیبان‌هایی که واقعاً مال شما هستند.</a></h2>
-          <p class="section-intro">ذخیره‌سازی مرورگر راحت است؛ اما فایلی که خودتان آگاهانه خروجی می‌گیرید راه قابل‌اعتماد جابه‌جایی یا نگه‌داری دفترچه است.</p>
+          <p class="section-label">07 · Data</p>
+          <h2 id="data-title"><a class="anchor-link" href="#data">Backups that belong to you.</a></h2>
+          <p class="section-intro">Browser storage is convenient, but a file you deliberately export is the dependable way to move or preserve your notebook.</p>
 
           <div class="feature-grid">
-            <article class="feature-card"><span class="card-icon" aria-hidden="true">{ }</span><h3>پشتیبان کامل JSON</h3><p>یادداشت‌ها، snapshotها، اطلاعات جانبی، ظاهر، کارهای AI، میانبرها و ترجیحات پشتیبانی‌شدهٔ رابط را دربرمی‌گیرد. این بهترین قالب برای بازیابی کامل است.</p></article>
-            <article class="feature-card"><span class="card-icon" aria-hidden="true">MD</span><h3>همهٔ یادداشت‌ها به‌صورت Markdown</h3><p>تمام یادداشت‌های بیرون از زباله‌دان را در قالب متنی خوانا و قابل‌انتقال خروجی می‌گیرد؛ مناسب بایگانی و ابزارهای نوشتاری دیگر.</p></article>
-            <article class="feature-card"><span class="card-icon" aria-hidden="true">TXT</span><h3>یادداشت جاری به‌صورت متن</h3><p>یادداشت باز را برای اشتراک یا استفادهٔ دیگر به شکل یک فایل سادهٔ <code>.txt</code> خروجی می‌گیرد.</p></article>
+            <article class="feature-card"><span class="card-icon" aria-hidden="true">{ }</span><h3>Full JSON backup</h3><p>Includes notes, snapshots, metadata, appearance, AI actions, shortcuts, and supported interface preferences. This is the best format for complete restoration.</p></article>
+            <article class="feature-card"><span class="card-icon" aria-hidden="true">MD</span><h3>All notes as Markdown</h3><p>Exports every non-trashed note in a readable, portable text format. Useful for archives and other writing tools.</p></article>
+            <article class="feature-card"><span class="card-icon" aria-hidden="true">TXT</span><h3>Current note as text</h3><p>Exports the open note as a simple <code>.txt</code> file for sharing or use elsewhere.</p></article>
           </div>
 
-          <h3>یک پشتیبان کامل بسازید</h3>
+          <h3>Make a complete backup</h3>
           <div class="steps">
-            <div class="step"><div class="step-copy"><h3>تنظیمات را باز کنید</h3><p>آیکون چرخ‌دنده در نوار بالا را بزنید.</p></div></div>
-            <div class="step"><div class="step-copy"><h3>پشتیبان و داده‌ها را پیدا کنید</h3><p><strong>پشتیبان کامل JSON</strong> را برگزینید.</p></div></div>
-            <div class="step"><div class="step-copy"><h3>فایل دانلودشده را امن نگه دارید</h3><p>دست‌کم یک نسخه بیرون از پوشهٔ معمول Downloads داشته باشید؛ مثلاً روی درایو پشتیبان رمزگذاری‌شده یا پوشهٔ همگام‌سازی مورداعتماد.</p></div></div>
-            <div class="step"><div class="step-copy"><h3>منظم تکرار کنید</h3><p>پیش از جابه‌جایی فایل HTML، پاک‌کردن داده‌های مرورگر، تعویض مرورگر یا آزمایش به‌روزرسانی بزرگ پشتیبان بگیرید.</p></div></div>
+            <div class="step"><div class="step-copy"><h3>Open Settings</h3><p>Choose the gear in the top bar.</p></div></div>
+            <div class="step"><div class="step-copy"><h3>Find Backup &amp; data</h3><p>Select <strong>Full JSON backup</strong>.</p></div></div>
+            <div class="step"><div class="step-copy"><h3>Store the downloaded file safely</h3><p>Keep at least one copy outside your usual Downloads folder—for example on an encrypted backup drive or trusted sync folder.</p></div></div>
+            <div class="step"><div class="step-copy"><h3>Repeat on a schedule</h3><p>Back up before moving the HTML file, clearing browser data, changing browsers, or testing a major update.</p></div></div>
           </div>
 
-          <h3>ورود یا بازیابی</h3>
-          <p>در تنظیمات <strong>ورود / بازیابی</strong> را بزنید و فایلی پشتیبانی‌شده برگزینید. Daftar این موارد را می‌شناسد:</p>
+          <h3>Import or restore</h3>
+          <p>In Settings, choose <strong>Import / restore</strong>, then select a supported file. Daftar can understand:</p>
           <ul class="checklist">
-            <li>پشتیبان کامل JSON از Daftar.</li>
-            <li>آرایه یا object در JSON که <code>notes</code> یا <code>history</code> داشته باشد.</li>
-            <li>قالب تاریخچهٔ متنی Local Notebook قدیمی.</li>
-            <li>یک فایل سادهٔ <code>.txt</code> یا <code>.md</code> به‌عنوان یک یادداشت تازه.</li>
+            <li>A full Daftar JSON backup.</li>
+            <li>JSON arrays or objects containing <code>notes</code> or <code>history</code>.</li>
+            <li>The old Local Notebook text-history format.</li>
+            <li>A plain <code>.txt</code> or <code>.md</code> file as one new note.</li>
           </ul>
-          <p>یادداشت‌های واردشده با خانه‌های امن و استانداردشده افزوده می‌شوند. تنظیمات پشتیبانی‌شدهٔ ظاهر، AI و مرتب‌سازی از پشتیبان Daftar نیز قابل‌بازیابی‌اند.</p>
+          <p>Imported notes are added with safe normalized fields. Supported appearance, AI, and sorting preferences from a Daftar backup can also be restored.</p>
 
           <div class="callout warning">
-            <strong>پیش از ارتقا یا جابه‌جایی Daftar، اول JSON خروجی بگیرید.</strong>
-            <p>رفتار ذخیره‌سازی فایل محلی می‌تواند با مرورگر، پروفایل مرورگر و محل فایل فرق کند. نسخه‌ای که تازه تغییر نام یا جابه‌جا شده ممکن است database جداگانه‌ای نشان دهد. یک فایل اصلی و ثابت برای دفترچه داشته باشید و هنگام عوض‌کردن نسخه‌ها از پشتیبان/ورود استفاده کنید.</p>
+            <strong>Before upgrading or moving Daftar, export JSON first.</strong>
+            <p>Local file storage behavior can differ by browser, browser profile, and file location. A newly renamed or moved copy may appear to have a separate database. Keep one canonical notebook file and use backup/import when changing copies.</p>
           </div>
 
-          <h3>انتقال به رایانه یا پروفایل مرورگر تازه</h3>
+          <h3>Moving to a new computer or browser profile</h3>
           <div class="ai-flow">
-            <div class="ai-flow-card"><b>۰۱</b><strong>JSON خروجی بگیرید</strong><small>از دفترچهٔ قدیمی که درست کار می‌کند.</small></div>
-            <div class="ai-flow-card"><b>۰۲</b><strong>هر دو فایل را کپی کنید</strong><small>فایل HTML دفترچه و پشتیبان JSON.</small></div>
-            <div class="ai-flow-card"><b>۰۳</b><strong>Daftar را باز کنید</strong><small>در رایانهٔ تازه یا پروفایل مقصد.</small></div>
-            <div class="ai-flow-card"><b>۰۴</b><strong>JSON را وارد کنید</strong><small>پیش از تکیه‌کردن بر نسخهٔ تازه، شمار یادداشت‌ها را بررسی کنید.</small></div>
+            <div class="ai-flow-card"><b>01</b><strong>Export JSON</strong><small>From the old working notebook.</small></div>
+            <div class="ai-flow-card"><b>02</b><strong>Copy both files</strong><small>The notebook HTML and the JSON backup.</small></div>
+            <div class="ai-flow-card"><b>03</b><strong>Open Daftar</strong><small>Use the new computer or target browser profile.</small></div>
+            <div class="ai-flow-card"><b>04</b><strong>Import JSON</strong><small>Verify note counts before relying on the new copy.</small></div>
           </div>
         </section>
 
         <section class="section" id="appearance" data-nav-section aria-labelledby="appearance-title">
-          <p class="section-label">۰۸ · تنظیمات</p>
-          <h2 id="appearance-title"><a class="anchor-link" href="#appearance">صفحه را به سلیقهٔ خودتان درآورید.</a></h2>
-          <p class="section-intro">تنظیمات ظاهر عمومی‌اند؛ جهت، عنوان، موضوع و برچسب به هر یادداشت تعلق دارند. زبان رابط جهت کلی چیدمان را نیز تعیین می‌کند.</p>
+          <p class="section-label">08 · Settings</p>
+          <h2 id="appearance-title"><a class="anchor-link" href="#appearance">Make the page feel like yours.</a></h2>
+          <p class="section-intro">Appearance settings are global; direction, title, topic, and tags belong to individual notes. The interface language also controls the layout’s overall reading direction.</p>
 
           <div class="table-wrap">
             <table>
-              <thead><tr><th>تنظیم</th><th>گزینه‌ها</th><th>اثر</th></tr></thead>
+              <thead><tr><th>Setting</th><th>Choices</th><th>Effect</th></tr></thead>
               <tbody>
-                <tr><td><strong>پوسته</strong></td><td>سیستم، روشن، تاریک</td><td>سیستم از سیستم‌عامل پیروی می‌کند؛ انتخاب صریح ثابت می‌ماند.</td></tr>
-                <tr><td><strong>زبان رابط</strong></td><td>فارسی، English</td><td>بدون تغییر متن یا جهت خود یادداشت، برچسب‌ها را ترجمه و کل رابط را میان RTL و LTR آینه می‌کند.</td></tr>
-                <tr><td><strong>پالت رنگ</strong></td><td>کاغذی، مریم‌گلی، لاجوردی، اناری، غروب بنفش</td><td>در پوستهٔ روشن و تاریک حال‌وهوای دیداری دفتر را عوض می‌کند.</td></tr>
-                <tr><td><strong>اندازهٔ متن</strong></td><td><span class="ltr">14–30 px</span></td><td>اندازهٔ نوشتار ویرایشگر را تغییر می‌دهد.</td></tr>
-                <tr><td><strong>فاصلهٔ سطرها</strong></td><td><span class="ltr">1.3–2.4</span></td><td>فشردگی را برای یادداشت جمع‌وجور یا خواندن راحت تنظیم می‌کند.</td></tr>
-                <tr><td><strong>فونت ویرایشگر</strong></td><td>Daftar و چند گزینهٔ رایج فارسی/لاتین</td><td>روی فضای نوشتن اعمال می‌شود؛ فونت‌های نصب‌نشده جایگزین می‌گیرند.</td></tr>
-                <tr><td><strong>اندازهٔ پنل‌ها</strong></td><td>کشیدن نوار کناری، پنل AI، نتیجهٔ AI و جداکنندهٔ افقی نوار کناری</td><td>به فهرست بلند یا پاسخ طولانی مدل فضا می‌دهد؛ «بازنشانی اندازه‌ها» پیش‌فرض را برمی‌گرداند.</td></tr>
-                <tr><td><strong>نشانی Ollama</strong></td><td>endpoint پیش‌فرض یا دلخواه</td><td>تعیین می‌کند کدام server Ollama درخواست‌های AI را بگیرد.</td></tr>
-                <tr><td><strong>آماده نگه‌داشتن مدل</strong></td><td>خروج از حافظه، ۵/۱۵/۳۰ دقیقه، یا تا بسته‌شدن Ollama</td><td>میان سرعت استفادهٔ دوباره و مصرف حافظه تعادل می‌سازد.</td></tr>
-                <tr><td><strong>ترتیب</strong></td><td>آخرین ویرایش، تازه‌ترین، عنوان</td><td>ترتیب فهرست را عوض می‌کند؛ موارد سنجاق‌شده در جای مناسب نخست می‌مانند.</td></tr>
+                <tr><td><strong>Theme</strong></td><td>System, Light, Dark</td><td>System follows your operating system; explicit choices stay fixed.</td></tr>
+                <tr><td><strong>Interface language</strong></td><td>English, فارسی</td><td>Translates labels and mirrors the whole interface between LTR and RTL without changing note text or the note’s own direction setting.</td></tr>
+                <tr><td><strong>Color palette</strong></td><td>Paper, Sage, Azure, Pomegranate, Violet evening</td><td>Changes the notebook’s visual character in both light and dark themes.</td></tr>
+                <tr><td><strong>Text size</strong></td><td>14–30 px</td><td>Changes the editor’s writing size.</td></tr>
+                <tr><td><strong>Line spacing</strong></td><td>1.3–2.4</td><td>Adjusts density for compact notes or comfortable reading.</td></tr>
+                <tr><td><strong>Editor font</strong></td><td>Daftar and several common Latin/Persian choices</td><td>Applies to the writing area; unavailable system fonts fall back.</td></tr>
+                <tr><td><strong>Panel sizes</strong></td><td>Drag sidebar, AI panel, AI result, and the sidebar’s horizontal split</td><td>Gives long lists or long AI answers more room; Reset sizes restores the defaults.</td></tr>
+                <tr><td><strong>Ollama address</strong></td><td>Default or custom endpoint</td><td>Controls which Ollama server receives AI requests.</td></tr>
+                <tr><td><strong>Keep alive</strong></td><td>Unload, 5/15/30 minutes, or until Ollama stops</td><td>Balances faster repeat use against memory consumption.</td></tr>
+                <tr><td><strong>Sort order</strong></td><td>Updated, created, title</td><td>Changes the note list order; pinned items remain first where applicable.</td></tr>
               </tbody>
             </table>
           </div>
 
-          <h3>فارسی و انگلیسی دو حالت کامل رابط‌اند</h3>
-          <p>از دکمهٔ زبان در نوار بالا یا تنظیم «زبان رابط» استفاده کنید. انگلیسی کنترل‌ها را در چیدمان LTR می‌گذارد و <strong>Daftar</strong> را نشان می‌دهد؛ فارسی منوها را ترجمه، چیدمان را برای RTL آینه و <strong>دفتر</strong> را نمایش می‌دهد. این موضوع از خودکار/LTR/RTL داخل یادداشت جاری مستقل است.</p>
+          <h3>English and Persian are complete interface modes</h3>
+          <p>Use the language button in the top bar or the Interface language setting. English places the notebook controls in their LTR arrangement and displays <strong>Daftar</strong>; Persian translates the menus, mirrors the layout for RTL use, and displays <strong>دفتر</strong>. This is independent from Auto/LTR/RTL inside the current note.</p>
 
-          <h3>Desktop، صفحهٔ باریک و Android</h3>
+          <h3>Desktop, narrow screens, and Android</h3>
           <div class="split">
             <article class="info-card">
               <span class="card-icon" aria-hidden="true">▣</span>
               <h3>Desktop</h3>
-              <p>نوار یادداشت‌ها را جمع کنید، اندازهٔ هر دو پنل کناری و نتیجهٔ AI را عوض کنید و جداکنندهٔ افقی نوار کناری را تنظیم کنید. کنترل همیشگی hamburger برای بازکردن دوبارهٔ دفتر باقی می‌ماند.</p>
+              <p>Collapse the notebook sidebar, resize both side panels, resize the AI result, and adjust the horizontal sidebar split. The permanent hamburger control remains available to reopen the notebook.</p>
             </article>
             <article class="info-card">
               <span class="card-icon" aria-hidden="true">▯</span>
-              <h3>Android و موبایل</h3>
-              <p>چیدمان واکنش‌گرا در مرورگر موبایل مبتنی بر Chromium از نوشتن، جست‌وجو، دسته‌بندی، پشتیبان، ورود، پوسته‌ها و پیش‌نمایش Markdown پشتیبانی می‌کند. در فضای کم از منوی روی‌صفحه و حالت تمرکز استفاده کنید.</p>
+              <h3>Android and mobile</h3>
+              <p>The responsive layout supports ordinary writing, search, organization, backup, import, themes, and Markdown preview in a Chromium-based mobile browser. Use the menu overlay and Focus mode when space is tight.</p>
             </article>
           </div>
           <div class="callout warning">
-            <strong>یادداشت‌برداری موبایل پشتیبانی می‌شود؛ Ollama محلی رایانه موضوع جداگانه‌ای است.</strong>
-            <p><code>127.0.0.1</code> روی تلفن یعنی خود تلفن، نه رایانهٔ شما. Daftar کلید cloud API ندارد و نباید فقط برای افزودن AI به گوشی، Ollama را در شبکه در دسترس بگذارید. بخش بدون AI دفترچه روی موبایل کاملاً کاربردی است.</p>
+            <strong>Mobile note-taking is supported; local PC Ollama is a separate matter.</strong>
+            <p>A phone’s <code>127.0.0.1</code> means the phone itself, not your computer. Daftar does not include cloud-API keys, and you should not expose Ollama to a network merely to add phone AI. The non-AI notebook remains fully useful on mobile.</p>
           </div>
 
           <div class="quote">
-            برای راحتی از جهت خودکار، برای ژرفای کار از حالت تمرکز و برای آسودگی خیال از پشتیبان JSON استفاده کنید.
-            <small>ریتمی ساده و کاربردی برای Daftar</small>
+            Use Auto direction for ease, Focus mode for depth, and a JSON backup for peace of mind.
+            <small>A practical Daftar rhythm</small>
           </div>
         </section>
 
         <section class="section" id="shortcuts" data-nav-section aria-labelledby="shortcuts-title">
-          <p class="section-label">۰۹ · میانبرها</p>
-          <h2 id="shortcuts-title"><a class="anchor-link" href="#shortcuts">هم‌سرعت با فکر حرکت کنید.</a></h2>
-          <p class="section-intro">این‌ها میانبرهای پیش‌فرض‌اند و Daftar اجازه می‌دهد همه‌شان را دوباره تعیین کنید. در macOS، جایی که Windows و Linux از Ctrl استفاده می‌کنند Command هم پذیرفته می‌شود.</p>
+          <p class="section-label">09 · Shortcuts</p>
+          <h2 id="shortcuts-title"><a class="anchor-link" href="#shortcuts">Move at the speed of thought.</a></h2>
+          <p class="section-intro">These are the defaults. Daftar lets you reassign every one of them; on macOS, Command is accepted where Windows and Linux use Ctrl.</p>
 
           <div class="shortcut-grid">
-            <div class="shortcut"><span>یادداشت تازه</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">N</kbd></span></div>
-            <div class="shortcut"><span>جست‌وجوی یادداشت‌ها</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">K</kbd></span></div>
-            <div class="shortcut"><span>ثبت snapshot</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">S</kbd></span></div>
-            <div class="shortcut"><span>کپی یادداشت جاری</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">Shift</kbd><b>+</b><kbd class="key">C</kbd></span></div>
-            <div class="shortcut"><span>باز کردن AI</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">Alt</kbd><b>+</b><kbd class="key">A</kbd></span></div>
-            <div class="shortcut"><span>روشن/خاموش‌کردن حالت تمرکز</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">Shift</kbd><b>+</b><kbd class="key">F</kbd></span></div>
-            <div class="shortcut"><span>پررنگ‌کردن انتخاب</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">B</kbd></span></div>
-            <div class="shortcut"><span>مورب‌کردن انتخاب</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">I</kbd></span></div>
-            <div class="shortcut"><span>سرعنوان</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">Alt</kbd><b>+</b><kbd class="key">1</kbd></span></div>
-            <div class="shortcut"><span>فهرست گلوله‌ای</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">Shift</kbd><b>+</b><kbd class="key">L</kbd></span></div>
-            <div class="shortcut"><span>نقل‌قول</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">Alt</kbd><b>+</b><kbd class="key">Q</kbd></span></div>
-            <div class="shortcut"><span>بستن پنل، پنجره یا تمرکز</span><span class="keys"><kbd class="key">Esc</kbd></span></div>
+            <div class="shortcut"><span>New note</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">N</kbd></span></div>
+            <div class="shortcut"><span>Search notes</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">K</kbd></span></div>
+            <div class="shortcut"><span>Save snapshot</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">S</kbd></span></div>
+            <div class="shortcut"><span>Copy current note</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">Shift</kbd><b>+</b><kbd class="key">C</kbd></span></div>
+            <div class="shortcut"><span>Open AI</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">Alt</kbd><b>+</b><kbd class="key">A</kbd></span></div>
+            <div class="shortcut"><span>Toggle focus mode</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">Shift</kbd><b>+</b><kbd class="key">F</kbd></span></div>
+            <div class="shortcut"><span>Bold selection</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">B</kbd></span></div>
+            <div class="shortcut"><span>Italic selection</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">I</kbd></span></div>
+            <div class="shortcut"><span>Heading</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">Alt</kbd><b>+</b><kbd class="key">1</kbd></span></div>
+            <div class="shortcut"><span>Bullet list</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">Shift</kbd><b>+</b><kbd class="key">L</kbd></span></div>
+            <div class="shortcut"><span>Quote</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">Alt</kbd><b>+</b><kbd class="key">Q</kbd></span></div>
+            <div class="shortcut"><span>Close panel, modal, or focus</span><span class="keys"><kbd class="key">Esc</kbd></span></div>
           </div>
 
-          <h3>تغییر یک میانبر</h3>
+          <h3>Change a shortcut</h3>
           <div class="steps">
-            <div class="step"><div class="step-copy"><h3>مدیر میانبرها را باز کنید</h3><p>به <strong>تنظیمات ← راهنما ← میانبرهای صفحه‌کلید</strong> بروید.</p></div></div>
-            <div class="step"><div class="step-copy"><h3>یک کار را برگزینید</h3><p>روی ترکیب کلید فعلی‌اش کلیک کنید. ضبط‌کننده به <strong>میانبر را بزنید…</strong> تغییر می‌کند.</p></div></div>
-            <div class="step"><div class="step-copy"><h3>ترکیب تازه را بزنید</h3><p>Daftar کلید فیزیکی حروف را ثبت می‌کند؛ بنابراین هنگام جابه‌جایی صفحه‌کلید میان فارسی و انگلیسی، میانبر قابل‌اعتماد می‌ماند. ترکیب تکراری با پیامی روشن رد می‌شود.</p></div></div>
-            <div class="step"><div class="step-copy"><h3>در صورت نیاز پاک یا بازنشانی کنید</h3><p>هنگام ثبت Backspace یا Delete را بزنید تا آن کار بدون میانبر بماند؛ یا <strong>بازنشانی میانبرها</strong> را برای برگرداندن همهٔ پیش‌فرض‌ها انتخاب کنید.</p></div></div>
+            <div class="step"><div class="step-copy"><h3>Open the shortcut manager</h3><p>Go to <strong>Settings → Help → Keyboard shortcuts</strong>.</p></div></div>
+            <div class="step"><div class="step-copy"><h3>Select an action</h3><p>Click its current key combination. The recorder changes to <strong>Press shortcut…</strong>.</p></div></div>
+            <div class="step"><div class="step-copy"><h3>Press the new combination</h3><p>Daftar records physical letter keys, so the shortcut remains dependable when your keyboard switches between English and Persian. Duplicate assignments are rejected with a clear message.</p></div></div>
+            <div class="step"><div class="step-copy"><h3>Clear or reset when needed</h3><p>Press Backspace or Delete while recording to leave one action unassigned, or choose <strong>Reset shortcuts</strong> to restore every default.</p></div></div>
           </div>
 
           <div class="callout">
-            <strong>ممکن است مرورگر بعضی ترکیب‌ها را برای خودش نگه داشته باشد.</strong>
-            <p>Daftar این میانبرها را وقتی صفحه‌اش فعال است مدیریت می‌کند. میانبرهای قالب‌بندی فقط با فعال‌بودن ویرایشگر یادداشت کار می‌کنند. اگر extension، مرورگر یا ابزار سیستم‌عامل ترکیبی را زودتر بگیرد، میانبر دیگری تعیین کنید یا دکمهٔ روی صفحه را بزنید.</p>
+            <strong>The browser may reserve a few key combinations.</strong>
+            <p>Daftar handles these shortcuts while its page is active. Formatting shortcuts act only while the note editor is active. If an extension, browser, or operating-system utility claims a combination first, choose a different binding or use the visible button.</p>
           </div>
         </section>
 
         <section class="section" id="privacy" data-nav-section aria-labelledby="privacy-title">
-          <p class="section-label">۱۰ · حریم خصوصی</p>
-          <h2 id="privacy-title"><a class="anchor-link" href="#privacy">دقیقاً بدانید نوشته‌هایتان کجا می‌روند.</a></h2>
-          <p class="section-intro">Daftar بر پایهٔ کار محلی ساخته شده، اما «محلی» مرزهای دقیقی دارد. این بخش آن مرزها را روشن می‌کند.</p>
+          <p class="section-label">10 · Privacy</p>
+          <h2 id="privacy-title"><a class="anchor-link" href="#privacy">Understand exactly where your words go.</a></h2>
+          <p class="section-intro">Daftar is local-first, but “local” has precise boundaries. This section makes those boundaries plain.</p>
 
           <div class="split">
             <article class="info-card">
               <span class="card-icon" aria-hidden="true">⌂</span>
-              <h3>داده‌های دفترچه</h3>
-              <p>یادداشت‌ها و تنظیمات در پروفایل فعلی مرورگر، عمدتاً با IndexedDB و با localStorage به‌عنوان جایگزین، ذخیره می‌شوند. پاک‌کردن site data می‌تواند آن‌ها را از بین ببرد.</p>
+              <h3>Notebook data</h3>
+              <p>Notes and settings are stored in the current browser profile, primarily through IndexedDB with a localStorage fallback. Clearing site data can erase them.</p>
             </article>
             <article class="info-card">
               <span class="card-icon" aria-hidden="true">AI</span>
-              <h3>درخواست‌های AI</h3>
-              <p>فقط متنی که آگاهانه از راه یک کار AI یا دسته‌بندی سراسری می‌فرستید به endpoint تنظیم‌شدهٔ Ollama می‌رود. مقصد نهایی به آن نشانی و مدل انتخاب‌شده بستگی دارد.</p>
+              <h3>AI requests</h3>
+              <p>Only text you deliberately submit through an AI action or the list-wide AI Organize process is sent to the configured Ollama endpoint. The destination depends on that address and the selected model.</p>
             </article>
           </div>
 
           <ul class="checklist">
-            <li>هیچ حساب Daftar یا ورود کاربری لازم نیست.</li>
-            <li>هیچ analytics، تبلیغ یا اسکریپت شخص ثالثی وجود ندارد.</li>
-            <li>نوشتن عادی با Ollama تماس نمی‌گیرد.</li>
-            <li>Daftar هیچ کلید API آنلاین AI ذخیره نمی‌کند، چون این نسخه عمداً provider مستقیم cloud API ندارد.</li>
-            <li>راهنما و دفترچه بدون اینترنت باز می‌شوند.</li>
-            <li>server Ollama روی loopback در همین رایانه می‌ماند.</li>
-            <li>برای مدل راه‌دور یا ابری، احتیاط معمول داده‌های ابری را رعایت کنید.</li>
+            <li>No Daftar account or sign-in is required.</li>
+            <li>No analytics, ads, or third-party scripts are included.</li>
+            <li>Normal writing does not contact Ollama.</li>
+            <li>Daftar stores no online-AI API key because this version intentionally includes no direct cloud-API provider.</li>
+            <li>The manual and notebook can open without internet access.</li>
+            <li>A loopback Ollama server stays on this computer.</li>
+            <li>A remote or cloud model deserves normal cloud-data caution.</li>
           </ul>
 
           <div class="callout warning">
-            <strong>wildcard مبدأ، اجازه است نه جداسازی.</strong>
-            <p><code>OLLAMA_ORIGINS=*</code> به مبدأهای مرورگر اجازهٔ فراخوانی API می‌دهد. چیزی که Ollama را روی همین رایانه نگه می‌دارد اتصال loopback و firewall شماست. endpoint را روی <code>127.0.0.1:11434</code> نگه دارید، وقتی استفاده نمی‌کنید Ollama را ببندید و هنگام اجرای یک سرویس محلی با اجازهٔ گسترده، صفحه‌های نامطمئن مرورگر را باز نگذارید.</p>
+            <strong>The origin wildcard is permission, not isolation.</strong>
+            <p><code>OLLAMA_ORIGINS=*</code> permits browser origins to call the API. The protection that keeps Ollama on this computer is its loopback binding and your firewall. Keep the endpoint at <code>127.0.0.1:11434</code>, close Ollama when you are not using it, and do not open untrusted browser pages while a broadly permitted local service is running.</p>
           </div>
 
           <div class="callout danger">
-            <strong>ذخیره‌سازی محلی همان پشتیبان نیست.</strong>
-            <p>پروفایل مرورگر محل کار روزمره است، نه تضمین بایگانی. پاک‌کردن داده‌های مرورگر، استفاده از ابزار cleanup، ازدست‌دادن دستگاه یا عوض‌کردن پروفایل می‌تواند دسترسی را از بین ببرد. مرتب JSON خروجی بگیرید.</p>
+            <strong>Local storage is not the same as a backup.</strong>
+            <p>Your browser profile is a working location, not an archival guarantee. Clearing browser data, using a cleanup utility, losing the device, or switching profiles can remove access. Export JSON regularly.</p>
           </div>
 
-          <h3>ورود از دفترچهٔ قدیمی</h3>
-          <p>وقتی Daftar نخستین‌بار در همان پروفایل مرورگر Local Notebook پیشین باز می‌شود، یک بار به‌دنبال دادهٔ <code>textEditorHistory</code> می‌گردد و اگر در دسترس باشد خودکار واردش می‌کند. اگر دادهٔ قدیمی در پروفایل یا مبدأ ذخیره‌سازی دیگری است، به‌جای آن از مسیر خروجی/ورود استفاده کنید.</p>
+          <h3>Legacy notebook import</h3>
+          <p>When Daftar first opens in the same browser profile as the earlier Local Notebook, it looks once for that notebook’s <code>textEditorHistory</code> data and imports it automatically when available. If the old data lives in another browser profile or storage origin, use an export/import route instead.</p>
         </section>
 
         <section class="section" id="troubleshooting" data-nav-section aria-labelledby="troubleshooting-title">
-          <p class="section-label">۱۱ · راهنما</p>
-          <h2 id="troubleshooting-title"><a class="anchor-link" href="#troubleshooting">وقتی چیزی درست به نظر نمی‌رسد.</a></h2>
-          <p class="section-intro">از نشانهٔ مشکل شروع کنید. بیشتر ایرادها از مرزهای ذخیره‌سازی مرورگر، اجرا نبودن سرویس Ollama یا بازشدن فایل در پروفایل دیگری از مرورگر می‌آیند.</p>
+          <p class="section-label">11 · Help</p>
+          <h2 id="troubleshooting-title"><a class="anchor-link" href="#troubleshooting">When something feels wrong.</a></h2>
+          <p class="section-intro">Start with the symptom. Most issues come from browser storage boundaries, an Ollama service that is not running, or a file opened in a different browser profile.</p>
 
-          <div class="detail-tools"><button class="quiet-button" type="button" data-toggle-details="#troubleGuides">باز کردن همهٔ پاسخ‌ها</button></div>
+          <div class="detail-tools"><button class="quiet-button" type="button" data-toggle-details="#troubleGuides">Expand all answers</button></div>
           <div class="detail-group" id="troubleGuides">
             <details open>
-              <summary>به نظر می‌رسد یادداشت‌هایم گم شده‌اند</summary>
+              <summary>My notes seem to be missing</summary>
               <div class="detail-content">
                 <ol>
-                  <li>مطمئن شوید همان فایل HTML مربوط به Daftar را در همان مرورگر و همان پروفایل مرورگر باز کرده‌اید.</li>
-                  <li>همه، بایگانی، زباله‌دان، نشان‌شده‌ها و فیلتر موضوع را بررسی و کادر جست‌وجو را پاک کنید.</li>
-                  <li>اگر فایل را تازه جابه‌جا یا تغییر نام داده‌اید، نسخهٔ محل اصلی را دوباره باز کنید.</li>
-                  <li>اگر پشتیبان JSON دارید، از «تنظیمات ← ورود / بازیابی» استفاده کنید.</li>
+                  <li>Confirm that you opened the same Daftar HTML file, in the same browser and browser profile.</li>
+                  <li>Check All, Archive, Trash, Starred, and topic filters; clear the search field.</li>
+                  <li>If you recently moved or renamed the file, reopen the original location.</li>
+                  <li>If you have a JSON backup, use Settings → Import / restore.</li>
                 </ol>
-                <p>هنگام بررسی مشکل، داده‌های مرورگر را پاک نکنید.</p>
+                <p>Do not clear browser data while investigating.</p>
               </div>
             </details>
             <details>
-              <summary>وضعیت ذخیره خطا نشان می‌دهد</summary>
+              <summary>The save status shows an error</summary>
               <div class="detail-content">
-                <p>اول متن یادداشت جاری را جایی امن کپی کنید. اگر فرمان هنوز کار می‌کند، سپس پشتیبان JSON بگیرید. ممکن است فضای ذخیرهٔ مرورگر در دسترس نباشد، پر شده باشد، با سیاست private browsing مسدود یا آسیب دیده باشد. فایل اصلی دفترچه را در پنجرهٔ عادی مرورگر امتحان کنید و از extensionهای تهاجمی پاک‌سازی فضای ذخیره دوری کنید.</p>
+                <p>First copy the current note text somewhere safe. Then export a JSON backup if the command still works. Browser storage may be unavailable, full, blocked by private browsing policy, or damaged. Try the canonical notebook file in a normal browser window and avoid aggressive storage-cleanup extensions.</p>
               </div>
             </details>
             <details>
-              <summary>جهت متن فارسی درست به نظر نمی‌رسد</summary>
+              <summary>Persian text direction looks wrong</summary>
               <div class="detail-content">
-                <p>جهت همان یادداشت را به‌جای خودکار روی <strong>RTL</strong> بگذارید. برای یادداشت بیشتر انگلیسی LTR را برگزینید. زبان رابط جداست؛ بنابراین تغییر فارسی/English در تنظیمات، جهت یک یادداشت را اصلاح نمی‌کند.</p>
+                <p>Set that note to <strong>RTL</strong> instead of Auto. For English-heavy notes choose LTR. Interface language is separate, so changing English/فارسی in Settings will not repair an individual note’s direction.</p>
               </div>
             </details>
             <details>
-              <summary>فونت انتخاب‌شده متفاوت دیده نمی‌شود</summary>
+              <summary>A chosen font does not look different</summary>
               <div class="detail-content">
-                <p>فونت Daftar در خود فایل قرار دارد، اما چند گزینهٔ دیگر به فونت نصب‌شده روی رایانه وابسته‌اند. اگر فونت انتخابی موجود نباشد، مرورگر جایگزین به کار می‌برد. آن فونت را روی دستگاه نصب کنید یا به Daftar، Tahoma، Segoe UI، Georgia، Times New Roman یا Monospace برگردید.</p>
+                <p>The Daftar font is embedded, but several other choices depend on fonts installed on your computer. If a chosen font is missing, the browser uses a fallback. Install that font locally or return to Daftar, Tahoma, Segoe UI, Georgia, Times New Roman, or Monospace.</p>
               </div>
             </details>
             <details>
-              <summary>جست‌وجو یادداشت را پیدا نمی‌کند</summary>
+              <summary>Search does not find a note</summary>
               <div class="detail-content">
-                <p>جست‌وجو عنوان، متن، موضوع و برچسب را می‌بیند، اما نمای فعلی هم اهمیت دارد. جست‌وجو را پاک کنید، به تناسب به همه، بایگانی یا زباله‌دان بروید و عبارت کوتاه‌تر و متمایزی را امتحان کنید.</p>
+                <p>Search examines title, content, topic, and tags, but the current view still matters. Clear the search, switch to All, Archive, or Trash as appropriate, and try a shorter distinctive phrase.</p>
               </div>
             </details>
             <details>
-              <summary>تصادفی متن را با نتیجهٔ AI جایگزین کردم</summary>
+              <summary>I accidentally replaced text with AI</summary>
               <div class="detail-content">
-                <p>منوی «بیشتر» یادداشت را باز کنید، «تاریخچهٔ نسخه‌ها» را بزنید و snapshot ایمنی ساخته‌شده پیش از تغییر AI را برگردانید. Daftar وضعیت پیش از تغییر را دقیقاً برای چنین موقعیتی نگه می‌دارد.</p>
+                <p>Open the note’s More menu, choose Version history, and restore the safety snapshot created before the AI change. Daftar preserves the pre-change state precisely for this situation.</p>
               </div>
             </details>
             <details>
-              <summary>تصادفی یادداشتی را حذف کردم</summary>
+              <summary>I accidentally deleted a note</summary>
               <div class="detail-content">
-                <p>زباله‌دان را باز کنید، یادداشت را برگزینید، «بیشتر» را بزنید و «بازگردانی» را انتخاب کنید. اگر «حذف همیشگی» را زده و تأیید کرده‌اید، از پشتیبان JSON بازیابی کنید؛ حذف همیشگی در خود دفتر فعال برگشت‌پذیر نیست.</p>
+                <p>Open Trash, select the note, open More, and choose Restore. If you already chose Delete permanently and confirmed it, restore from a JSON backup; permanent deletion is not reversible inside the live notebook.</p>
               </div>
             </details>
             <details>
-              <summary>پاسخ AI ضعیف است یا سبک درستی ندارد</summary>
+              <summary>The AI answer is weak or in the wrong style</summary>
               <div class="detail-content">
-                <p>مدلی توانمندتر را امتحان کنید، prompt قابل‌ویرایش آن کار را بهتر بنویسید، یک دستور سیستمی دقیق بیفزایید یا با <strong>فقط متن انتخاب‌شده</strong> زمینهٔ نامرتبط را کم کنید. نمونه: «فقط برای وضوح بازنویسی کن؛ لحن من، ترتیب بندها، واقعیت‌ها و اصطلاحات فارسی را نگه دار.» همیشه پیش از اعمال، خروجی مدل را بررسی کنید.</p>
+                <p>Try a more capable model, improve the action’s editable prompt, add a precise system-prompt preference, or use <strong>Use selected text</strong> to reduce irrelevant context. For example: “Rewrite only for clarity; keep my voice, paragraph order, facts, and Persian terminology.” Always review model output before applying it.</p>
               </div>
             </details>
             <details>
-              <summary>AI نمی‌تواند یادداشت را جایگزین کند چون تغییر کرده است</summary>
+              <summary>The AI cannot replace the note because it changed</summary>
               <div class="detail-content">
-                <p>این محافظت عمدی است. هنگام تولید مدل، متن منبع را ویرایش کرده‌اید و ممکن است نتیجهٔ قبلی دیگر با آن هماهنگ نباشد. اگر مفید است پیش‌نمایش را کپی کنید و سپس کار را روی متن فعلی دوباره اجرا کنید.</p>
+                <p>This is intentional protection. You edited the source while the model was generating, so the old result may no longer match. Copy the preview if useful, then run the action again against the current text.</p>
               </div>
             </details>
             <details>
-              <summary>دسته‌بندی با هوش مصنوعی از یک یادداشت گذشت</summary>
+              <summary>AI Organize skipped a note</summary>
               <div class="detail-content">
-                <p>یادداشت باید متن داشته باشد، در زباله‌دان نباشد و عنوان خالی/پیش‌فرض، موضوع خالی یا فهرست برچسب خالی داشته باشد. عنوان‌های پیش‌فرض شناخته‌شده شامل <strong>یادداشت بی‌عنوان</strong>، <strong>Untitled note</strong> و <strong>New Text</strong> نسخهٔ قدیمی‌اند. یادداشت کاملاً دسته‌بندی‌شده عمداً رد می‌شود. اگر مدل اطلاعات ناقص برگرداند یا یادداشت هنگام درخواست تغییر کرد، دسته‌بندی را دوباره اجرا کنید.</p>
+                <p>The note must contain text, must not be in Trash, and must have an empty/default title, empty topic, or empty tag list. Recognized default titles include <strong>Untitled note</strong> and the legacy <strong>New Text</strong>. A fully organized note is intentionally skipped. If the model returned incomplete metadata or the note changed during the request, run the organizer again.</p>
               </div>
             </details>
             <details>
-              <summary>نشانه‌های Markdown در ویرایشگر دیده می‌شوند</summary>
+              <summary>Markdown marks are visible in the editor</summary>
               <div class="detail-content">
-                <p>این نمای منبعِ موردنظر است، نه خرابی قالب‌بندی. <strong>پیش‌نمایش</strong> را بزنید تا <code>**bold**</code>، سرعنوان‌ها، فهرست‌ها و نقل‌قول‌ها دیداری پردازش شوند. برای متن خوانا از «کپی» و برای حفظ نشانه‌ها از «بیشتر ← کپی به صورت Markdown» استفاده کنید.</p>
+                <p>This is the intended source view, not a formatting failure. Choose <strong>Preview</strong> to render <code>**bold**</code>, headings, lists, and quotes visually. Use Copy for readable text or More → Copy as Markdown to preserve the marks.</p>
               </div>
             </details>
             <details>
-              <summary>نوار یادداشت‌ها بسته به نظر می‌رسد</summary>
+              <summary>The notebook sidebar appears closed</summary>
               <div class="detail-content">
-                <p>از دکمهٔ همیشگی hamburger در لبهٔ دفتر استفاده کنید. در موبایل نوار کناری را به‌صورت overlay باز می‌کند و در desktop پهنای ذخیره‌شده را برمی‌گرداند. اگر نسخهٔ قدیمی Daftar پس از تغییر زبان کنترل بازکردن را گم کرده، فایل V2 فعلی را باز کنید—فضای ذخیرهٔ مرورگر یا یادداشت‌هایتان را پاک نکنید.</p>
+                <p>Use the permanent hamburger button at the notebook edge. On mobile it opens the sidebar as an overlay; on desktop it restores the saved width. If an older Daftar build lost the reopen control after a language change, open the current V2 file—do not delete browser storage or your notes.</p>
               </div>
             </details>
             <details>
-              <summary>یک میانبر صفحه‌کلید کار نمی‌کند</summary>
+              <summary>A keyboard shortcut does not work</summary>
               <div class="detail-content">
-                <p>«تنظیمات ← راهنما ← میانبرهای صفحه‌کلید» را باز و ترکیب فعلی را بررسی کنید. میانبر قالب‌بندی فقط هنگام فعال‌بودن ویرایشگر اجرا می‌شود. extension مرورگر یا ابزار سیستم‌عامل ممکن است ترکیبی را برای خود نگه دارد؛ در صورت نیاز ترکیب دیگری ثبت کنید. با «بازنشانی میانبرها» پیش‌فرض‌های مستند را برگردانید.</p>
+                <p>Open Settings → Help → Keyboard shortcuts and confirm the current assignment. Formatting shortcuts only run while the note editor is active. Browser extensions and operating-system utilities can reserve combinations; record another one if necessary. Choose Reset shortcuts to restore the documented defaults.</p>
               </div>
             </details>
             <details>
-              <summary>رابط روی صفحهٔ کوچک شلوغ است</summary>
+              <summary>The interface feels crowded on a small screen</summary>
               <div class="detail-content">
-                <p>موضوع‌ها و گروه‌های زمانی قدیمی را جمع کنید، جداکنندهٔ افقی نوار کناری را بکشید و از کلید نوار کناری، حالت تمرکز یا پیش‌نمایش استفاده کنید. Daftar با صفحهٔ باریک سازگار می‌شود، اما نوشتن طولانی طبیعتاً در حالت تمرکز راحت‌تر است.</p>
+                <p>Collapse Topics and old age groups, drag the sidebar’s horizontal divider, use the sidebar toggle, Focus mode, or Preview. Daftar adapts to narrow screens, but long writing sessions are naturally more comfortable in Focus mode.</p>
               </div>
             </details>
           </div>
 
-          <h3>بررسی سلامت پنج‌دقیقه‌ای</h3>
+          <h3>A five-minute health check</h3>
           <ul class="checklist">
-            <li>یک یادداشت آزمایشی کوتاه بسازید و مطمئن شوید وضعیت به «ذخیره شد» می‌رسد.</li>
-            <li>صفحه را refresh کنید و ببینید یادداشت آزمایشی باقی مانده است.</li>
-            <li>یک snapshot بسازید و بازیابی‌اش کنید.</li>
-            <li>پشتیبان JSON خروجی بگیرید و دانلودشدنش را بررسی کنید.</li>
-            <li>اگر از AI استفاده می‌کنید، متصل شوید و یادداشت آزمایشی را خلاصه کنید.</li>
-            <li>فایل سالم و آزمودهٔ دفترچه را در یک محل ثابت نگه دارید.</li>
+            <li>Create a short test note and verify the status becomes Saved.</li>
+            <li>Refresh the page and confirm the test note remains.</li>
+            <li>Create and restore one snapshot.</li>
+            <li>Export a JSON backup and confirm it downloads.</li>
+            <li>If using AI, connect and summarize the test note.</li>
+            <li>Keep the successful notebook file in one stable location.</li>
           </ul>
 
           <div class="closing">
-            <h2>از اینکه Daftar را همراه نوشته‌هایتان کرده‌اید سپاسگزاریم.</h2>
-            <p>برای ساختن فضایی آرام، زیبا و کاربردی برای شما عزیزان، با دل و جان وقت گذاشته‌ایم. استفاده و به‌اشتراک‌گذاری Daftar برای مقاصد شخصی و غیرتجاری آزاد است. آزادانه بنویسید، سبک دسته‌بندی کنید، منظم پشتیبان بگیرید و بگذارید هوش مصنوعی محلی فقط وقتی شایسته است یاری‌تان کند.</p>
-            <p class="contact-line">اگر Daftar را دوست داشتید، در Jingala به ما بپیوندید و برای پرسش‌ها، ایده‌ها و خبرهای آینده به <a href="https://telegram.com/Jingalacorp" target="_blank" rel="noopener noreferrer">telegram.com/Jingalacorp</a> سر بزنید. به امید دیدار.</p>
-            <a class="primary-link" href="#quick-start">بازگشت به شروع سریع <span aria-hidden="true">↑</span></a>
+            <h2>Keep writing. Daftar will keep the room ready.</h2>
+            <p>The best system is the one that disappears when the thought arrives. Capture freely, organize lightly, back up regularly, and let local AI assist only when it earns its place.</p>
+            <p class="contact-line">Questions, ideas, or future Daftar news: <a href="https://telegram.com/Jingalacorp" target="_blank" rel="noopener noreferrer">telegram.com/Jingalacorp</a></p>
+            <a class="primary-link" href="#quick-start">Return to quick start <span aria-hidden="true">↑</span></a>
           </div>
         </section>
       </article>
     </main>
   </div>
 
-  <a class="made-by" href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">ساخته‌شده با ChatGPT</a>
-  <button class="top-button" id="topButton" type="button" aria-label="بازگشت به بالای صفحه">
+  <a class="made-by" href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">Made by ChatGPT</a>
+  <button class="top-button" id="topButton" type="button" aria-label="Back to top">
     <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg>
   </button>
-  <div class="toast" id="toast" role="status" aria-live="polite">کپی شد</div>
+  <div class="toast" id="toast" role="status" aria-live="polite">Copied</div>
 
   <script>
     (function () {
@@ -2230,8 +2120,8 @@
       function applyTheme(theme, persist) {
         root.setAttribute("data-theme", theme);
         var dark = theme === "dark";
-        themeLabel.textContent = dark ? "حالت روشن" : "حالت تاریک";
-        themeButton.setAttribute("aria-label", dark ? "تغییر به حالت روشن" : "تغییر به حالت تاریک");
+        themeLabel.textContent = dark ? "Light mode" : "Dark mode";
+        themeButton.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
         var themeColor = document.querySelector('meta[name="theme-color"]');
         if (themeColor) themeColor.setAttribute("content", dark ? "#151412" : "#f4efe7");
         if (persist) {
@@ -2247,7 +2137,7 @@
       function setNav(open) {
         body.classList.toggle("nav-open", open);
         menuButton.setAttribute("aria-expanded", open ? "true" : "false");
-        menuButton.setAttribute("aria-label", open ? "بستن فهرست راهنما" : "باز کردن فهرست راهنما");
+        menuButton.setAttribute("aria-label", open ? "Close manual navigation" : "Open manual navigation");
       }
 
       menuButton.addEventListener("click", function () { setNav(!body.classList.contains("nav-open")); });
@@ -2304,8 +2194,8 @@
           var value = button.getAttribute("data-copy") || "";
           var done = function () {
             var old = button.textContent;
-            button.textContent = "کپی شد";
-            showToast("دستور کپی شد");
+            button.textContent = "Copied";
+            showToast("Command copied");
             setTimeout(function () { button.textContent = old; }, 1300);
           };
           if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -2325,7 +2215,7 @@
         document.body.appendChild(textarea);
         textarea.select();
         try { document.execCommand("copy"); done(); }
-        catch (error) { showToast("دستور را انتخاب و دستی کپی کنید"); }
+        catch (error) { showToast("Select and copy the command manually"); }
         textarea.remove();
       }
 
@@ -2336,7 +2226,7 @@
           var items = Array.prototype.slice.call(host.querySelectorAll("details"));
           var shouldOpen = items.some(function (item) { return !item.open; });
           items.forEach(function (item) { item.open = shouldOpen; });
-          button.textContent = shouldOpen ? "بستن همه" : (host.id === "aiLongGuides" ? "باز کردن همهٔ راهنمای AI" : "باز کردن همهٔ پاسخ‌ها");
+          button.textContent = shouldOpen ? "Collapse all" : (host.id === "aiLongGuides" ? "Expand all AI help" : "Expand all answers");
         });
       });
 
