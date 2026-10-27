@@ -8,7 +8,7 @@
 
 ## استفاده
 
-- **باز کردن Daftar:** https://aideephub.github.io/daftar-local-notebook/
+- **باز کردن دفتر:** https://aideephub.github.io/daftar-local-notebook/
 - **راهنمای فارسی:** https://aideephub.github.io/daftar-local-notebook/manual-fa.html
 - **English manual:** https://aideephub.github.io/daftar-local-notebook/manual.html
 
