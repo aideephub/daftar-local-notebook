@@ -1,0 +1,2200 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="راهنمای فارسی Daftar V2 برای شروع نوشتن، سامان‌دهی یادداشت‌ها، پشتیبان‌گیری و استفادهٔ اختیاری از Ollama.">
+  <meta name="theme-color" content="#f4efe7">
+  <title>Daftar — راهنمای کاربر فارسی</title>
+  <style>
+    :root {
+      --bg: #f4efe7;
+      --bg-raised: #faf7f1;
+      --paper: rgba(255, 253, 248, .88);
+      --paper-solid: #fffdf8;
+      --ink: #211d19;
+      --muted: #706961;
+      --soft: #ebe3d8;
+      --line: rgba(43, 35, 28, .13);
+      --line-strong: rgba(43, 35, 28, .22);
+      --accent: #a64b2a;
+      --accent-deep: #77321d;
+      --accent-soft: #f3ddd1;
+      --gold: #b8832f;
+      --sage: #3f695f;
+      --sage-soft: #dcebe6;
+      --blue: #496a83;
+      --danger: #a33d3d;
+      --code: #28231f;
+      --code-ink: #f8f0e5;
+      --shadow-sm: 0 8px 24px rgba(49, 37, 26, .08);
+      --shadow-md: 0 18px 50px rgba(49, 37, 26, .13);
+      --shadow-lg: 0 30px 80px rgba(49, 37, 26, .18);
+      --radius-sm: 12px;
+      --radius: 20px;
+      --radius-lg: 30px;
+      --sidebar: 294px;
+      --header: 72px;
+      --serif: Georgia, "Times New Roman", Times, serif;
+      --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, Arial, sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    }
+
+    html[data-theme="dark"] {
+      --bg: #151412;
+      --bg-raised: #1c1a17;
+      --paper: rgba(31, 29, 26, .88);
+      --paper-solid: #201e1b;
+      --ink: #f2ece2;
+      --muted: #b4aca2;
+      --soft: #2c2925;
+      --line: rgba(255, 246, 232, .12);
+      --line-strong: rgba(255, 246, 232, .21);
+      --accent: #e17b50;
+      --accent-deep: #f2a27e;
+      --accent-soft: #4a2d22;
+      --gold: #d9a653;
+      --sage: #82b3a6;
+      --sage-soft: #243b35;
+      --blue: #85a9c2;
+      --danger: #ef8c8c;
+      --code: #0e0e0d;
+      --code-ink: #f8f0e5;
+      --shadow-sm: 0 8px 24px rgba(0, 0, 0, .24);
+      --shadow-md: 0 18px 50px rgba(0, 0, 0, .32);
+      --shadow-lg: 0 30px 80px rgba(0, 0, 0, .42);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+    body {
+      margin: 0;
+      min-width: 300px;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 88% 8%, color-mix(in srgb, var(--accent) 11%, transparent), transparent 29rem),
+        radial-gradient(circle at 12% 48%, color-mix(in srgb, var(--sage) 8%, transparent), transparent 35rem),
+        var(--bg);
+      font: 16px/1.7 var(--sans);
+      transition: background-color .25s ease, color .25s ease;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .24;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(to bottom, black, transparent 76%);
+    }
+
+    ::selection { color: var(--paper-solid); background: var(--accent); }
+    a { color: inherit; }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    svg { display: block; }
+
+    .skip-link {
+      position: fixed;
+      left: 16px;
+      top: -60px;
+      z-index: 1000;
+      padding: 10px 15px;
+      color: white;
+      background: var(--accent);
+      border-radius: 10px;
+      text-decoration: none;
+      transition: top .2s ease;
+    }
+    .skip-link:focus { top: 12px; }
+
+    .blessing {
+      min-height: 30px;
+      padding: 6px 20px 5px;
+      text-align: center;
+      color: var(--muted);
+      font: 600 11px/1.4 var(--sans);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .progress-track {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 120;
+      height: 3px;
+      background: transparent;
+    }
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--accent), var(--sage));
+      box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 65%, transparent);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 80;
+      height: var(--header);
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 0 26px;
+      background: color-mix(in srgb, var(--bg) 80%, transparent);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px) saturate(1.3);
+    }
+
+    .menu-button, .theme-button, .quiet-button, .copy-button, .top-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 0 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ink);
+      background: color-mix(in srgb, var(--paper-solid) 72%, transparent);
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, .04);
+      transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+    .menu-button:hover, .theme-button:hover, .quiet-button:hover, .copy-button:hover, .top-button:hover {
+      transform: translateY(-2px);
+      border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+      background: var(--paper-solid);
+      box-shadow: var(--shadow-sm);
+    }
+    .menu-button:active, .theme-button:active, .quiet-button:active, .copy-button:active, .top-button:active {
+      transform: translateY(0);
+    }
+    .menu-button { display: none; width: 42px; padding: 0; }
+    .button-icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    .top-brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+      text-decoration: none;
+    }
+    .brand-mark {
+      position: relative;
+      width: 37px;
+      height: 42px;
+      flex: 0 0 auto;
+      overflow: hidden;
+      border-radius: 7px 11px 11px 7px;
+      background: linear-gradient(145deg, var(--accent), var(--accent-deep));
+      box-shadow: 0 8px 20px color-mix(in srgb, var(--accent) 30%, transparent);
+      transform: rotate(-3deg);
+      transition: transform .25s ease;
+    }
+    .top-brand:hover .brand-mark { transform: rotate(2deg) scale(1.04); }
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      inset: 7px 7px 7px 10px;
+      border: 1px solid rgba(255,255,255,.48);
+      border-radius: 3px 6px 6px 3px;
+      background: repeating-linear-gradient(to bottom, rgba(255,255,255,.24) 0 1px, transparent 1px 6px);
+    }
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 5px;
+      width: 2px;
+      background: rgba(255,255,255,.4);
+    }
+    .brand-copy { display: grid; line-height: 1.1; }
+    .brand-copy strong { font-family: var(--serif); font-size: 20px; letter-spacing: -.02em; }
+    .brand-copy small { margin-top: 4px; color: var(--muted); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+
+    .top-context {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-left: auto;
+    }
+    .reading-label {
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .theme-button { min-width: 116px; }
+    .theme-button .moon { display: none; }
+    html[data-theme="dark"] .theme-button .sun { display: none; }
+    html[data-theme="dark"] .theme-button .moon { display: block; }
+
+    .shell {
+      display: grid;
+      grid-template-columns: var(--sidebar) minmax(0, 1fr);
+      gap: 0;
+      max-width: 1680px;
+      margin: 0 auto;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: var(--header);
+      align-self: start;
+      height: calc(100vh - var(--header));
+      padding: 30px 22px 88px;
+      overflow: auto;
+      border-right: 1px solid var(--line);
+      scrollbar-width: thin;
+    }
+    .sidebar-kicker {
+      margin: 0 10px 14px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+    .manual-nav {
+      display: grid;
+      gap: 4px;
+    }
+    .manual-nav a {
+      position: relative;
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr);
+      align-items: center;
+      min-height: 43px;
+      padding: 8px 10px;
+      overflow: hidden;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 650;
+      transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .manual-nav a::after {
+      content: "";
+      position: absolute;
+      inset: auto 10px 5px 40px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s ease;
+    }
+    .manual-nav a:hover {
+      color: var(--ink);
+      background: color-mix(in srgb, var(--paper-solid) 55%, transparent);
+      transform: translateX(3px);
+    }
+    .manual-nav a:hover::after { transform: scaleX(1); }
+    .manual-nav a.active {
+      color: var(--accent-deep);
+      background: var(--accent-soft);
+      border-color: color-mix(in srgb, var(--accent) 22%, transparent);
+    }
+    .nav-index {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: -.02em;
+    }
+    .sidebar-note {
+      margin: 24px 8px 0;
+      padding: 16px;
+      color: var(--muted);
+      background: color-mix(in srgb, var(--paper-solid) 50%, transparent);
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      font-size: 11px;
+      line-height: 1.55;
+    }
+    .sidebar-note strong { display: block; margin-bottom: 4px; color: var(--ink); font-size: 12px; }
+
+    .sidebar-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 89;
+      display: none;
+      background: rgba(10, 9, 8, .52);
+      backdrop-filter: blur(3px);
+    }
+
+    .made-by {
+      position: fixed;
+      left: 22px;
+      bottom: 18px;
+      z-index: 95;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      color: var(--muted);
+      background: color-mix(in srgb, var(--bg-raised) 90%, transparent);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      box-shadow: var(--shadow-sm);
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 700;
+      backdrop-filter: blur(14px);
+      transition: color .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .made-by::before {
+      content: "✦";
+      color: var(--accent);
+      transition: transform .35s ease;
+    }
+    .made-by:hover { color: var(--ink); border-color: var(--accent); transform: translateY(-2px); }
+    .made-by:hover::before { transform: rotate(180deg); }
+
+    main {
+      min-width: 0;
+      padding: 58px clamp(24px, 5vw, 86px) 120px;
+    }
+    .article {
+      width: min(1040px, 100%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(320px, .98fr);
+      gap: clamp(28px, 5vw, 74px);
+      align-items: center;
+      min-height: 570px;
+      padding: 22px 0 68px;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      right: 37%;
+      top: 8%;
+      border: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 24px color-mix(in srgb, var(--gold) 5%, transparent);
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 19px;
+      color: var(--accent-deep);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1, h2, h3, h4 { text-wrap: balance; }
+    h1 {
+      margin: 0;
+      max-width: 700px;
+      font: 500 clamp(52px, 7vw, 86px)/.94 var(--serif);
+      letter-spacing: -.055em;
+    }
+    .hero-title-accent { color: var(--accent); font-style: italic; }
+    .hero-deck {
+      max-width: 640px;
+      margin: 27px 0 0;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 20px);
+      line-height: 1.65;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+    }
+    .primary-link, .secondary-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .primary-link {
+      color: white;
+      background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+      box-shadow: 0 12px 26px color-mix(in srgb, var(--accent) 27%, transparent);
+    }
+    .secondary-link {
+      color: var(--ink);
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+    .primary-link:hover, .secondary-link:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .hero-meta span { display: inline-flex; align-items: center; gap: 7px; }
+    .hero-meta span::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); box-shadow: 0 0 0 4px var(--sage-soft); }
+
+    .notebook-visual {
+      position: relative;
+      min-height: 475px;
+      perspective: 1200px;
+    }
+    .visual-glow {
+      position: absolute;
+      inset: 15% 4% 8%;
+      background: radial-gradient(circle, color-mix(in srgb, var(--accent) 25%, transparent), transparent 66%);
+      filter: blur(22px);
+    }
+    .notebook-window {
+      position: absolute;
+      inset: 25px 0 40px 10px;
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      border-radius: 25px;
+      background: var(--paper-solid);
+      box-shadow: var(--shadow-lg);
+      transform: rotateY(-7deg) rotateX(2deg) rotateZ(1.5deg);
+      transition: transform .5s cubic-bezier(.2,.8,.2,1);
+    }
+    .notebook-visual:hover .notebook-window { transform: rotateY(0) rotateX(0) rotateZ(0) translateY(-7px); }
+    .mock-top {
+      height: 53px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 15px;
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--bg-raised) 72%, var(--paper-solid));
+    }
+    .mock-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--soft); }
+    .mock-brand { width: 75px; height: 8px; margin-left: 7px; border-radius: 8px; background: var(--ink); opacity: .78; }
+    .mock-pill { width: 53px; height: 23px; margin-left: auto; border-radius: 20px; background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent); }
+    .mock-body { display: grid; grid-template-columns: 106px 1fr; min-height: 365px; }
+    .mock-side { padding: 17px 12px; background: color-mix(in srgb, var(--bg) 65%, var(--paper-solid)); border-right: 1px solid var(--line); }
+    .mock-search { height: 25px; margin-bottom: 18px; border: 1px solid var(--line); border-radius: 8px; }
+    .mock-navline { width: 84%; height: 6px; margin: 14px 0; border-radius: 5px; background: var(--muted); opacity: .36; }
+    .mock-navline.active { width: 100%; height: 27px; margin: 10px 0; background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent); opacity: 1; }
+    .mock-note { padding: 26px 28px; }
+    .mock-note small { display: block; margin-bottom: 10px; color: var(--accent); font-weight: 800; }
+    .mock-heading { width: 76%; height: 21px; margin-bottom: 23px; border-radius: 6px; background: var(--ink); opacity: .86; }
+    .mock-line { height: 7px; margin: 12px 0; border-radius: 9px; background: var(--muted); opacity: .29; }
+    .mock-line:nth-child(4) { width: 92%; }
+    .mock-line:nth-child(5) { width: 84%; }
+    .mock-line:nth-child(6) { width: 96%; }
+    .mock-line:nth-child(7) { width: 66%; }
+    .mock-tags { display: flex; gap: 7px; margin-top: 25px; }
+    .mock-tags i { width: 54px; height: 19px; border-radius: 20px; background: var(--sage-soft); }
+    .floating-card {
+      position: absolute;
+      right: -18px;
+      bottom: 3px;
+      width: 210px;
+      padding: 16px 18px;
+      color: var(--ink);
+      background: color-mix(in srgb, var(--paper-solid) 92%, transparent);
+      border: 1px solid var(--line-strong);
+      border-radius: 17px;
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(12px);
+      transform: rotate(-3deg);
+      animation: float 4.5s ease-in-out infinite;
+    }
+    .floating-card strong { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; font-size: 12px; }
+    .floating-card strong::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #57a26d; box-shadow: 0 0 0 4px color-mix(in srgb, #57a26d 15%, transparent); }
+    .floating-card small { color: var(--muted); font-size: 10px; }
+    @keyframes float { 0%,100% { transform: rotate(-3deg) translateY(0); } 50% { transform: rotate(-1deg) translateY(-9px); } }
+
+    .section {
+      position: relative;
+      padding: 94px 0 24px;
+      border-top: 1px solid var(--line);
+    }
+    .section:first-of-type { border-top: 0; }
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin: 0 0 14px;
+      color: var(--accent);
+      font: 800 11px/1.2 var(--mono);
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .section-label::after { content: ""; width: 48px; height: 1px; background: currentColor; opacity: .5; }
+    .section h2 {
+      max-width: 820px;
+      margin: 0;
+      font: 500 clamp(38px, 5vw, 60px)/1.03 var(--serif);
+      letter-spacing: -.04em;
+    }
+    .section-intro {
+      max-width: 800px;
+      margin: 20px 0 38px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+    }
+    .section h3 {
+      margin: 44px 0 14px;
+      font: 600 clamp(23px, 3vw, 31px)/1.15 var(--serif);
+      letter-spacing: -.025em;
+    }
+    .section h4 { margin: 0 0 8px; font-size: 15px; line-height: 1.35; }
+    .section p { margin: 0 0 15px; }
+    .section p + p { margin-top: 10px; }
+    .section ul, .section ol { padding-left: 22px; }
+    .section li + li { margin-top: 8px; }
+    .section code {
+      padding: .15em .42em;
+      color: var(--accent-deep);
+      background: var(--accent-soft);
+      border-radius: 6px;
+      font: 600 .86em/1.4 var(--mono);
+    }
+    .anchor-link {
+      color: inherit;
+      text-decoration: none;
+    }
+    .anchor-link:hover { color: var(--accent); }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .feature-card, .info-card, .mini-card {
+      position: relative;
+      overflow: hidden;
+      padding: 23px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .feature-card::before, .info-card::before {
+      content: "";
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      right: -80px;
+      top: -85px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      transition: transform .4s ease;
+    }
+    .feature-card:hover, .info-card:hover, .mini-card:hover {
+      transform: translateY(-6px);
+      border-color: color-mix(in srgb, var(--accent) 34%, var(--line));
+      box-shadow: var(--shadow-md);
+    }
+    .feature-card:hover::before, .info-card:hover::before { transform: scale(1.45); }
+    .card-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      color: var(--accent-deep);
+      background: var(--accent-soft);
+      border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
+      border-radius: 13px;
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 700;
+      transform: rotate(-3deg);
+    }
+    .feature-card h3, .info-card h3 { margin: 0 0 8px; font: 600 19px/1.25 var(--serif); }
+    .feature-card p, .info-card p, .mini-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+
+    .callout {
+      position: relative;
+      margin: 28px 0;
+      padding: 22px 24px 22px 58px;
+      color: var(--ink);
+      background: color-mix(in srgb, var(--sage-soft) 75%, var(--paper-solid));
+      border: 1px solid color-mix(in srgb, var(--sage) 28%, var(--line));
+      border-radius: var(--radius);
+    }
+    .callout::before {
+      content: "i";
+      position: absolute;
+      left: 20px;
+      top: 22px;
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      color: var(--paper-solid);
+      background: var(--sage);
+      border-radius: 50%;
+      font: 700 italic 14px/1 var(--serif);
+    }
+    .callout.warning {
+      background: color-mix(in srgb, #e9c66e 17%, var(--paper-solid));
+      border-color: color-mix(in srgb, var(--gold) 36%, var(--line));
+    }
+    .callout.warning::before { content: "!"; background: var(--gold); font: 800 13px/1 var(--sans); }
+    .callout.danger {
+      background: color-mix(in srgb, var(--danger) 9%, var(--paper-solid));
+      border-color: color-mix(in srgb, var(--danger) 32%, var(--line));
+    }
+    .callout.danger::before { content: "!"; background: var(--danger); font: 800 13px/1 var(--sans); }
+    .callout strong { display: block; margin-bottom: 3px; }
+    .callout p:last-child { margin-bottom: 0; }
+
+    .steps {
+      display: grid;
+      gap: 2px;
+      margin: 30px 0;
+      counter-reset: manual-step;
+    }
+    .step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 56px minmax(0, 1fr);
+      gap: 18px;
+      min-height: 112px;
+      counter-increment: manual-step;
+    }
+    .step::before {
+      content: counter(manual-step, decimal-leading-zero);
+      position: relative;
+      z-index: 2;
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      color: var(--accent-deep);
+      background: var(--accent-soft);
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+      border-radius: 15px;
+      font: 800 11px/1 var(--mono);
+      transition: transform .2s ease, background .2s ease;
+    }
+    .step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      left: 23px;
+      top: 49px;
+      bottom: -1px;
+      width: 1px;
+      background: linear-gradient(var(--accent), var(--line));
+    }
+    .step:hover::before { transform: rotate(-5deg) scale(1.06); background: var(--paper-solid); }
+    .step-copy { padding: 2px 0 30px; }
+    .step-copy h3 { margin: 0 0 7px; font: 650 18px/1.3 var(--sans); letter-spacing: -.01em; }
+    .step-copy p { max-width: 790px; margin: 0; color: var(--muted); font-size: 14px; }
+
+    .key {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      min-height: 27px;
+      padding: 2px 8px;
+      color: var(--ink);
+      background: var(--paper-solid);
+      border: 1px solid var(--line-strong);
+      border-bottom-width: 3px;
+      border-radius: 7px;
+      box-shadow: 0 2px 0 var(--soft);
+      font: 700 11px/1 var(--mono);
+      white-space: nowrap;
+    }
+
+    .tour {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(260px, .6fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+    .tour-board {
+      position: relative;
+      min-height: 430px;
+      overflow: hidden;
+      background: var(--paper-solid);
+      border: 1px solid var(--line-strong);
+      border-radius: 24px;
+      box-shadow: var(--shadow-md);
+    }
+    .tour-top { height: 58px; display: flex; align-items: center; gap: 8px; padding: 0 18px; background: var(--bg-raised); border-bottom: 1px solid var(--line); }
+    .tour-logo { width: 75px; height: 11px; margin-right: auto; border-radius: 8px; background: var(--ink); opacity: .8; }
+    .tour-action { width: 62px; height: 28px; border-radius: 20px; background: var(--soft); }
+    .tour-action.accent { background: var(--accent); }
+    .tour-body { display: grid; grid-template-columns: 30% 70%; min-height: 372px; }
+    .tour-side { padding: 22px 16px; background: color-mix(in srgb, var(--bg) 64%, var(--paper-solid)); border-right: 1px solid var(--line); }
+    .tour-search { height: 32px; border: 1px solid var(--line); border-radius: 9px; }
+    .tour-listline { height: 8px; margin: 18px 4px; border-radius: 8px; background: var(--muted); opacity: .27; }
+    .tour-listline.active { height: 48px; margin: 12px 0; background: var(--accent-soft); opacity: 1; }
+    .tour-editor { padding: 30px; }
+    .tour-title { width: 62%; height: 26px; border-radius: 7px; background: var(--ink); opacity: .82; }
+    .tour-fields { display: flex; gap: 8px; margin: 18px 0; }
+    .tour-field { width: 90px; height: 26px; border: 1px solid var(--line); border-radius: 8px; }
+    .tour-tools { height: 38px; margin-bottom: 24px; border-block: 1px solid var(--line); }
+    .tour-text { height: 8px; margin: 14px 0; background: var(--muted); border-radius: 6px; opacity: .25; }
+    .tour-text.short { width: 64%; }
+    .hotspot {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: var(--accent);
+      border: 3px solid var(--paper-solid);
+      border-radius: 50%;
+      box-shadow: 0 5px 15px rgba(0,0,0,.25);
+      font: 800 11px/1 var(--mono);
+      animation: pulse 2.8s ease-in-out infinite;
+    }
+    .hotspot.one { left: 16%; top: 18%; }
+    .hotspot.two { left: 15%; top: 51%; animation-delay: .25s; }
+    .hotspot.three { left: 46%; top: 22%; animation-delay: .5s; }
+    .hotspot.four { left: 54%; top: 50%; animation-delay: .75s; }
+    .hotspot.five { right: 9%; top: 5%; animation-delay: 1s; }
+    @keyframes pulse { 0%,100% { box-shadow: 0 5px 15px rgba(0,0,0,.25), 0 0 0 0 color-mix(in srgb, var(--accent) 35%, transparent); } 50% { box-shadow: 0 5px 15px rgba(0,0,0,.25), 0 0 0 8px transparent; } }
+    .tour-legend { display: grid; gap: 9px; }
+    .tour-item {
+      display: grid;
+      grid-template-columns: 31px minmax(0, 1fr);
+      gap: 11px;
+      align-items: start;
+      padding: 15px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+    .tour-item:hover { transform: translateX(4px); border-color: var(--accent); }
+    .tour-number { width: 27px; height: 27px; display: grid; place-items: center; color: #fff; background: var(--accent); border-radius: 50%; font: 800 10px/1 var(--mono); }
+    .tour-item strong { display: block; margin-bottom: 2px; font-size: 13px; }
+    .tour-item small { display: block; color: var(--muted); font-size: 11px; line-height: 1.45; }
+
+    .table-wrap {
+      margin: 25px 0;
+      overflow: auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { padding: 15px 18px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+    th { color: var(--muted); background: color-mix(in srgb, var(--soft) 45%, transparent); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    tr:last-child td { border-bottom: 0; }
+    tbody tr { transition: background .2s ease; }
+    tbody tr:hover { background: color-mix(in srgb, var(--accent-soft) 45%, transparent); }
+
+    .detail-group { display: grid; gap: 10px; margin: 24px 0; }
+    details {
+      overflow: hidden;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 5px 18px rgba(0, 0, 0, .04);
+      transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+    }
+    details:hover { border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); box-shadow: var(--shadow-sm); }
+    details[open] { border-color: color-mix(in srgb, var(--accent) 25%, var(--line)); }
+    summary {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 62px;
+      padding: 14px 54px 14px 19px;
+      cursor: pointer;
+      font-weight: 750;
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: "+";
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      transform: translateY(-50%);
+      transition: transform .25s ease, background .2s ease;
+    }
+    details[open] summary::after { content: "−"; transform: translateY(-50%) rotate(180deg); background: var(--accent-soft); }
+    .detail-content {
+      padding: 0 20px 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .detail-content > :last-child { margin-bottom: 0; }
+    .detail-content strong { color: var(--ink); }
+    .detail-tools { display: flex; justify-content: flex-end; margin-bottom: 10px; }
+    .quiet-button { min-height: 35px; padding: 0 11px; color: var(--muted); font-size: 11px; }
+
+    .command {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 13px 0;
+      padding: 15px 16px;
+      color: var(--code-ink);
+      background: var(--code);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 13px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .command code {
+      flex: 1;
+      min-width: 0;
+      padding: 0;
+      overflow-wrap: anywhere;
+      color: inherit;
+      background: none;
+      font: 500 12px/1.6 var(--mono);
+    }
+    .copy-button {
+      min-width: 68px;
+      min-height: 32px;
+      padding: 0 10px;
+      flex: 0 0 auto;
+      color: var(--code-ink);
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.16);
+      border-radius: 8px;
+      box-shadow: none;
+      font-size: 10px;
+      font-weight: 800;
+    }
+    .copy-button:hover { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.28); box-shadow: none; }
+
+    .ai-flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 26px 0;
+    }
+    .ai-flow-card {
+      position: relative;
+      min-height: 130px;
+      padding: 19px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+    .ai-flow-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+    .ai-flow-card:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -17px;
+      top: 47px;
+      z-index: 3;
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      background: var(--bg);
+      border-radius: 50%;
+      font-weight: 800;
+    }
+    .ai-flow-card b { display: block; margin-bottom: 8px; color: var(--accent); font: 800 10px/1 var(--mono); }
+    .ai-flow-card strong { display: block; margin-bottom: 5px; font-size: 13px; }
+    .ai-flow-card small { display: block; color: var(--muted); font-size: 11px; line-height: 1.5; }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .mini-card h4 { display: flex; align-items: center; gap: 8px; }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sage); box-shadow: 0 0 0 4px var(--sage-soft); }
+    .status-dot.cloud { background: var(--blue); box-shadow: 0 0 0 4px color-mix(in srgb, var(--blue) 16%, transparent); }
+
+    .shortcut-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .shortcut {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 65px;
+      padding: 13px 16px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+    .shortcut:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .shortcut span:first-child { color: var(--muted); font-size: 12px; }
+    .keys { display: flex; align-items: center; gap: 4px; }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px;
+      margin: 22px 0;
+      padding: 0;
+      list-style: none;
+    }
+    .checklist li {
+      position: relative;
+      margin: 0;
+      padding: 15px 16px 15px 45px;
+      color: var(--muted);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      font-size: 13px;
+    }
+    .checklist li::before {
+      content: "✓";
+      position: absolute;
+      left: 15px;
+      top: 15px;
+      width: 21px;
+      height: 21px;
+      display: grid;
+      place-items: center;
+      color: var(--sage);
+      background: var(--sage-soft);
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .quote {
+      position: relative;
+      margin: 30px 0;
+      padding: 30px 34px 30px 78px;
+      color: var(--ink);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      font: 500 19px/1.65 var(--serif);
+      box-shadow: var(--shadow-sm);
+    }
+    .quote::before { content: "“"; position: absolute; left: 27px; top: 15px; color: var(--accent); font: 700 62px/1 var(--serif); }
+    .quote small { display: block; margin-top: 8px; color: var(--muted); font: 700 10px/1.4 var(--sans); letter-spacing: .1em; text-transform: uppercase; }
+
+    .closing {
+      position: relative;
+      margin-top: 90px;
+      overflow: hidden;
+      padding: clamp(34px, 6vw, 72px);
+      color: white;
+      background: linear-gradient(135deg, #2f2924, #5f2b1d 66%, #734127);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+    }
+    .closing::before {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      right: -110px;
+      top: -170px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 50%;
+      box-shadow: 0 0 0 38px rgba(255,255,255,.025), 0 0 0 80px rgba(255,255,255,.02);
+    }
+    .closing h2 { position: relative; max-width: 650px; margin: 0 0 14px; font: 500 clamp(34px, 5vw, 54px)/1.05 var(--serif); letter-spacing: -.035em; }
+    .closing p { position: relative; max-width: 620px; margin: 0 0 26px; color: rgba(255,255,255,.72); }
+    .closing .contact-line { margin-top: -10px; font-size: 13px; }
+    .closing .contact-line a { color: #f8ead8; font-weight: 800; text-decoration: none; border-bottom: 1px solid rgba(248,234,216,.45); transition: color .18s ease, border-color .18s ease; }
+    .closing .contact-line a:hover { color: #fff; border-color: #fff; }
+    .closing .primary-link { position: relative; color: #2b211b; background: #f8ead8; box-shadow: 0 12px 26px rgba(0,0,0,.25); }
+
+    .top-button {
+      position: fixed;
+      right: 22px;
+      bottom: 20px;
+      z-index: 70;
+      width: 44px;
+      min-height: 44px;
+      padding: 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+    }
+    .top-button.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 150;
+      padding: 11px 16px;
+      color: var(--paper-solid);
+      background: var(--ink);
+      border-radius: 999px;
+      box-shadow: var(--shadow-md);
+      font-size: 12px;
+      font-weight: 750;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 15px);
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    :focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--accent) 55%, transparent);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 1120px) {
+      :root { --sidebar: 260px; }
+      .hero { grid-template-columns: 1fr; padding-top: 10px; }
+      .notebook-visual { width: min(610px, 100%); min-height: 430px; }
+      .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .tour { grid-template-columns: 1fr; }
+      .tour-legend { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+      .tour-item { grid-template-columns: 1fr; }
+      .ai-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .ai-flow-card:nth-child(2)::after { display: none; }
+    }
+
+    @media (max-width: 820px) {
+      :root { --header: 64px; }
+      .topbar { padding: 0 15px; }
+      .menu-button { display: inline-flex; }
+      .reading-label { display: none; }
+      .theme-button { min-width: 42px; width: 42px; padding: 0; }
+      .theme-button span { display: none; }
+      .shell { display: block; }
+      .sidebar {
+        position: fixed;
+        inset: 0 auto 0 0;
+        z-index: 90;
+        width: min(330px, 88vw);
+        height: 100vh;
+        padding-top: 26px;
+        background: var(--bg-raised);
+        box-shadow: var(--shadow-lg);
+        transform: translateX(-105%);
+        transition: transform .28s cubic-bezier(.2,.8,.2,1);
+      }
+      body.nav-open { overflow: hidden; }
+      body.nav-open .sidebar { transform: translateX(0); }
+      body.nav-open .sidebar-backdrop { display: block; }
+      .made-by { left: 18px; bottom: 16px; }
+      main { padding: 42px 20px 110px; }
+      .section { padding-top: 78px; }
+      .hero { min-height: 0; }
+      .notebook-window { left: 0; }
+      .floating-card { right: 0; }
+      .tour-legend { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 590px) {
+      body { font-size: 15px; }
+      .blessing { letter-spacing: .11em; }
+      .brand-copy small { display: none; }
+      .hero { padding-bottom: 50px; }
+      h1 { font-size: clamp(48px, 16vw, 68px); }
+      .hero-deck { font-size: 17px; }
+      .hero-actions { display: grid; }
+      .primary-link, .secondary-link { justify-content: center; }
+      .notebook-visual { min-height: 360px; }
+      .notebook-window { inset: 20px 0 38px; }
+      .mock-body { grid-template-columns: 82px 1fr; min-height: 300px; }
+      .mock-note { padding: 22px 17px; }
+      .floating-card { width: 184px; padding: 13px 15px; }
+      .feature-grid, .split, .shortcut-grid, .checklist { grid-template-columns: 1fr; }
+      .tour-board { min-height: 360px; }
+      .tour-body { grid-template-columns: 29% 71%; min-height: 302px; }
+      .tour-editor { padding: 22px 16px; }
+      .tour-legend { grid-template-columns: 1fr; }
+      .tour-item { grid-template-columns: 31px 1fr; }
+      .ai-flow { grid-template-columns: 1fr; }
+      .ai-flow-card:not(:last-child)::after { display: none; }
+      .step { grid-template-columns: 46px 1fr; gap: 12px; }
+      .step::before { width: 42px; height: 42px; }
+      .step:not(:last-child)::after { left: 20px; top: 43px; }
+      .command { align-items: flex-start; flex-direction: column; }
+      .copy-button { align-self: flex-end; }
+      .quote { padding: 28px 24px 28px 58px; }
+      .quote::before { left: 18px; }
+      .made-by { max-width: 45vw; }
+      .top-button { right: 16px; bottom: 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+
+    @media print {
+      :root {
+        --bg: white;
+        --paper: white;
+        --paper-solid: white;
+        --ink: #111;
+        --muted: #444;
+        --line: #ccc;
+      }
+      body { background: white; font-size: 11pt; }
+      body::before, .blessing, .topbar, .sidebar, .sidebar-backdrop, .made-by, .top-button, .toast, .hero-actions, .detail-tools { display: none !important; }
+      .shell { display: block; }
+      main { padding: 0; }
+      .article { width: 100%; }
+      .hero { min-height: 0; display: block; padding: 30px 0; }
+      .notebook-visual { display: none; }
+      .section { padding: 28px 0 0; break-before: page; }
+      .feature-card, .info-card, .mini-card, details, .tour-board, .table-wrap, .shortcut, .callout { box-shadow: none; break-inside: avoid; }
+      details > .detail-content { display: block !important; }
+      details:not([open]) > .detail-content { display: block !important; }
+      summary::after { display: none; }
+      .closing { color: #111; background: white; border: 1px solid #bbb; box-shadow: none; }
+      .closing p { color: #444; }
+    }
+
+    /* Persian edition: true RTL layout with isolated LTR technical content. */
+    @counter-style persian-leading-zero {
+      system: numeric;
+      symbols: "۰" "۱" "۲" "۳" "۴" "۵" "۶" "۷" "۸" "۹";
+      pad: 2 "۰";
+      suffix: "";
+    }
+    body {
+      direction: rtl;
+      text-align: right;
+      font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+      line-height: 1.9;
+    }
+    .skip-link { left: auto; right: 16px; }
+    .blessing {
+      font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .topbar, .shell, .hero, .tour, .split, .feature-grid, .shortcut-grid, .checklist, .ai-flow { direction: rtl; }
+    .top-context { margin-left: 0; margin-right: auto; }
+    .brand-copy strong,
+    h1, .section h2, .section h3, .feature-card h3, .info-card h3,
+    .card-icon, .quote, .closing h2 {
+      font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+    h1 {
+      font-size: clamp(46px, 6.2vw, 76px);
+      font-weight: 750;
+      line-height: 1.18;
+    }
+    .hero-deck { line-height: 1.95; }
+    .section h2 {
+      font-size: clamp(34px, 4.6vw, 55px);
+      font-weight: 750;
+      line-height: 1.3;
+    }
+    .section h3 { font-weight: 750; line-height: 1.48; }
+    .section-intro { line-height: 2; }
+    .feature-card h3, .info-card h3 { line-height: 1.55; }
+    .closing h2 { font-weight: 750; line-height: 1.38; }
+    .brand-copy small, .sidebar-kicker, .eyebrow, .hero-meta, .section-label, th, .quote small {
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .shell { direction: rtl; }
+    .sidebar {
+      border-right: 0;
+      border-left: 1px solid var(--line);
+    }
+    .manual-nav a { grid-template-columns: 28px minmax(0, 1fr); }
+    .manual-nav a::after {
+      inset: auto 40px 5px 10px;
+      background: linear-gradient(270deg, var(--accent), transparent);
+      transform-origin: right;
+    }
+    .manual-nav a:hover { transform: translateX(-3px); }
+    .made-by { left: auto; right: 22px; }
+    .top-button { right: auto; left: 22px; }
+    .section ul, .section ol { padding-left: 0; padding-right: 22px; }
+    .feature-card::before, .info-card::before { right: auto; left: -80px; }
+    .callout { padding: 22px 58px 22px 24px; }
+    .callout::before { left: auto; right: 20px; }
+    .step:not(:last-child)::after { left: auto; right: 23px; }
+    .step::before { content: counter(manual-step, persian-leading-zero); }
+    .tour-board, .notebook-visual, .command, .keys { direction: ltr; }
+    .floating-card { direction: rtl; text-align: right; }
+    .mock-note small { direction: rtl; text-align: right; }
+    .tour-item:hover { transform: translateX(-4px); }
+    th, td { text-align: right; }
+    summary { padding: 14px 19px 14px 54px; }
+    summary::after { right: auto; left: 18px; }
+    .detail-tools { justify-content: flex-start; }
+    .command { text-align: left; }
+    .command code { direction: ltr; text-align: left; unicode-bidi: isolate; }
+    code, .key, .nav-index, .keys, .ltr {
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+    .ai-flow-card:not(:last-child)::after {
+      content: "←";
+      right: auto;
+      left: -17px;
+    }
+    .checklist li { padding: 15px 45px 15px 16px; }
+    .checklist li::before { left: auto; right: 15px; }
+    .quote { padding: 30px 78px 30px 34px; }
+    .quote::before { left: auto; right: 27px; content: "«"; }
+    .closing::before { right: auto; left: -110px; }
+
+    @media (max-width: 820px) {
+      .sidebar {
+        inset: 0 0 0 auto;
+        transform: translateX(105%);
+        border-left: 1px solid var(--line);
+      }
+      body.nav-open .sidebar { transform: translateX(0); }
+      .made-by { left: auto; right: 18px; }
+    }
+
+    @media (max-width: 590px) {
+      h1 { font-size: clamp(42px, 13vw, 58px); }
+      .step:not(:last-child)::after { left: auto; right: 20px; }
+      .quote { padding: 28px 58px 28px 24px; }
+      .quote::before { left: auto; right: 18px; }
+      .top-button { right: auto; left: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">رفتن به متن راهنما</a>
+  <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+  <div class="blessing">بسم الله الرحمن الرحیم</div>
+
+  <header class="topbar">
+    <button class="menu-button" id="menuButton" type="button" aria-label="باز کردن فهرست راهنما" aria-controls="manualSidebar" aria-expanded="false">
+      <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <a class="top-brand" href="#welcome" aria-label="صفحهٔ نخست راهنمای Daftar">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-copy"><strong>Daftar</strong><small>راهنمای کاربر V2</small></span>
+    </a>
+    <div class="top-context">
+      <span class="reading-label"><span id="readPercent">0</span>٪ خوانده‌شده</span>
+      <button class="theme-button" id="themeButton" type="button" aria-label="تغییر به حالت تاریک">
+        <svg class="button-icon sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg>
+        <svg class="button-icon moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15.4A8.5 8.5 0 0 1 8.6 4a8.5 8.5 0 1 0 11.4 11.4Z"/></svg>
+        <span id="themeLabel">حالت تاریک</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="shell">
+    <aside class="sidebar" id="manualSidebar" aria-label="بخش‌های راهنما">
+      <p class="sidebar-kicker">در این راهنما</p>
+      <nav class="manual-nav" id="manualNav">
+        <a href="#welcome" class="active"><span class="nav-index">۰۰</span><span>خوش‌آمدید</span></a>
+        <a href="#quick-start"><span class="nav-index">۰۱</span><span>شروع سریع</span></a>
+        <a href="#tour"><span class="nav-index">۰۲</span><span>محیط دفتر</span></a>
+        <a href="#writing"><span class="nav-index">۰۳</span><span>نوشتن و سامان‌دهی</span></a>
+        <a href="#local-ai"><span class="nav-index">۰۴</span><span>هوش مصنوعی و Ollama</span></a>
+        <a href="#versions"><span class="nav-index">۰۵</span><span>نسخه‌ها و بازیابی</span></a>
+        <a href="#data"><span class="nav-index">۰۶</span><span>پشتیبان و انتقال</span></a>
+        <a href="#appearance"><span class="nav-index">۰۷</span><span>ظاهر و میانبرها</span></a>
+        <a href="#privacy"><span class="nav-index">۰۸</span><span>حریم خصوصی</span></a>
+        <a href="#troubleshooting"><span class="nav-index">۰۹</span><span>رفع اشکال</span></a>
+      </nav>
+      <div class="sidebar-note">
+        <strong>راهنمایی برای استفادهٔ روزمره</strong>
+        این نسخه فقط آنچه را برای کار با Daftar لازم دارید توضیح می‌دهد. برای یافتن سریع یک موضوع، از فهرست بالا استفاده کنید.
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+    <main id="main-content">
+      <article class="article">
+        <section class="hero" id="welcome" data-nav-section>
+          <div>
+            <div class="eyebrow">راهنمای فارسی Daftar V2</div>
+            <h1>افکارتان، <span class="hero-title-accent">زیبا و ماندگار.</span></h1>
+            <p class="hero-deck">Daftar یک دفترچهٔ خودبسنده برای نوشتن به فارسی و انگلیسی است؛ با ذخیرهٔ خودکار، دسته‌بندی، نسخه‌های قابل‌بازیابی و دستیار اختیاری Ollama.</p>
+            <div class="hero-actions">
+              <a class="primary-link" href="#quick-start">در یک دقیقه شروع کنید <span aria-hidden="true">↓</span></a>
+              <a class="secondary-link" href="#local-ai">راه‌اندازی Ollama <span aria-hidden="true">✦</span></a>
+            </div>
+            <div class="hero-meta" aria-label="ویژگی‌های اصلی">
+              <span>یک فایل HTML</span>
+              <span>فارسی + English</span>
+              <span>AI محلی و اختیاری</span>
+            </div>
+          </div>
+
+          <div class="notebook-visual" aria-label="نمای تزئینی رابط Daftar">
+            <div class="visual-glow"></div>
+            <div class="notebook-window">
+              <div class="mock-top">
+                <i class="mock-dot"></i><i class="mock-dot"></i><i class="mock-dot"></i>
+                <i class="mock-brand"></i><i class="mock-pill"></i>
+              </div>
+              <div class="mock-body">
+                <div class="mock-side">
+                  <div class="mock-search"></div>
+                  <div class="mock-navline active"></div>
+                  <div class="mock-navline"></div>
+                  <div class="mock-navline"></div>
+                  <div class="mock-navline"></div>
+                </div>
+                <div class="mock-note">
+                  <small>دفترچهٔ خصوصی</small>
+                  <div class="mock-heading"></div>
+                  <div class="mock-line"></div>
+                  <div class="mock-line"></div>
+                  <div class="mock-line"></div>
+                  <div class="mock-line"></div>
+                  <div class="mock-tags"><i></i><i></i><i></i></div>
+                </div>
+              </div>
+            </div>
+            <div class="floating-card">
+              <strong>ذخیره‌شده در مرورگر</strong>
+              <small>Daftar هنگام نوشتن، تغییرات شما را خودکار نگه می‌دارد.</small>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="what-is-title">
+          <p class="section-label">آنچه در اختیار دارید</p>
+          <h2 id="what-is-title">یک دفتر آرام، با ابزارهایی که وقتِ نیاز ظاهر می‌شوند.</h2>
+          <p class="section-intro">برای یادداشت‌برداری معمولی فقط فایل Daftar را باز کنید و بنویسید. عنوان، موضوع، برچسب، Markdown، نسخه‌ها، پشتیبان و AI همگی در همان صفحه در دسترس‌اند.</p>
+
+          <div class="feature-grid">
+            <article class="feature-card">
+              <span class="card-icon" aria-hidden="true">✓</span>
+              <h3>ذخیرهٔ خودکار</h3>
+              <p>وضعیت ذخیره در پایین ویرایشگر دیده می‌شود؛ دکمهٔ Save روزمره‌ای وجود ندارد.</p>
+            </article>
+            <article class="feature-card">
+              <span class="card-icon" aria-hidden="true">Aa</span>
+              <h3>فارسی و انگلیسی</h3>
+              <p>زبان رابط و جهت نوشتار هر یادداشت جداگانه تنظیم می‌شوند.</p>
+            </article>
+            <article class="feature-card">
+              <span class="card-icon" aria-hidden="true">#</span>
+              <h3>یافتن آسان</h3>
+              <p>جست‌وجو، موضوع‌ها، برچسب‌ها، نشان‌کردن، سنجاق و مرتب‌سازی به نوشته‌ها نظم می‌دهند.</p>
+            </article>
+            <article class="feature-card">
+              <span class="card-icon" aria-hidden="true">✦</span>
+              <h3>AI اختیاری</h3>
+              <p>با Ollama می‌توانید یادداشت را خلاصه، ویرایش، ترجمه یا دسته‌بندی کنید.</p>
+            </article>
+            <article class="feature-card">
+              <span class="card-icon" aria-hidden="true">↶</span>
+              <h3>بازیابی</h3>
+              <p>snapshot، بایگانی و زباله‌دان از بسیاری از کلیک‌های اشتباه قابل‌بازگشت محافظت می‌کنند.</p>
+            </article>
+            <article class="feature-card">
+              <span class="card-icon" aria-hidden="true">⇩</span>
+              <h3>خروجی قابل‌انتقال</h3>
+              <p>از کل دفتر پشتیبان JSON یا Markdown و از یادداشت جاری فایل TXT بگیرید.</p>
+            </article>
+          </div>
+
+          <div class="callout">
+            <strong>پیش از آنکه Daftar دفتر اصلی شما شود</strong>
+            <p>فایل HTML را در محلی ثابت نگه دارید، همیشه آن را با همان مرورگر و همان پروفایل باز کنید و پس از چند یادداشت آزمایشی، نخستین پشتیبان JSON را بسازید.</p>
+          </div>
+        </section>
+
+        <section class="section" id="quick-start" data-nav-section aria-labelledby="quick-start-title">
+          <p class="section-label">۰۱ · شروع سریع</p>
+          <h2 id="quick-start-title"><a class="anchor-link" href="#quick-start">اولین یادداشت شما، در پنج قدم.</a></h2>
+          <p class="section-intro">برای استفادهٔ عادی به Ollama نیازی ندارید. یک مرورگر مبتنی بر Chromium مانند Chrome، Edge، Brave یا Vivaldi کافی است.</p>
+
+          <div class="steps">
+            <div class="step">
+              <div class="step-copy">
+                <h3>Daftar را باز کنید</h3>
+                <p>روی فایل <code>Daftar-Local-Notebook-v2.html</code> دوبار کلیک کنید. در نخستین اجرا یک یادداشت خالی برای شما آماده است. اگر رابط انگلیسی است، دکمهٔ <strong>فارسی</strong> را در نوار بالا بزنید.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-copy">
+                <h3>بنویسید</h3>
+                <p>در فضای بزرگ میانی شروع به نوشتن کنید. اگر عنوان را خالی بگذارید، نخستین خط غیرخالی به‌عنوان نام نمایشی یادداشت استفاده می‌شود.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-copy">
+                <h3>جهت متن را بررسی کنید</h3>
+                <p>گزینهٔ <strong>خودکار</strong> برای بیشتر نوشته‌ها مناسب است. برای کنترل صریح، <strong>RTL</strong> را برای فارسی و <strong>LTR</strong> را برای انگلیسی انتخاب کنید.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-copy">
+                <h3>در صورت نیاز سامان بدهید</h3>
+                <p>یک موضوع کلی و چند برچسب کوتاه اضافه کنید. یادداشت مهم را نشان کنید و یادداشتی را که باید بالای فهرست بماند سنجاق کنید.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-copy">
+                <h3>ذخیره و پشتیبان را بررسی کنید</h3>
+                <p>صبر کنید وضعیت پایین صفحه به <strong>ذخیره شد</strong> برسد؛ سپس از <strong>تنظیمات ← پشتیبان و داده‌ها ← پشتیبان کامل JSON</strong> نخستین پشتیبان را بگیرید.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout warning">
+            <strong>سه چیز متفاوت‌اند: ذخیرهٔ خودکار، snapshot و پشتیبان.</strong>
+            <p>ذخیرهٔ خودکار آخرین وضعیت را در مرورگر نگه می‌دارد. snapshot نسخه‌ای از یک یادداشت برای بازگشت بعدی است. پشتیبان JSON یک فایل دانلودی از کل دفتر است و باید جداگانه و منظم ساخته شود.</p>
+          </div>
+        </section>
+
+        <section class="section" id="tour" data-nav-section aria-labelledby="tour-title">
+          <p class="section-label">۰۲ · محیط دفتر</p>
+          <h2 id="tour-title"><a class="anchor-link" href="#tour">بدانید هر بخش برای چه کاری است.</a></h2>
+          <p class="section-intro">رابط Daftar از فهرست یادداشت‌ها، ویرایشگر و پنل اختیاری AI ساخته شده است. کارهای پرتکرار همیشه نزدیک‌اند و گزینه‌های کمترمصرف در منوی «کارهای بیشتر» یا تنظیمات قرار دارند.</p>
+
+          <div class="tour">
+            <div class="tour-board" aria-label="نمودار رابط اصلی Daftar">
+              <div class="tour-top"><div class="tour-logo"></div><div class="tour-action"></div><div class="tour-action accent"></div></div>
+              <div class="tour-body">
+                <div class="tour-side">
+                  <div class="tour-search"></div>
+                  <div class="tour-listline"></div>
+                  <div class="tour-listline active"></div>
+                  <div class="tour-listline"></div>
+                  <div class="tour-listline"></div>
+                </div>
+                <div class="tour-editor">
+                  <div class="tour-title"></div>
+                  <div class="tour-fields"><div class="tour-field"></div><div class="tour-field"></div></div>
+                  <div class="tour-tools"></div>
+                  <div class="tour-text"></div><div class="tour-text"></div><div class="tour-text short"></div>
+                </div>
+              </div>
+              <span class="hotspot one">۱</span>
+              <span class="hotspot two">۲</span>
+              <span class="hotspot three">۳</span>
+              <span class="hotspot four">۴</span>
+              <span class="hotspot five">۵</span>
+            </div>
+            <div class="tour-legend">
+              <div class="tour-item"><span class="tour-number">۱</span><span><strong>جست‌وجو و فیلترها</strong><small>جست‌وجو در عنوان، متن، موضوع و برچسب؛ سپس رفتن به همه، نشان‌شده‌ها، بایگانی یا زباله‌دان.</small></span></div>
+              <div class="tour-item"><span class="tour-number">۲</span><span><strong>فهرست یادداشت‌ها</strong><small>یادداشت‌ها را بر پایهٔ زمان گروه‌بندی می‌کند و چکیده، موضوع و وضعیت مهم آن‌ها را نشان می‌دهد.</small></span></div>
+              <div class="tour-item"><span class="tour-number">۳</span><span><strong>شناسنامهٔ یادداشت</strong><small>عنوان، موضوع، برچسب‌ها، نشان و سنجاق در این بخش‌اند.</small></span></div>
+              <div class="tour-item"><span class="tour-number">۴</span><span><strong>نوشتن و خواندن</strong><small>قالب‌بندی Markdown، جهت متن، قلم، پیش‌نمایش و حالت تمرکز.</small></span></div>
+              <div class="tour-item"><span class="tour-number">۵</span><span><strong>کارهای عمومی</strong><small>پنل AI، زبان رابط، روشنایی، تنظیمات و ساخت یادداشت تازه.</small></span></div>
+            </div>
+          </div>
+
+          <h3>فهرست و فیلترها</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>بخش</th><th>کاربرد</th><th>نکته</th></tr></thead>
+              <tbody>
+                <tr><td><strong>همهٔ یادداشت‌ها</strong></td><td>یادداشت‌های فعال را نشان می‌دهد.</td><td>یادداشت‌های بایگانی‌شده و حذف‌شده در این نما نیستند.</td></tr>
+                <tr><td><strong>نشان‌شده‌ها</strong></td><td>یادداشت‌هایی را نشان می‌دهد که با ستاره علامت زده‌اید.</td><td>ستاره فقط یک نشان اهمیت است.</td></tr>
+                <tr><td><strong>موضوع‌ها</strong></td><td>یادداشت‌های دارای یک موضوع یکسان را فیلتر می‌کند.</td><td>این فهرست خودکار از موضوع‌هایی ساخته می‌شود که برای یادداشت‌ها ثبت کرده‌اید.</td></tr>
+                <tr><td><strong>مرتب‌سازی</strong></td><td>بر پایهٔ آخرین ویرایش، تاریخ ساخت یا عنوان مرتب می‌کند.</td><td>یادداشت‌های سنجاق‌شده بالاتر می‌مانند.</td></tr>
+                <tr><td><strong>گروه‌های زمانی</strong></td><td>یادداشت‌ها را از امروز تا سال‌های گذشته گروه‌بندی می‌کند.</td><td>می‌توانید هر گروه را جمع کنید؛ آیکون زباله، آن گروه و همهٔ قدیمی‌ترها را پس از تأیید به زباله‌دان می‌برد.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>دکمه‌های یادداشت جاری</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>دکمه</th><th>چه می‌کند</th></tr></thead>
+              <tbody>
+                <tr><td><strong>نشان</strong></td><td>یادداشت را به فهرست «نشان‌شده‌ها» می‌افزاید.</td></tr>
+                <tr><td><strong>سنجاق</strong></td><td>یادداشت را بالاتر از یادداشت‌های سنجاق‌نشده نگه می‌دارد.</td></tr>
+                <tr><td><strong>کپی</strong></td><td>نسخهٔ خوانای متن را بدون نشانه‌های اضافی Markdown کپی می‌کند.</td></tr>
+                <tr><td><strong>کارهای بیشتر</strong></td><td>snapshot، تاریخچه، خروجی TXT، کپی Markdown، تکثیر، بایگانی و زباله‌دان را باز می‌کند.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="section" id="writing" data-nav-section aria-labelledby="writing-title">
+          <p class="section-label">۰۳ · نوشتن و سامان‌دهی</p>
+          <h2 id="writing-title"><a class="anchor-link" href="#writing">ساده بنویسید؛ فقط به‌اندازهٔ نیاز ساختار بدهید.</a></h2>
+          <p class="section-intro">متن یادداشت مهم‌ترین بخش است. عنوان، موضوع و برچسب‌ها اختیاری‌اند و برای پیدا کردن نوشته‌ها در آینده به کار می‌آیند.</p>
+
+          <div class="split">
+            <article class="info-card">
+              <span class="card-icon" aria-hidden="true">T</span>
+              <h3>عنوان و موضوع</h3>
+              <p>عنوان، نام مشخص یادداشت است. موضوع بهتر است یک دستهٔ کلی و تکرارشونده باشد؛ مانند «کار»، «مطالعه» یا «ایده‌ها».</p>
+            </article>
+            <article class="info-card">
+              <span class="card-icon" aria-hidden="true">#</span>
+              <h3>برچسب‌ها</h3>
+              <p>برچسب‌ها جزئی‌ترند؛ مانند نام شخص، پروژه یا نوع کار. برای افزودن چند برچسب، آن‌ها را با ویرگول فارسی یا انگلیسی جدا کنید.</p>
+            </article>
+          </div>
+
+          <h3>قالب‌بندی با Markdown</h3>
+          <p>Daftar نوشته را به‌صورت متن ساده نگه می‌دارد. نوار ابزار، نشانه‌های Markdown را اضافه می‌کند و «پیش‌نمایش» نتیجهٔ خوانا را نشان می‌دهد.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>ابزار</th><th>نمونه</th><th>کاربرد</th></tr></thead>
+              <tbody>
+                <tr><td><strong>ضخیم</strong></td><td><code>**متن**</code></td><td>تأکید قوی</td></tr>
+                <tr><td><strong>کج</strong></td><td><code>*متن*</code></td><td>تأکید ملایم</td></tr>
+                <tr><td><strong>عنوان</strong></td><td><code># عنوان</code></td><td>ساختن بخش در یادداشت بلند</td></tr>
+                <tr><td><strong>فهرست</strong></td><td><code>- مورد</code></td><td>ساخت فهرست نشانه‌دار</td></tr>
+                <tr><td><strong>نقل‌قول</strong></td><td><code>&gt; متن</code></td><td>جداکردن نقل‌قول یا بریده‌متن</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card">
+              <span class="card-icon" aria-hidden="true">↔</span>
+              <h3>جهت مستقل هر یادداشت</h3>
+              <p>خودکار، راست‌به‌چپ یا چپ‌به‌راست؛ مستقل از زبان کل رابط.</p>
+            </article>
+            <article class="feature-card">
+              <span class="card-icon" aria-hidden="true">◉</span>
+              <h3>پیش‌نمایش</h3>
+              <p>عنوان‌ها، تأکیدها، فهرست‌ها، نقل‌قول‌ها، لینک‌ها و کد را خوانا نمایش می‌دهد.</p>
+            </article>
+            <article class="feature-card">
+              <span class="card-icon" aria-hidden="true">⛶</span>
+              <h3>حالت تمرکز</h3>
+              <p>پنل‌های اطراف را پنهان می‌کند. برای خروج <span class="key">Esc</span> را بزنید.</p>
+            </article>
+            <article class="feature-card">
+              <span class="card-icon" aria-hidden="true">۱۲۳</span>
+              <h3>آمار زنده</h3>
+              <p>واژه، نویسه، خط، زمان تقریبی مطالعه و زبان تشخیص‌داده‌شده را نشان می‌دهد.</p>
+            </article>
+            <article class="feature-card">
+              <span class="card-icon" aria-hidden="true">▣</span>
+              <h3>بایگانی</h3>
+              <p>یادداشت را از فهرست روزمره کنار می‌گذارد، بی‌آنکه حذفش کند.</p>
+            </article>
+            <article class="feature-card">
+              <span class="card-icon" aria-hidden="true">⌫</span>
+              <h3>زباله‌دان</h3>
+              <p>یادداشت حذف‌شده را نگه می‌دارد تا بازیابی یا برای همیشه پاک شود.</p>
+            </article>
+          </div>
+
+          <div class="callout danger">
+            <strong>«حذف برای همیشه» و «تخلیهٔ زباله‌دان» بازگشت‌پذیر نیستند.</strong>
+            <p>Daftar پیش از حذف دائمی تأیید می‌خواهد. اگر نسخه‌ای فقط در زباله‌دان است، پیش از تخلیه آن را بازیابی یا از دفتر پشتیبان JSON بگیرید.</p>
+          </div>
+        </section>
+
+        <section class="section" id="local-ai" data-nav-section aria-labelledby="ai-title">
+          <p class="section-label">۰۴ · هوش مصنوعی و Ollama</p>
+          <h2 id="ai-title"><a class="anchor-link" href="#local-ai">دستیار محلی را در چند قدم آماده کنید.</a></h2>
+          <p class="section-intro">AI در Daftar اختیاری است. برای استفاده از آن باید Ollama در همان رایانه اجرا شود و دست‌کم یک مدل نصب‌شده داشته باشید.</p>
+
+          <h3>راه‌اندازی برای نخستین بار</h3>
+          <div class="steps">
+            <div class="step">
+              <div class="step-copy">
+                <h3>Ollama و یک مدل را آماده کنید</h3>
+                <p>Ollama را نصب و اجرا کنید. اگر هنوز مدلی ندارید، Command Prompt یا Terminal را باز و یک مدل مناسب نصب کنید؛ برای نمونه:</p>
+                <div class="command"><code>ollama pull gemma4</code><button class="copy-button" type="button" data-copy="ollama pull gemma4">کپی</button></div>
+                <p>برای دیدن مدل‌های نصب‌شده:</p>
+                <div class="command"><code>ollama list</code><button class="copy-button" type="button" data-copy="ollama list">کپی</button></div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-copy">
+                <h3>دسترسی مرورگر را یک‌بار مجاز کنید</h3>
+                <p>فرمان مناسب سیستم‌عامل خود را اجرا کنید. سپس Ollama را <strong>کاملاً ببندید و دوباره اجرا کنید</strong>؛ باز و بسته کردن Daftar به‌تنهایی کافی نیست.</p>
+                <p><strong>Windows — Command Prompt</strong></p>
+                <div class="command"><code>setx OLLAMA_ORIGINS "*"</code><button class="copy-button" type="button" data-copy='setx OLLAMA_ORIGINS "*"'>کپی</button></div>
+                <p><strong>macOS — Terminal</strong></p>
+                <div class="command"><code>launchctl setenv OLLAMA_ORIGINS "*"</code><button class="copy-button" type="button" data-copy='launchctl setenv OLLAMA_ORIGINS "*"'>کپی</button></div>
+                <p><strong>Linux — هنگام اجرای دستی Ollama</strong></p>
+                <div class="command"><code>OLLAMA_ORIGINS="*" ollama serve</code><button class="copy-button" type="button" data-copy='OLLAMA_ORIGINS="*" ollama serve'>کپی</button></div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-copy">
+                <h3>از داخل Daftar متصل شوید</h3>
+                <p>پنل <strong>هوش مصنوعی</strong> را باز کنید. در تنظیمات، نشانی اتصال را روی <code>http://127.0.0.1:11434</code> بگذارید؛ سپس <strong>اتصال</strong> را بزنید و یکی از مدل‌های فهرست را انتخاب کنید.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-copy">
+                <h3>با یک یادداشت کوتاه آزمایش کنید</h3>
+                <p>یک یادداشت آزمایشی بنویسید و «خلاصه‌سازی» را اجرا کنید. اگر نتیجه نمایش داده شد، اتصال آماده است.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout warning">
+            <strong>دربارهٔ <code>OLLAMA_ORIGINS=*</code></strong>
+            <p>علامت ستاره به صفحه‌های مرورگر همین رایانه اجازه می‌دهد هنگام اجرای Ollama درخواست بفرستند. نشانی Ollama را روی <code>127.0.0.1</code> نگه دارید تا در اختیار دستگاه‌های دیگر نباشد و هنگام اجرای Ollama فقط صفحه‌های مورد اعتماد را باز نگه دارید.</p>
+          </div>
+
+          <h3>کارهای سریع</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>کار</th><th>نتیجه</th></tr></thead>
+              <tbody>
+                <tr><td><strong>خلاصه‌سازی</strong></td><td>خلاصه‌ای کوتاه و وفادار، در زبان خود متن.</td></tr>
+                <tr><td><strong>عنوان و دسته‌بندی</strong></td><td>عنوان، موضوع و چند برچسب پیشنهاد می‌کند.</td></tr>
+                <tr><td><strong>ویرایش نوشتار</strong></td><td>روانی و دستور زبان را بهتر می‌کند و می‌کوشد لحن شما را نگه دارد.</td></tr>
+                <tr><td><strong>نکات کلیدی</strong></td><td>ایده‌های اصلی را به شکل فهرست Markdown استخراج می‌کند.</td></tr>
+                <tr><td><strong>ترجمه به فارسی / انگلیسی</strong></td><td>متن را با حفظ معنا، لحن و قالب ترجمه می‌کند.</td></tr>
+                <tr><td><strong>دستور دلخواه</strong></td><td>هر درخواست مشخص دیگری را روی یادداشت یا متن انتخاب‌شده اجرا می‌کند.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>نتیجه را چگونه استفاده کنید</h3>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <span class="card-icon" aria-hidden="true">↺</span>
+              <h3>جایگزینی متن</h3>
+              <p>کل یادداشت یا فقط بخش انتخاب‌شده را با نتیجه عوض می‌کند. پیش از تغییر snapshot ایمنی ساخته می‌شود.</p>
+            </article>
+            <article class="feature-card">
+              <span class="card-icon" aria-hidden="true">＋</span>
+              <h3>افزودن</h3>
+              <p>نتیجه را به پایان یادداشت جاری می‌افزاید و نسخهٔ پیش از آن را نگه می‌دارد.</p>
+            </article>
+            <article class="feature-card">
+              <span class="card-icon" aria-hidden="true">N</span>
+              <h3>یادداشت تازه</h3>
+              <p>نتیجه را بدون دست‌زدن به متن اصلی، در یادداشتی تازه قرار می‌دهد.</p>
+            </article>
+            <article class="feature-card">
+              <span class="card-icon" aria-hidden="true">□</span>
+              <h3>کپی</h3>
+              <p>نتیجه را به‌صورت متن خوانا یا Markdown کپی می‌کند.</p>
+            </article>
+            <article class="feature-card">
+              <span class="card-icon" aria-hidden="true">▤</span>
+              <h3>فقط متن انتخاب‌شده</h3>
+              <p>اگر این گزینه روشن باشد، AI فقط بخشی را می‌بیند که پیش‌تر در ویرایشگر انتخاب کرده‌اید.</p>
+            </article>
+            <article class="feature-card">
+              <span class="card-icon" aria-hidden="true">■</span>
+              <h3>توقف</h3>
+              <p>هنگام تولید پاسخ می‌توانید کار مدل را متوقف کنید.</p>
+            </article>
+          </div>
+
+          <h3>تنظیمات مفید AI</h3>
+          <ul class="checklist">
+            <li><strong>اعمال خودکار دسته‌بندی:</strong> نتیجهٔ «عنوان و دسته‌بندی» را بلافاصله اعمال می‌کند؛ گزینهٔ Undo و snapshot ایمنی باقی می‌مانند.</li>
+            <li><strong>شیوهٔ دسته‌بندی:</strong> فقط خانه‌های خالی را پر می‌کند یا دسته‌بندی فعلی را نیز جایگزین می‌کند.</li>
+            <li><strong>دستور سیستمی:</strong> لحن یا شیوهٔ پاسخ‌دادن دستیار را برای همهٔ کارها تنظیم می‌کند.</li>
+            <li><strong>کارهای سریع:</strong> می‌توانید دستورها را ویرایش، جابه‌جا یا غیرفعال کنید و کار دلخواه بسازید.</li>
+            <li><strong>آماده نگه‌داشتن مدل:</strong> میان پاسخ سریع‌تر در دفعات بعد و مصرف حافظه تعادل برقرار می‌کند.</li>
+            <li><strong>دسته‌بندی با هوش مصنوعی در نوار کناری:</strong> یادداشت‌های دارای متن را که عنوان، موضوع یا برچسبشان ناقص است یکی‌یکی بررسی و فقط خانه‌های خالی را تکمیل می‌کند.</li>
+          </ul>
+
+          <div class="callout">
+            <strong>محلی‌بودن به مدل و نشانی اتصال بستگی دارد.</strong>
+            <p>با نشانی <code>127.0.0.1</code> و یک مدل محلی، متن روی همان رایانه پردازش می‌شود. مدل‌هایی که در Ollama با نشان cloud دیده می‌شوند یا نشانی‌های راه‌دور ممکن است داده را بیرون از رایانه پردازش کنند.</p>
+          </div>
+        </section>
+
+        <section class="section" id="versions" data-nav-section aria-labelledby="versions-title">
+          <p class="section-label">۰۵ · نسخه‌ها و بازیابی</p>
+          <h2 id="versions-title"><a class="anchor-link" href="#versions">برای بازگشت، چند راه امن دارید.</a></h2>
+          <p class="section-intro">ذخیرهٔ خودکار آخرین وضعیت را نگه می‌دارد؛ snapshot نسخه‌ای جدا از همان یادداشت است. Daftar آخرین ۳۰ snapshot هر یادداشت را نگه می‌دارد.</p>
+
+          <div class="split">
+            <article class="info-card">
+              <span class="card-icon" aria-hidden="true">S</span>
+              <h3>snapshot دستی</h3>
+              <p>از <strong>کارهای بیشتر ← ذخیرهٔ نسخه</strong> استفاده کنید یا <span class="key">Ctrl / ⌘</span> + <span class="key">S</span> را بزنید.</p>
+            </article>
+            <article class="info-card">
+              <span class="card-icon" aria-hidden="true">AI</span>
+              <h3>snapshot ایمنی</h3>
+              <p>Daftar پیش از جایگزینی یا افزودن نتیجهٔ AI، اعمال دسته‌بندی و بازیابی یک نسخه، وضعیت فعلی را نگه می‌دارد.</p>
+            </article>
+          </div>
+
+          <h3>بازیابی یک نسخه</h3>
+          <div class="steps">
+            <div class="step"><div class="step-copy"><h3>یادداشت را باز کنید</h3><p>یادداشتی را انتخاب کنید که نسخهٔ پیشین آن را می‌خواهید.</p></div></div>
+            <div class="step"><div class="step-copy"><h3>تاریخچه را باز کنید</h3><p>به <strong>کارهای بیشتر ← تاریخچهٔ نسخه‌ها</strong> بروید.</p></div></div>
+            <div class="step"><div class="step-copy"><h3>نسخه را بررسی کنید</h3><p>زمان، دلیل و پیش‌نمایش کوتاه هر snapshot را ببینید.</p></div></div>
+            <div class="step"><div class="step-copy"><h3>بازیابی را تأیید کنید</h3><p>نسخهٔ انتخاب‌شده بازمی‌گردد و وضعیت فعلی نیز پیش از آن به شکل snapshot ذخیره می‌شود.</p></div></div>
+          </div>
+
+          <div class="callout">
+            <strong>بایگانی و زباله‌دان برای هدف دیگری‌اند.</strong>
+            <p>بایگانی یادداشت کامل را از فهرست روزمره کنار می‌گذارد. زباله‌دان یادداشت حذف‌شده را تا زمان بازیابی یا حذف دائمی نگه می‌دارد. snapshot فقط تاریخچهٔ درون یک یادداشت است.</p>
+          </div>
+        </section>
+
+        <section class="section" id="data" data-nav-section aria-labelledby="data-title">
+          <p class="section-label">۰۶ · پشتیبان و انتقال</p>
+          <h2 id="data-title"><a class="anchor-link" href="#data">نسخه‌ای بیرون از مرورگر داشته باشید.</a></h2>
+          <p class="section-intro">یادداشت‌ها در فضای محلی مرورگر نگه‌داری می‌شوند، نه داخل خود فایل HTML. برای جابه‌جایی به رایانه یا پروفایل دیگر و برای حفاظت بلندمدت، از پشتیبان JSON استفاده کنید.</p>
+
+          <div class="feature-grid">
+            <article class="feature-card">
+              <span class="card-icon" aria-hidden="true">{ }</span>
+              <h3>پشتیبان کامل JSON</h3>
+              <p>همهٔ یادداشت‌ها، زباله‌دان، snapshotها و تنظیمات پشتیبانی‌شده را در یک فایل نگه می‌دارد. بهترین گزینه برای بازیابی کامل است.</p>
+            </article>
+            <article class="feature-card">
+              <span class="card-icon" aria-hidden="true">MD</span>
+              <h3>همهٔ یادداشت‌ها به‌صورت Markdown</h3>
+              <p>یادداشت‌های بیرون از زباله‌دان، از جمله بایگانی، را در یک فایل خوانا صادر می‌کند. snapshotها و تنظیمات در آن نیستند.</p>
+            </article>
+            <article class="feature-card">
+              <span class="card-icon" aria-hidden="true">TXT</span>
+              <h3>یادداشت جاری به‌صورت TXT</h3>
+              <p>نسخهٔ متن ساده و خوانای یادداشت باز را دانلود می‌کند.</p>
+            </article>
+          </div>
+
+          <h3>یک پشتیبان کامل بسازید</h3>
+          <div class="steps">
+            <div class="step"><div class="step-copy"><h3>تنظیمات را باز کنید</h3><p>آیکون چرخ‌دنده را در نوار بالا بزنید.</p></div></div>
+            <div class="step"><div class="step-copy"><h3>پشتیبان کامل JSON را بزنید</h3><p>مرورگر فایلی با تاریخ روز دانلود می‌کند.</p></div></div>
+            <div class="step"><div class="step-copy"><h3>فایل را جداگانه نگه دارید</h3><p>حداقل یک نسخه بیرون از پوشهٔ Downloads داشته باشید؛ مانند درایو پشتیبان یا فضای همگام‌سازی مورد اعتماد.</p></div></div>
+            <div class="step"><div class="step-copy"><h3>منظم تکرار کنید</h3><p>پیش از پاک‌کردن داده‌های مرورگر، تغییر پروفایل، تعویض رایانه یا به‌روزرسانی فایل Daftar حتماً پشتیبان تازه بگیرید.</p></div></div>
+          </div>
+
+          <h3>ورود و بازیابی</h3>
+          <ul class="checklist">
+            <li>از <strong>تنظیمات ← ورود / بازیابی</strong> فایل را انتخاب کنید.</li>
+            <li>پشتیبان JSON، یادداشت‌ها و تنظیمات پشتیبانی‌شده را وارد می‌کند.</li>
+            <li>فایل‌های TXT و Markdown هرکدام به‌صورت یادداشت تازه وارد می‌شوند.</li>
+            <li>ورود، یادداشت‌های موجود را پاک یا جایگزین نمی‌کند؛ نسخه‌های واردشده را به دفتر می‌افزاید.</li>
+            <li>اگر یک پشتیبان را چند بار وارد کنید، یادداشت‌های تکراری خواهید داشت.</li>
+          </ul>
+
+          <h3>انتقال به رایانه یا پروفایل تازه</h3>
+          <div class="steps">
+            <div class="step"><div class="step-copy"><h3>در دستگاه قدیمی پشتیبان بگیرید</h3><p>تازه‌ترین فایل JSON را بسازید و سالم‌بودن دانلود را بررسی کنید.</p></div></div>
+            <div class="step"><div class="step-copy"><h3>فایل HTML و پشتیبان را منتقل کنید</h3><p>هر دو را به دستگاه یا پروفایل تازه برسانید.</p></div></div>
+            <div class="step"><div class="step-copy"><h3>Daftar را باز و JSON را وارد کنید</h3><p>پس از ورود، چند یادداشت، یک snapshot و تنظیمات مهم را بررسی کنید.</p></div></div>
+            <div class="step"><div class="step-copy"><h3>پشتیبان تازه‌ای بسازید</h3><p>با این کار مطمئن می‌شوید محیط تازه قادر به دانلود و نگه‌داری پشتیبان است.</p></div></div>
+          </div>
+
+          <div class="callout danger">
+            <strong>خود فایل HTML نوشته‌های شما را درونش حمل نمی‌کند.</strong>
+            <p>کپی‌کردن تنها فایل Daftar به دستگاه دیگر، یادداشت‌ها را منتقل نمی‌کند. همیشه پشتیبان JSON را نیز همراه داشته باشید.</p>
+          </div>
+        </section>
+
+        <section class="section" id="appearance" data-nav-section aria-labelledby="appearance-title">
+          <p class="section-label">۰۷ · ظاهر و میانبرها</p>
+          <h2 id="appearance-title"><a class="anchor-link" href="#appearance">دفتر را با چشم و دست خود هماهنگ کنید.</a></h2>
+          <p class="section-intro">تنظیمات ظاهری روی کل دفتر اثر دارند؛ جهت متن برای هر یادداشت جداست.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>تنظیم</th><th>گزینه‌ها و کاربرد</th></tr></thead>
+              <tbody>
+                <tr><td><strong>پوسته</strong></td><td>سیستم، روشن یا تیره. دکمهٔ ماه/خورشید در نوار بالا نیز سریع میان روشن و تیره جابه‌جا می‌شود.</td></tr>
+                <tr><td><strong>زبان رابط</strong></td><td>فارسی یا English؛ دکمه‌ها و چیدمان را تغییر می‌دهد، نه متن یادداشت را.</td></tr>
+                <tr><td><strong>پالت رنگ</strong></td><td>کاغذی، مریم‌گلی، لاجوردی، اناری یا غروب بنفش.</td></tr>
+                <tr><td><strong>قلم ویرایشگر</strong></td><td>از نوار ابزار انتخاب می‌شود. بعضی قلم‌ها باید روی دستگاه نصب باشند.</td></tr>
+                <tr><td><strong>اندازه و فاصلهٔ متن</strong></td><td>اندازهٔ نوشته و فاصلهٔ سطرها را برای خواندن طولانی تنظیم می‌کند؛ متن خروجی تغییر نمی‌کند.</td></tr>
+                <tr><td><strong>اندازهٔ پنل‌ها</strong></td><td>در Desktop لبهٔ نوار یادداشت‌ها، پنل AI و جداکنندهٔ افقی نوار کناری را بکشید؛ «بازنشانی اندازه‌ها» حالت پیش‌فرض را برمی‌گرداند.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="split">
+            <article class="info-card">
+              <span class="card-icon" aria-hidden="true">▣</span>
+              <h3>Desktop</h3>
+              <p>می‌توانید نوار یادداشت‌ها را جمع کنید، پنل‌ها را تغییر اندازه دهید و نتیجهٔ AI را بزرگ‌تر کنید.</p>
+            </article>
+            <article class="info-card">
+              <span class="card-icon" aria-hidden="true">▯</span>
+              <h3>موبایل</h3>
+              <p>نوار یادداشت‌ها و AI به‌صورت پنل روی صفحه باز می‌شوند. حالت تمرکز برای فضای کم مفید است.</p>
+            </article>
+          </div>
+
+          <h3>میانبرهای پیش‌فرض</h3>
+          <div class="shortcut-grid">
+            <div class="shortcut"><span>یادداشت تازه</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">N</kbd></span></div>
+            <div class="shortcut"><span>جست‌وجوی یادداشت‌ها</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">K</kbd></span></div>
+            <div class="shortcut"><span>ذخیرهٔ snapshot</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">S</kbd></span></div>
+            <div class="shortcut"><span>کپی یادداشت جاری</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">Shift</kbd><b>+</b><kbd class="key">C</kbd></span></div>
+            <div class="shortcut"><span>بازکردن AI</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">Alt</kbd><b>+</b><kbd class="key">A</kbd></span></div>
+            <div class="shortcut"><span>حالت تمرکز</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">Shift</kbd><b>+</b><kbd class="key">F</kbd></span></div>
+            <div class="shortcut"><span>ضخیم</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">B</kbd></span></div>
+            <div class="shortcut"><span>کج</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">I</kbd></span></div>
+            <div class="shortcut"><span>عنوان Markdown</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">Alt</kbd><b>+</b><kbd class="key">1</kbd></span></div>
+            <div class="shortcut"><span>فهرست نشانه‌دار</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">Shift</kbd><b>+</b><kbd class="key">L</kbd></span></div>
+            <div class="shortcut"><span>نقل‌قول</span><span class="keys"><kbd class="key">Ctrl / ⌘</kbd><b>+</b><kbd class="key">Alt</kbd><b>+</b><kbd class="key">Q</kbd></span></div>
+            <div class="shortcut"><span>بستن پنل یا خروج از تمرکز</span><span class="keys"><kbd class="key">Esc</kbd></span></div>
+          </div>
+
+          <h3>تغییر میانبرها</h3>
+          <p>به <strong>تنظیمات ← راهنما ← میانبرهای صفحه‌کلید</strong> بروید، روی میانبر یک کار کلیک کنید و ترکیب تازه را بزنید. برای خالی‌کردن آن، هنگام ضبط <span class="key">Backspace</span> یا <span class="key">Delete</span> را بزنید. «بازنشانی میانبرها» همهٔ پیش‌فرض‌ها را برمی‌گرداند.</p>
+
+          <div class="callout">
+            <strong>اگر یک میانبر اجرا نمی‌شود</strong>
+            <p>ممکن است مرورگر، سیستم‌عامل یا یک extension آن ترکیب را زودتر گرفته باشد. میانبر دیگری تعیین کنید یا از دکمهٔ روی صفحه استفاده کنید. میانبرهای قالب‌بندی فقط هنگامی کار می‌کنند که ویرایشگر فعال باشد.</p>
+          </div>
+        </section>
+
+        <section class="section" id="privacy" data-nav-section aria-labelledby="privacy-title">
+          <p class="section-label">۰۸ · حریم خصوصی</p>
+          <h2 id="privacy-title"><a class="anchor-link" href="#privacy">بدانید نوشته‌ها کجا می‌مانند و چه زمانی فرستاده می‌شوند.</a></h2>
+          <p class="section-intro">Daftar برای کار محلی ساخته شده است. نوشتن عادی و استفاده از ابزارهای دفتر به اتصال اینترنت نیاز ندارد.</p>
+
+          <div class="split">
+            <article class="info-card">
+              <span class="card-icon" aria-hidden="true">⌂</span>
+              <h3>یادداشت‌ها</h3>
+              <p>در فضای محلی همان مرورگر و همان پروفایل ذخیره می‌شوند. پاک‌کردن داده‌های مرورگر یا استفاده از پروفایلی دیگر می‌تواند آن‌ها را ناپدید کند.</p>
+            </article>
+            <article class="info-card">
+              <span class="card-icon" aria-hidden="true">AI</span>
+              <h3>درخواست‌های AI</h3>
+              <p>فقط وقتی یک کار AI را اجرا می‌کنید، متن یادداشت یا بخش انتخاب‌شده به نشانی Ollama و مدل انتخابی فرستاده می‌شود.</p>
+            </article>
+          </div>
+
+          <ul class="checklist">
+            <li>برای استفاده از Daftar حساب کاربری لازم نیست.</li>
+            <li>نوشتن عادی به Ollama یا سرویس AI دیگری درخواست نمی‌فرستد.</li>
+            <li>Daftar تبلیغ، analytics یا همگام‌سازی ابری اجباری ندارد.</li>
+            <li>با نشانی محلی و مدل محلی Ollama، پردازش AI روی همان رایانه انجام می‌شود.</li>
+            <li>مدل cloud یا نشانی راه‌دور می‌تواند متن را بیرون از رایانه پردازش کند.</li>
+            <li>حالت Private/Incognito جای مناسبی برای دفتر روزمره نیست.</li>
+          </ul>
+
+          <div class="callout warning">
+            <strong>ذخیرهٔ محلی به‌معنای پشتیبان نیست.</strong>
+            <p>پاک‌سازی داده‌های مرورگر، خرابی پروفایل یا ازدست‌رفتن دستگاه ممکن است نوشته‌ها را از بین ببرد. برای حفاظت واقعی، منظم پشتیبان JSON بگیرید.</p>
+          </div>
+
+          <div class="callout">
+            <strong>اجازهٔ Ollama را محدود نگه دارید.</strong>
+            <p>پس از تنظیم <code>OLLAMA_ORIGINS=*</code>، Ollama را روی نشانی محلی <code>127.0.0.1</code> نگه دارید و آن را برای دستگاه‌های دیگر شبکه در دسترس نگذارید.</p>
+          </div>
+        </section>
+
+        <section class="section" id="troubleshooting" data-nav-section aria-labelledby="troubleshooting-title">
+          <p class="section-label">۰۹ · رفع اشکال</p>
+          <h2 id="troubleshooting-title"><a class="anchor-link" href="#troubleshooting">از نشانهٔ مشکل شروع کنید.</a></h2>
+          <p class="section-intro">راه‌حل‌های زیر برای رایج‌ترین مشکلات نسخهٔ منتشرشدهٔ Daftar نوشته شده‌اند.</p>
+
+          <div class="detail-tools"><button class="quiet-button" type="button" data-toggle-details="#troubleGuides">باز کردن همهٔ پاسخ‌ها</button></div>
+          <div class="detail-group" id="troubleGuides">
+            <details open>
+              <summary>یادداشت‌هایم را نمی‌بینم</summary>
+              <div class="detail-content">
+                <ol>
+                  <li>همان فایل Daftar را با همان مرورگر و همان پروفایلی باز کنید که پیش‌تر استفاده می‌کردید.</li>
+                  <li>کادر جست‌وجو را پاک و نماهای «همه»، «بایگانی»، «زباله‌دان»، «نشان‌شده‌ها» و موضوع‌ها را بررسی کنید.</li>
+                  <li>در حین بررسی، داده‌های مرورگر را پاک نکنید.</li>
+                  <li>اگر پشتیبان JSON دارید، آن را از «تنظیمات ← ورود / بازیابی» وارد کنید.</li>
+                </ol>
+              </div>
+            </details>
+
+            <details>
+              <summary>وضعیت ذخیره روی «خطا» مانده است</summary>
+              <div class="detail-content">
+                <p>نخست متن یادداشت جاری را در فایل یا برنامه‌ای دیگر کپی کنید. Daftar را در پنجرهٔ عادی مرورگر باز کنید، فضای آزاد دستگاه و اجازهٔ ذخیره‌سازی مرورگر را بررسی کنید و extensionهای پاک‌کننده یا محدودکنندهٔ داده را موقتاً غیرفعال کنید. اگر امکانش هست، فوراً پشتیبان JSON بگیرید.</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>متن فارسی جهت درستی ندارد</summary>
+              <div class="detail-content">
+                <p>جهت همان یادداشت را از نوار ابزار روی <strong>راست‌به‌چپ</strong> بگذارید. تغییر زبان رابط کافی نیست، چون زبان رابط و جهت یادداشت مستقل‌اند.</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>قلم انتخابی تفاوتی ایجاد نمی‌کند</summary>
+              <div class="detail-content">
+                <p>بعضی قلم‌ها به نصب‌بودنشان روی دستگاه وابسته‌اند. قلم دیگری مانند Daftar، Tahoma، Segoe UI، Georgia، Times New Roman یا Monospace را انتخاب کنید، یا قلم موردنظر را روی سیستم نصب کنید.</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>Ollama پیام «Failed to fetch» می‌دهد</summary>
+              <div class="detail-content">
+                <ol>
+                  <li>مطمئن شوید Ollama در حال اجراست.</li>
+                  <li>در Daftar نشانی را روی <code>http://127.0.0.1:11434</code> بگذارید.</li>
+                  <li>فرمان <code>OLLAMA_ORIGINS=*</code> مناسب سیستم‌عامل را از بخش راه‌اندازی بالا اجرا کنید.</li>
+                  <li>Ollama را کاملاً ببندید و دوباره اجرا کنید؛ سپس در Daftar «اتصال» را بزنید.</li>
+                </ol>
+              </div>
+            </details>
+
+            <details>
+              <summary>اتصال برقرار است، اما مدلی در فهرست نیست</summary>
+              <div class="detail-content">
+                <p>در Command Prompt یا Terminal فرمان <code>ollama list</code> را اجرا کنید. اگر فهرست خالی است، مدلی را با فرمان <code>ollama pull نام-مدل</code> نصب کنید؛ سپس Ollama را اجرا و در Daftar دوباره متصل شوید.</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>پاسخ نخست AI کند است</summary>
+              <div class="detail-content">
+                <p>Ollama ممکن است ابتدا مدل را در حافظه بارگذاری کند. پاسخ‌های بعدی معمولاً سریع‌ترند. در تنظیمات، «آماده نگه‌داشتن مدل» را طولانی‌تر کنید؛ این کار مصرف حافظه را نیز بیشتر می‌کند.</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>تصادفی متن را با نتیجهٔ AI جایگزین کردم</summary>
+              <div class="detail-content">
+                <p>به <strong>کارهای بیشتر ← تاریخچهٔ نسخه‌ها</strong> بروید و snapshot ساخته‌شده پیش از جایگزینی AI را بازیابی کنید.</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>تصادفی یادداشتی را حذف کردم</summary>
+              <div class="detail-content">
+                <p>به زباله‌دان بروید و یادداشت را بازیابی کنید. اگر «حذف برای همیشه» یا «تخلیهٔ زباله‌دان» را تأیید کرده‌اید، تنها راه بازگشت واردکردن پشتیبان JSON قدیمی است.</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>پس از ورود پشتیبان، یادداشت تکراری دارم</summary>
+              <div class="detail-content">
+                <p>ورود داده‌ها برای حفاظت بیشتر به‌صورت افزودن انجام می‌شود و دفتر موجود را پاک نمی‌کند. نسخه‌های تکراری را پس از مقایسه به زباله‌دان ببرید. برای پرهیز از تکرار، هر پشتیبان را فقط یک‌بار وارد کنید.</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>نشانه‌های Markdown را در متن می‌بینم</summary>
+              <div class="detail-content">
+                <p>این رفتار طبیعی است؛ Daftar متن را به شکل Markdown قابل‌انتقال نگه می‌دارد. دکمهٔ <strong>پیش‌نمایش</strong> را بزنید تا نسخهٔ قالب‌بندی‌شده را ببینید.</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>نوار یادداشت‌ها بسته شده است</summary>
+              <div class="detail-content">
+                <p>دکمهٔ سه‌خط کنار نام Daftar را بزنید. در موبایل همان دکمه پنل یادداشت‌ها را روی صفحه باز می‌کند.</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>رابط روی صفحهٔ کوچک شلوغ است</summary>
+              <div class="detail-content">
+                <p>پنل یادداشت‌ها و AI را ببندید و حالت تمرکز را روشن کنید. برای خروج از تمرکز <span class="key">Esc</span> را بزنید.</p>
+              </div>
+            </details>
+          </div>
+
+          <h3>آزمایش سلامت کوتاه</h3>
+          <ul class="checklist">
+            <li>یک یادداشت آزمایشی بسازید و صبر کنید وضعیت «ذخیره شد» نمایش داده شود.</li>
+            <li>صفحه را دوباره بارگذاری کنید و باقی‌ماندن یادداشت را بررسی کنید.</li>
+            <li>یک snapshot بسازید و آن را از تاریخچه بازیابی کنید.</li>
+            <li>پشتیبان JSON بگیرید و وجود فایل دانلودشده را بررسی کنید.</li>
+            <li>اگر از AI استفاده می‌کنید، یک خلاصهٔ کوتاه آزمایشی بسازید.</li>
+          </ul>
+
+          <div class="closing">
+            <h2>از اینکه Daftar را همراه نوشته‌هایتان کرده‌اید سپاسگزاریم.</h2>
+            <p>برای ساختن فضایی آرام، زیبا و کاربردی برای شما عزیزان، با دل و جان وقت گذاشته‌ایم. استفاده و به‌اشتراک‌گذاری Daftar برای مقاصد شخصی و غیرتجاری آزاد است. آزادانه بنویسید، سبک دسته‌بندی کنید، منظم پشتیبان بگیرید و بگذارید هوش مصنوعی محلی فقط وقتی شایسته است یاری‌تان کند.</p>
+            <p class="contact-line">اگر Daftar را دوست داشتید، در Jingala به ما بپیوندید و برای پرسش‌ها، ایده‌ها و خبرهای آینده به <a href="https://telegram.com/Jingalacorp" target="_blank" rel="noopener noreferrer">telegram.com/Jingalacorp</a> سر بزنید. به امید دیدار.</p>
+            <a class="primary-link" href="#quick-start">بازگشت به شروع سریع <span aria-hidden="true">↑</span></a>
+          </div>
+        </section>
+      </article>
+    </main>
+  </div>
+
+  <a class="made-by" href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">ساخته‌شده با ChatGPT</a>
+  <button class="top-button" id="topButton" type="button" aria-label="بازگشت به بالای صفحه">
+    <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg>
+  </button>
+  <div class="toast" id="toast" role="status" aria-live="polite">کپی شد</div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var root = document.documentElement;
+      var body = document.body;
+      var themeButton = document.getElementById("themeButton");
+      var themeLabel = document.getElementById("themeLabel");
+      var menuButton = document.getElementById("menuButton");
+      var sidebarBackdrop = document.getElementById("sidebarBackdrop");
+      var progressBar = document.getElementById("progressBar");
+      var readPercent = document.getElementById("readPercent");
+      var topButton = document.getElementById("topButton");
+      var toast = document.getElementById("toast");
+      var navLinks = Array.prototype.slice.call(document.querySelectorAll("#manualNav a"));
+      var sections = Array.prototype.slice.call(document.querySelectorAll("[data-nav-section]"));
+      var toastTimer;
+
+      function preferredTheme() {
+        var stored = null;
+        try { stored = localStorage.getItem("daftarManualTheme"); } catch (error) {}
+        if (stored === "light" || stored === "dark") return stored;
+        return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+
+      function applyTheme(theme, persist) {
+        root.setAttribute("data-theme", theme);
+        var dark = theme === "dark";
+        themeLabel.textContent = dark ? "حالت روشن" : "حالت تاریک";
+        themeButton.setAttribute("aria-label", dark ? "تغییر به حالت روشن" : "تغییر به حالت تاریک");
+        var themeColor = document.querySelector('meta[name="theme-color"]');
+        if (themeColor) themeColor.setAttribute("content", dark ? "#151412" : "#f4efe7");
+        if (persist) {
+          try { localStorage.setItem("daftarManualTheme", theme); } catch (error) {}
+        }
+      }
+
+      applyTheme(preferredTheme(), false);
+      themeButton.addEventListener("click", function () {
+        applyTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark", true);
+      });
+
+      function setNav(open) {
+        body.classList.toggle("nav-open", open);
+        menuButton.setAttribute("aria-expanded", open ? "true" : "false");
+        menuButton.setAttribute("aria-label", open ? "بستن فهرست راهنما" : "باز کردن فهرست راهنما");
+      }
+
+      menuButton.addEventListener("click", function () { setNav(!body.classList.contains("nav-open")); });
+      sidebarBackdrop.addEventListener("click", function () { setNav(false); });
+      navLinks.forEach(function (link) {
+        link.addEventListener("click", function () { setNav(false); });
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && body.classList.contains("nav-open")) setNav(false);
+      });
+
+      function updateScrollUI() {
+        var scrollTop = window.scrollY || document.documentElement.scrollTop;
+        var total = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        var percentage = Math.max(0, Math.min(100, Math.round(scrollTop / total * 100)));
+        progressBar.style.width = percentage + "%";
+        readPercent.textContent = String(percentage);
+        topButton.classList.toggle("visible", scrollTop > 640);
+      }
+      window.addEventListener("scroll", updateScrollUI, { passive: true });
+      window.addEventListener("resize", updateScrollUI);
+      updateScrollUI();
+
+      topButton.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      if ("IntersectionObserver" in window) {
+        var sectionObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var id = entry.target.id;
+            navLinks.forEach(function (link) {
+              var active = link.getAttribute("href") === "#" + id;
+              link.classList.toggle("active", active);
+              if (active) link.setAttribute("aria-current", "location");
+              else link.removeAttribute("aria-current");
+            });
+          });
+        }, { rootMargin: "-20% 0px -70% 0px", threshold: 0 });
+        sections.forEach(function (section) { sectionObserver.observe(section); });
+      }
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toast.classList.remove("show"); }, 1700);
+      }
+
+      document.querySelectorAll("[data-copy]").forEach(function (button) {
+        button.addEventListener("click", function () {
+          var value = button.getAttribute("data-copy") || "";
+          var done = function () {
+            var old = button.textContent;
+            button.textContent = "کپی شد";
+            showToast("دستور کپی شد");
+            setTimeout(function () { button.textContent = old; }, 1300);
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(value).then(done).catch(function () { fallbackCopy(value, done); });
+          } else {
+            fallbackCopy(value, done);
+          }
+        });
+      });
+
+      function fallbackCopy(value, done) {
+        var textarea = document.createElement("textarea");
+        textarea.value = value;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        try { document.execCommand("copy"); done(); }
+        catch (error) { showToast("دستور را انتخاب و دستی کپی کنید"); }
+        textarea.remove();
+      }
+
+      document.querySelectorAll("[data-toggle-details]").forEach(function (button) {
+        button.addEventListener("click", function () {
+          var host = document.querySelector(button.getAttribute("data-toggle-details"));
+          if (!host) return;
+          var items = Array.prototype.slice.call(host.querySelectorAll("details"));
+          var shouldOpen = items.some(function (item) { return !item.open; });
+          items.forEach(function (item) { item.open = shouldOpen; });
+          button.textContent = shouldOpen ? "بستن همه" : (host.id === "aiLongGuides" ? "باز کردن همهٔ راهنمای AI" : "باز کردن همهٔ پاسخ‌ها");
+        });
+      });
+
+      if (window.matchMedia) {
+        var media = window.matchMedia("(prefers-color-scheme: dark)");
+        var followSystem = function () {
+          var stored = null;
+          try { stored = localStorage.getItem("daftarManualTheme"); } catch (error) {}
+          if (!stored) applyTheme(media.matches ? "dark" : "light", false);
+        };
+        if (media.addEventListener) media.addEventListener("change", followSystem);
+      }
+    }());
+  </script>
+</body>
+</html>
