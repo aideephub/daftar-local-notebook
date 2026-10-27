@@ -10,7 +10,7 @@
 
 - **باز کردن دفتر:** https://aideephub.github.io/daftar-local-notebook/
 - **راهنمای فارسی:** https://aideephub.github.io/daftar-local-notebook/manual-fa.html
-- **English manual:** https://aideephub.github.io/daftar-local-notebook/manual.html
+- **راهنمای انگلیسی:** https://aideephub.github.io/daftar-local-notebook/manual.html
 
 > این پیوندهای زنده پس از فعال‌سازی GitHub Pages روی این مخزن کار می‌کنند.
 
@@ -41,9 +41,9 @@
 
 هر سه فایل در همین مخزن موجودند:
 
-- **برنامهٔ Daftar:** [index.html](https://aideephub.github.io/daftar-local-notebook/) — راست‌کلیک → Save Link As برای دانلود، یا کلیک برای استفادهٔ زنده
+- **برنامهٔ دفتر:** [index.html](https://aideephub.github.io/daftar-local-notebook/) — راست‌کلیک → Save Link As برای دانلود، یا کلیک برای استفادهٔ زنده
 - **راهنمای فارسی:** [manual-fa.html](https://aideephub.github.io/daftar-local-notebook/manual-fa.html) — راست‌کلیک → Save Link As برای دانلود، یا کلیک برای مطالعه
-- **English manual:** [manual.html](https://aideephub.github.io/daftar-local-notebook/manual.html) — راست‌کلیک → Save Link As برای دانلود، یا کلیک برای مطالعه
+- **راهنمای انگلیسی:** [manual.html](https://aideephub.github.io/daftar-local-notebook/manual.html) — راست‌کلیک → Save Link As برای دانلود، یا کلیک برای مطالعه
 
 یا کل مخزن را کلون کنید:
 git clone https://github.com/aideephub/daftar-local-notebook.git
