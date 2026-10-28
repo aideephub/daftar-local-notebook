@@ -8,7 +8,7 @@ A private, self-contained notebook for English and Persian writing, with optiona
 
 ## Use it
 
-- **Open Daftar live:** https://aideephub.github.io/daftar-local-notebook/
+- **Open Daftar live:** https://aideephub.github.io/daftar-local-notebook
 - **Read the English manual:** https://aideephub.github.io/daftar-local-notebook/manual.html
 - **راهنمای فارسی:** https://aideephub.github.io/daftar-local-notebook/manual-fa.html
 
@@ -16,7 +16,7 @@ A private, self-contained notebook for English and Persian writing, with optiona
 
 ---
 
-## What it is
+## What it Daftar
 
 Daftar is a single HTML file that runs entirely in your browser. Open it, write, and your notes stay on your own device. It is built for people who write in both English and Persian — each note can have its own writing direction independent of the interface language.
 
@@ -41,7 +41,7 @@ There is no account, no analytics, no ads, no cloud service. The optional AI con
 
 All three files live in this repository:
 
-- **Daftar app:** [index.html](https://aideephub.github.io/daftar-local-notebook/) — right-click → Save Link As to download, or click to use live
+- **Daftar app:** [index.html](https://aideephub.github.io/daftar-local-notebook) — right-click → Save Link As to download, or click to use live
 - **English manual:** [manual.html](https://aideephub.github.io/daftar-local-notebook/manual.html) — right-click → Save Link As to download, or click to read
 - **راهنمای فارسی:** [manual-fa.html](https://aideephub.github.io/daftar-local-notebook/manual-fa.html) — راست‌کلیک → Save Link As برای دانلود، یا کلیک برای مطالعه
 

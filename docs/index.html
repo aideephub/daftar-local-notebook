@@ -3194,11 +3194,25 @@
     const sourceButton = $('#toggleAiSourceBtn'); sourceButton.classList.toggle('hidden', placeholder || !String(text).trim() || !!state.aiMetadata); sourceButton.textContent = t(state.aiSourceMode ? 'viewRendered' : 'viewMarkdown');
   }
 
+  function renderAIResultStreaming(text) {
+    const output = $('#aiOutput');
+    output.className = 'ai-output markdown-body';
+    output.textContent = text;
+  }
+
   function scheduleAIResultRender(text, final = false) {
     state.aiResult = text;
-    clearTimeout(state.markdownTimer);
-    const render = () => { const output = $('#aiOutput'); const nearBottom = output.scrollHeight - output.scrollTop - output.clientHeight < 55; renderAIResult(text, false); if (nearBottom) output.scrollTop = output.scrollHeight; };
-    if (final) render(); else state.markdownTimer = setTimeout(render, 90);
+    const render = () => {
+      state.markdownTimer = null;
+      const output = $('#aiOutput');
+      const nearBottom = output.scrollHeight - output.scrollTop - output.clientHeight < 55;
+      if (final) renderAIResult(state.aiResult, false);
+      else renderAIResultStreaming(state.aiResult);
+      if (nearBottom) output.scrollTop = output.scrollHeight;
+    };
+    if (final) { clearTimeout(state.markdownTimer); render(); return; }
+    if (state.markdownTimer) return;
+    state.markdownTimer = setTimeout(render, 90);
   }
 
   function toggleAISourceView() {

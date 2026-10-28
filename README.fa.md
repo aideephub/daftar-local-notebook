@@ -8,7 +8,7 @@
 
 ## استفاده
 
-- **باز کردن دفتر:** https://aideephub.github.io/daftar-local-notebook/
+- **باز کردن دفتر:** https://aideephub.github.io/daftar-local-notebook
 - **راهنمای فارسی:** https://aideephub.github.io/daftar-local-notebook/manual-fa.html
 - **راهنمای انگلیسی:** https://aideephub.github.io/daftar-local-notebook/manual.html
 
@@ -16,7 +16,7 @@
 
 ---
 
-## این چیست
+## دفتر چیست
 
 ابزار Daftar یک فایل HTML واحد است که کاملاً در مرورگر شما اجرا می‌شود. آن را باز کنید، بنویسید، و یادداشت‌هایتان روی دستگاه خودتان می‌مانند. برای کسانی ساخته شده که به فارسی و انگلیسی می‌نویسند — هر یادداشت می‌تواند جهت نوشتار مستقل خودش را داشته باشد، جدا از زبان رابط.
 
@@ -41,7 +41,7 @@
 
 هر سه فایل در همین مخزن موجودند:
 
-- **برنامهٔ دفتر:** [index.html](https://aideephub.github.io/daftar-local-notebook/) — راست‌کلیک → Save Link As برای دانلود، یا کلیک برای استفادهٔ زنده
+- **برنامهٔ دفتر:** [index.html](https://aideephub.github.io/daftar-local-notebook) — راست‌کلیک → Save Link As برای دانلود، یا کلیک برای استفادهٔ زنده
 - **راهنمای فارسی:** [manual-fa.html](https://aideephub.github.io/daftar-local-notebook/manual-fa.html) — راست‌کلیک → Save Link As برای دانلود، یا کلیک برای مطالعه
 - **راهنمای انگلیسی:** [manual.html](https://aideephub.github.io/daftar-local-notebook/manual.html) — راست‌کلیک → Save Link As برای دانلود، یا کلیک برای مطالعه
 
