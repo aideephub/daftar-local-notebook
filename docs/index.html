@@ -3247,6 +3247,7 @@
     }); output.append(dl);
     ['replaceBtn', 'appendBtn', 'aiNewNoteBtn'].forEach(id => $(`#${id}`).classList.add('hidden'));
     $('#applyMetadataBtn')?.remove(); const apply = document.createElement('button'); apply.id = 'applyMetadataBtn'; apply.className = 'btn accent small'; apply.textContent = t('applyOrganization'); apply.addEventListener('click', () => applyMetadataSuggestion(false)); $('#aiOutputActions').prepend(apply);
+    $('#aiOutputActions').classList.remove('hidden');
     $('#copyResultBtn').classList.remove('hidden'); $('#copyResultMarkdownBtn').classList.add('hidden'); $('#toggleAiSourceBtn').classList.add('hidden');
     if (state.settings.autoApplyOrganization) queueMicrotask(() => applyMetadataSuggestion(true));
   }
@@ -3403,11 +3404,13 @@
     toast(t('organizationApplied'), 'success', 7000, { label: t('undo'), onClick: () => undoOrganization(note.id, before.id) });
   }
 
-  async function undoOrganization(noteId, revisionId) {
-    const note = state.notes.find(item => item.id === noteId); const revision = note?.revisions?.find(item => item.id === revisionId); if (!note || !revision) return;
-    note.title = revision.title || ''; note.topic = revision.topic || ''; note.tags = [...(revision.tags || [])]; note.updatedAt = isoNow();
-    await storage.putNote(note); if (state.currentId === note.id) openNote(note.id); else renderAll(); toast(t('organizationUndone'), 'success');
-  }
+async function undoOrganization(noteId, revisionId) {
+  const note = state.notes.find(item => item.id === noteId); const revision = note?.revisions?.find(item => item.id === revisionId); if (!note || !revision) return;
+  note.title = revision.title || ''; note.topic = revision.topic || ''; note.tags = [...(revision.tags || [])]; note.updatedAt = isoNow();
+  await storage.putNote(note); if (state.currentId === note.id) openNote(note.id); else renderAll();
+  const applyButton = $('#applyMetadataBtn'); if (applyButton) applyButton.disabled = false;
+  toast(t('organizationUndone'), 'success');
+}
 
   async function replaceWithAIResult() {
     const note = activeNote(), selection = state.aiSelection; if (!note || !state.aiResult || !selection || selection.noteId !== note.id) { toast(t('openSourceNote'), 'error'); return; }
